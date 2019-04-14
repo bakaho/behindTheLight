@@ -44,7 +44,17 @@ public class myLight : MonoBehaviour {
 
         }
         Vector3 newCamPos = transform.position + cameraOffset;
+
+        //camera movement
         CameraTransform.position = Vector3.Slerp(CameraTransform.position, newCamPos, smoothFactor);
 		
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("storyText"))
+        {
+            theTriggerOne = 0;
+        }
+    }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - joystick
+  - storyText
   layers:
   - Default
   - TransparentFX
