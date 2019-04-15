@@ -21,7 +21,10 @@ public class storyTextControl : MonoBehaviour {
 	}
 
     public void showNext(){
-        nextIndex = GameManager.ModuleSentence[moduleN,sentenceN];
-        nextObj[nextIndex].SetActive(true);
+        if (!isTheLast)
+        {
+            nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
+            nextObj[nextIndex].SetActive(true);
+        }
     }
 }

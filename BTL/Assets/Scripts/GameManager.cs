@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
 
         if(firstTouch && Input.touchCount >= 2){
             firstTouch = false;
+            myLight.inControl = false;
             //1. show button
 
 
@@ -76,12 +77,14 @@ public class GameManager : MonoBehaviour {
         float charZ = GetPuzzleRegion(curModule, curSentence)[1];
         float CamAngleX = GetPuzzleRegion(curModule, curSentence)[2];
         float CamAngleY = GetPuzzleRegion(curModule, curSentence)[3];
-        float ChrDelta = GetPuzzleRegion(curModule, curSentence)[4];
-        float CamDelta = GetPuzzleRegion(curModule, curSentence)[5];
-        if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDelta
-           && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDelta
-           && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) < CamDelta
-           && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) < CamDelta){
+        float ChrDeltaX = GetPuzzleRegion(curModule, curSentence)[4];
+        float ChrDeltaZ = GetPuzzleRegion(curModule, curSentence)[5];
+        float CamDeltaX = GetPuzzleRegion(curModule, curSentence)[6];
+        float CamDeltaY = GetPuzzleRegion(curModule, curSentence)[7];
+        if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
+           && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ
+           && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) < CamDeltaX
+           && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) < CamDeltaY){
             return true;
         }
         else{
@@ -90,13 +93,15 @@ public class GameManager : MonoBehaviour {
     }
 
     float[] GetPuzzleRegion(int m, int s){
-        float[] bounds = new float[6];
+        float[] bounds = new float[8];
         //bounds[0] CharX
         //bounds[1] CharZ
         //bounds[2] CamAngleX
         //bounds[3] CamAngleY
-        //bounds[4] ChrDelta
-        //bounds[5] CamDelta
+        //bounds[4] ChrDeltaX
+        //bounds[5] ChrDeltaZ
+        //bounds[6] CamDeltaX
+        //bounds[7] CamDeltaY
         if(m == 1){
             if(s == 1){
                 bounds[0] = 17f;
@@ -105,6 +110,8 @@ public class GameManager : MonoBehaviour {
                 bounds[3] = 0f;
                 bounds[4] = 1.5f;
                 bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
             }
         }
         return bounds;

@@ -27,7 +27,8 @@ public class puzzleTextControl : MonoBehaviour {
         if(GameManager.puzSolved && GameManager.curModule == moduleC && GameManager.curSentence == sentenceC){
             GameManager.puzSolved = false;
             hideHint();
-            //showNext();
+            showNext();
+            transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
         }
     }
 
@@ -49,7 +50,10 @@ public class puzzleTextControl : MonoBehaviour {
 
     public void showNext()
     {
-        nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
-        nextObj[nextIndex].SetActive(true);
+        if (!isTheLast)
+        {
+            nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
+            nextObj[nextIndex].SetActive(true);
+        }
     }
 }
