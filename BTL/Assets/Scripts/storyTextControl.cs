@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class storyTextControl : MonoBehaviour {
     public bool isTriggered = false;
+    public bool isTheLast = false;
     public GameObject[] nextObj;
     public int moduleN = 0;
     public int sentenceN = 0;

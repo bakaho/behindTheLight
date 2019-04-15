@@ -73,6 +73,9 @@ public class myLight : MonoBehaviour {
             if (!other.GetComponent<puzzleTextControl>().isTriggered)
             {
                 other.GetComponent<puzzleTextControl>().isTriggered = true;
+
+                //show hint
+                other.GetComponent<puzzleTextControl>().showHint();
                 //other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
 
             }

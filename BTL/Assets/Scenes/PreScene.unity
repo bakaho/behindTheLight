@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf075ac8a77924ddba20d0efd3653456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCamObj: {fileID: 534669902}
+  player: {fileID: 958959574}
 --- !u!4 &68022933
 Transform:
   m_ObjectHideFlags: 0
@@ -395,6 +397,10 @@ Prefab:
     - target: {fileID: 100000, guid: 639af86063a8248a9bec81050f52c100, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 639af86063a8248a9bec81050f52c100, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 639af86063a8248a9bec81050f52c100, type: 3}
@@ -1654,9 +1660,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTriggered: 0
+  isTheLast: 0
   nextObj: []
+  puzHintObj: {fileID: 1074034692}
   moduleN: 0
   sentenceN: 0
+  moduleC: 1
+  sentenceC: 1
 --- !u!4 &1371101962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 21543d2b66928224f8a9536ff3811682,
@@ -2377,6 +2387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTriggered: 0
+  isTheLast: 0
   nextObj:
   - {fileID: 1280840847}
   moduleN: 1

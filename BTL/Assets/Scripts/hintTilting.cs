@@ -65,7 +65,7 @@ public class hintTilting : MonoBehaviour {
             rotateAllow = false;
         }
 
-        print(myLight.inControl);
+        //print(myLight.inControl);
 
 
 
