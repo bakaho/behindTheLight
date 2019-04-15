@@ -56,6 +56,8 @@ public class myLight : MonoBehaviour {
         {
             //theTriggerOne = 0;
             print("hittext");
+            other.GetComponent<storyTextControl>().isTriggered = true;
+            //other.GetComponentInChildren<lightUpText>().turnedOn = true;
             other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
         }
     }

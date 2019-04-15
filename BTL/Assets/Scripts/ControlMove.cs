@@ -94,8 +94,8 @@ public class ControlMove : MonoBehaviour {
             moveChecked = false;
         }
         //print("this: " + moveChecked);
-        print("x: " + xDel);
-        print("y: " + yDel);
+        //print("x: " + xDel);
+        //print("y: " + yDel);
 
 
     }

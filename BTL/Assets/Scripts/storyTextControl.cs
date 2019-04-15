@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class storyTextControl : MonoBehaviour {
+    public bool isTriggered = false;
 
 	// Use this for initialization
 	void Start () {
