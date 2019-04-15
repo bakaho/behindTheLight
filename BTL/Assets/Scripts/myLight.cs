@@ -11,7 +11,7 @@ public class myLight : MonoBehaviour {
     public Transform CameraTransform;
     private Vector3 cameraOffset;
     //hit
-    public static int theTriggerOne = -1;
+    //public static int theTriggerOne = -1;
     //form
     public static int lightShape = 0;
     public static bool shapeChange = false;
@@ -54,7 +54,9 @@ public class myLight : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("storyText"))
         {
-            theTriggerOne = 0;
+            //theTriggerOne = 0;
+            print("hittext");
+            other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
         }
     }
 }
