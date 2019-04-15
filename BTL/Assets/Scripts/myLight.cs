@@ -60,6 +60,10 @@ public class myLight : MonoBehaviour {
                 other.GetComponent<storyTextControl>().isTriggered = true;
                 //other.GetComponentInChildren<lightUpText>().turnedOn = true;
                 other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+
+                //showNext
+                other.GetComponent<storyTextControl>().showNext();
+
             }
         }
     }

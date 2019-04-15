@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class storyTextControl : MonoBehaviour {
     public bool isTriggered = false;
+    public GameObject[] nextObj;
+    public int moduleN = 0;
+    public int sentenceN = 0;
+    int nextIndex = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -14,4 +18,9 @@ public class storyTextControl : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void showNext(){
+        nextIndex = GameManager.ModuleSentence[moduleN,sentenceN];
+        nextObj[nextIndex].SetActive(true);
+    }
 }
