@@ -20,4 +20,8 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    //int GetPuzzleRegion(module, sentence){
+    //    return 1;
+    //}
 }

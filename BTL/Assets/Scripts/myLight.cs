@@ -56,13 +56,24 @@ public class myLight : MonoBehaviour {
         {
             if (!other.GetComponent<storyTextControl>().isTriggered)
             {
-                print("hittext");
                 other.GetComponent<storyTextControl>().isTriggered = true;
                 //other.GetComponentInChildren<lightUpText>().turnedOn = true;
                 other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
 
                 //showNext
                 other.GetComponent<storyTextControl>().showNext();
+
+            }
+
+        }
+
+        if (other.gameObject.CompareTag("puzzleText"))
+        {
+            
+            if (!other.GetComponent<puzzleTextControl>().isTriggered)
+            {
+                other.GetComponent<puzzleTextControl>().isTriggered = true;
+                //other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
 
             }
         }
