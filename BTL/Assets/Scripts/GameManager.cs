@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 	void Start () {
         ModuleSentenceUB[1,0] = 1;
         ModuleSentence[1,0] = 0;
+        ModuleSentenceUB[1, 1] = 1;
+        ModuleSentence[1, 1] = 0;
 	}
 	
 	// Update is called once per frame
