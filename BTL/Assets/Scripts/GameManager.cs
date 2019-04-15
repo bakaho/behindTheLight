@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     //game level
+    static public int currentPuzzle = -1;
     static public int[,] ModuleSentence = new int[10,10];
     static public int[,] ModuleSentenceUB = new int[10, 10];
 
