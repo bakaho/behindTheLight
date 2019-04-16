@@ -14,6 +14,9 @@ public class puzzleTextControl : MonoBehaviour {
     public int moduleN = 0;
     public int sentenceN = 0;
 
+    //model
+    public GameObject thisModel;
+
     //button control
     public Sprite btnImg;
     public Button shapeBtn;
@@ -75,6 +78,10 @@ public class puzzleTextControl : MonoBehaviour {
 
     public void showNext()
     {
+        //show model
+        thisModel.SetActive(true);
+
+        //show next line
         if (!isTheLast)
         {
             nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
