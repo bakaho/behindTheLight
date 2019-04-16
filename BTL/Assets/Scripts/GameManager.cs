@@ -81,8 +81,13 @@ public class GameManager : MonoBehaviour {
         float ChrDeltaZ = GetPuzzleRegion(curModule, curSentence)[5];
         float CamDeltaX = GetPuzzleRegion(curModule, curSentence)[6];
         float CamDeltaY = GetPuzzleRegion(curModule, curSentence)[7];
+        print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
+        print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
+        print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) < CamDeltaX);
+        print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) < CamDeltaY);
+
         if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
-           && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ
+           && Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
            && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) < CamDeltaX
            && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) < CamDeltaY){
             return true;

@@ -42,18 +42,18 @@ public class ControlMove : MonoBehaviour {
             float xMoved = Input.mousePosition.x - initMouse.x;
             float yMoved = Input.mousePosition.y - initMouse.y;
             //float distance = Mathf.Sqrt((xMoved * xMoved) + (xMoved * xMoved));
-            moveChecked = (moveAllow && Mathf.Abs(xMoved) > 5 && Mathf.Abs(yMoved) > 5);
+            moveChecked = (moveAllow && Mathf.Abs(xMoved) > 3 && Mathf.Abs(yMoved) > 3);
 
             if (moveChecked)
             {
 
                 if (xMoved > 50)
                 {
-                    xDel = 2;
+                    xDel = 1;
                 }
                 else if (xMoved < -50)
                 {
-                    xDel = -2;
+                    xDel = -1;
                 }
                 else
                 {
@@ -62,11 +62,11 @@ public class ControlMove : MonoBehaviour {
 
                 if (yMoved > 50)
                 {
-                    yDel = 2;
+                    yDel = 1;
                 }
                 else if (yMoved < -50)
                 {
-                    yDel = -2;
+                    yDel = -1;
                 }
                 else
                 {
