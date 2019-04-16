@@ -34,8 +34,11 @@ public class GameManager : MonoBehaviour {
     static public int shapeM = 0;
     static public int shapeS = 0;
 
-    //button control
-    //public Image[,] btnImg = new Image[10, 10];
+    //Sound
+    public AudioSource SoundEffectSrc;
+    public AudioClip s_getShape;
+    public AudioClip s_nextLine;
+    public AudioClip s_locked;
 
 
 	private void Awake()
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        
+        SoundEffectSrc = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -69,11 +72,10 @@ public class GameManager : MonoBehaviour {
                     checkedSth = true;
                     shapeM = curModule;
                     shapeS = i;
-
+                    SoundEffectSrc.PlayOneShot(s_getShape);
 
                 }
             }
-
 
 
             //2.check puzzle if it is a puzzle
@@ -179,5 +181,14 @@ public class GameManager : MonoBehaviour {
             }
         }
         return shapeMS;
+    }
+
+    public void playNextLineSound(){
+        SoundEffectSrc.PlayOneShot(s_nextLine);
+    }
+
+    public void playLockSound()
+    {
+        SoundEffectSrc.PlayOneShot(s_locked);
     }
 }

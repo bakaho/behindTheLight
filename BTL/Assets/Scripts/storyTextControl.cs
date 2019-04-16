@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class storyTextControl : MonoBehaviour {
+    //GameManager
+    public GameObject GM;
+
     public bool isTriggered = false;
     public bool isTheLast = false;
     public GameObject[] nextObj;
@@ -30,6 +33,7 @@ public class storyTextControl : MonoBehaviour {
         {
             nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
             nextObj[nextIndex].SetActive(true);
+            GM.GetComponent<GameManager>().playNextLineSound();
         }
     }
 }

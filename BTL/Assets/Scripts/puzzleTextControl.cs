@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class puzzleTextControl : MonoBehaviour {
+    //GameManager
+    public GameObject GM;
+
     public bool isTriggered = false;
     public bool isTheLast = false;
     public GameObject[] nextObj;
@@ -76,6 +79,8 @@ public class puzzleTextControl : MonoBehaviour {
         {
             nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
             nextObj[nextIndex].SetActive(true);
+            GM.GetComponent<GameManager>().playNextLineSound();
+
         }
     }
 }

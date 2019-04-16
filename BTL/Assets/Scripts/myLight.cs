@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class myLight : MonoBehaviour {
+    //GameManager
+    public GameObject GM;
+
     //move
     public ControlMove joystick;
     public float speed = 15;
@@ -139,7 +142,8 @@ public class myLight : MonoBehaviour {
             xApartOrg = 2 * hNet;
             yApartOrg = 2 * vNet;
             lockedRmd.gameObject.SetActive(true);
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
+            GM.GetComponent<GameManager>().playLockSound();
         }
     }
 }
