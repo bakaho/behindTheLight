@@ -19,8 +19,11 @@ public class buttonControl : MonoBehaviour {
 	}
 
     public void changeShape(){
+        GameManager.curShapeM = GameManager.shapeM;
+        GameManager.curShapeS = GameManager.shapeS;
+        print(GameManager.curShapeM + " + " + GameManager.curShapeS);
         lightPlayer.GetComponent<Light>().cookie = lightCookie;
-        //TODO: hide button
+        //hide button
         btn.gameObject.SetActive(false);
     }
 }

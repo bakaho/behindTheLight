@@ -87,6 +87,9 @@ public class ControlMove : MonoBehaviour {
                     //myLight.shapeChange = true;
                     //myLight.lightShape = 0;
                     playerLight.GetComponent<Light>().cookie = circleShape;
+                    GameManager.curShapeM = 0;
+                    GameManager.curShapeS = 0;
+                    print(GameManager.curShapeM + " + " + GameManager.curShapeS);
                     CameraTilt.canMove = true;
                     myLight.inControl = true;
                 }

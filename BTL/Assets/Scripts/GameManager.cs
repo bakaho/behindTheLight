@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
     //static public int currentPuzzle = -1;
     static public int curModule = 0;
     static public int curSentence = 0;
+    //current shape
+    static public int curShapeM = 0;
+    static public int curShapeS = 0;
 
     //game level preset
     static public int[,] ModuleSentence = new int[10,10]; //save the current progress
@@ -66,9 +69,7 @@ public class GameManager : MonoBehaviour {
                     checkedSth = true;
                     shapeM = curModule;
                     shapeS = i;
-                    //show button （check already on)
-                    //assign button, if click button, change mylight shape(save where?) ,how to change?
-                    //TODO: show button
+
 
                 }
             }
@@ -114,15 +115,20 @@ public class GameManager : MonoBehaviour {
         float ChrDeltaZ = GetPuzzleRegion(cm, cs)[5];
         float CamDeltaX = GetPuzzleRegion(cm, cs)[6];
         float CamDeltaY = GetPuzzleRegion(cm, cs)[7];
+        int sm = GetShapeUsed(cm, cs)[0];
+        int ss = GetShapeUsed(cm, cs)[1];
         print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
         print(Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ);
         print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) <= CamDeltaX);
         print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) <= CamDeltaY);
+        print(curShapeM == sm);
+        print(curShapeS == ss);
 
         if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
            && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ
            && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) <= CamDeltaX
-           && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) <= CamDeltaY){
+           && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) <= CamDeltaY
+           && curShapeM == sm && curShapeS == ss){
             return true;
         }
         else{
@@ -131,7 +137,7 @@ public class GameManager : MonoBehaviour {
     }
 
     float[] GetPuzzleRegion(int m, int s){
-        float[] bounds = new float[8];
+        float[] bounds = new float[9];
         //bounds[0] CharX
         //bounds[1] CharZ
         //bounds[2] CamAngleX
@@ -153,5 +159,25 @@ public class GameManager : MonoBehaviour {
             }
         }
         return bounds;
+    }
+
+
+
+
+    int[] GetShapeUsed(int m, int s)
+    {
+        int[] shapeMS = new int[2];
+        //bounds[0] CharX
+        //bounds[1] CharZ
+
+        if (m == 1)
+        {
+            if (s == 1)
+            {
+                shapeMS[0] = 0;
+                shapeMS[1] = 0;
+            }
+        }
+        return shapeMS;
     }
 }
