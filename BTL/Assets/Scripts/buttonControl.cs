@@ -8,6 +8,11 @@ public class buttonControl : MonoBehaviour {
     public GameObject lightPlayer;
     public Button btn;
 
+    public Button btnOff;
+    public Button btnOn;
+    public Image statusBar;
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -25,5 +30,34 @@ public class buttonControl : MonoBehaviour {
         lightPlayer.GetComponent<Light>().cookie = lightCookie;
         //hide button
         btn.gameObject.SetActive(false);
+    }
+
+    public void showBar(){
+        //print("btn!!!");
+        //cornerBtnOn = !cornerBtnOn;
+        btnOff.gameObject.SetActive(false);
+        btnOn.gameObject.SetActive(true);
+        statusBar.gameObject.SetActive(true);
+        //cornerSpriteNum = (cornerSpriteNum + 1) % 2;
+        //cornerBtn.GetComponent<Image>().sprite = crnImg[cornerSpriteNum];
+        
+    }
+
+    //public void hideBar()
+    //{
+    //    //print("btn!!!");
+    //    cornerBtnOn = !cornerBtnOn;
+    //    statusBar.gameObject.SetActive(cornerBtnOn);
+    //    cornerSpriteNum = (cornerSpriteNum + 1) % 2;
+    //    cornerBtn.GetComponent<Image>().sprite = crnImg[cornerSpriteNum];
+
+    //}
+
+    public void hideBar()
+    {
+        btnOff.gameObject.SetActive(true);
+        btnOn.gameObject.SetActive(false);
+        statusBar.gameObject.SetActive(false);
+
     }
 }
