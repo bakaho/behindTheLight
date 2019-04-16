@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class myLight : MonoBehaviour {
     //move
@@ -30,6 +31,9 @@ public class myLight : MonoBehaviour {
 
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.01f;
+
+    //UI system
+    public Text lockedRmd;
 
 	// Use this for initialization
 	void Start () {
@@ -134,6 +138,7 @@ public class myLight : MonoBehaviour {
             yApart = 2 * vNet;
             xApartOrg = 2 * hNet;
             yApartOrg = 2 * vNet;
+            lockedRmd.gameObject.SetActive(true);
         }
     }
 }
