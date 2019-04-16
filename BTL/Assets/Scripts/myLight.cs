@@ -62,7 +62,7 @@ public class myLight : MonoBehaviour {
 
         //update acc
         if(xApartOrg > 0 && xApart > 0){
-            xApart -= 0.1f;
+            xApart -= 0.05f;
         }
         if (xApartOrg > 0 && xApart <= 0)
         {
@@ -70,7 +70,7 @@ public class myLight : MonoBehaviour {
         }
         if (xApartOrg < 0 && xApart < 0)
         {
-            xApart += 0.1f;
+            xApart += 0.05f;
         }
         if (xApartOrg < 0 && xApart >= 0)
         {
@@ -79,7 +79,7 @@ public class myLight : MonoBehaviour {
 
         if (yApartOrg > 0 && yApart > 0)
         {
-            yApart -= 0.1f;
+            yApart -= 0.05f;
         }
         if (yApartOrg > 0 && yApart <= 0)
         {
@@ -87,7 +87,7 @@ public class myLight : MonoBehaviour {
         }
         if (yApartOrg < 0 && yApart < 0)
         {
-            yApart += 0.1f;
+            yApart += 0.05f;
         }
         if (yApartOrg < 0 && yApart >= 0)
         {
