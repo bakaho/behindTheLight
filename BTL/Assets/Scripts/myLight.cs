@@ -139,6 +139,7 @@ public class myLight : MonoBehaviour {
             xApartOrg = 2 * hNet;
             yApartOrg = 2 * vNet;
             lockedRmd.gameObject.SetActive(true);
+            Handheld.Vibrate();
         }
     }
 }
