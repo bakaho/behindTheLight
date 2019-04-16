@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(firstTouch && Input.touchCount >= 2){
+        if(firstTouch && (Input.touchCount >= 2 || Input.GetKeyDown(KeyCode.Return))){
             firstTouch = false;
             myLight.inControl = false;
             //1. show button
