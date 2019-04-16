@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     //gameplay control
     public int gameLoop = 0;
 
+
     //objects
     public GameObject MainCamObj;
     public GameObject player;
@@ -19,11 +20,12 @@ public class GameManager : MonoBehaviour {
     //game level preset
     static public int[,] ModuleSentence = new int[10,10]; //save the current progress
     static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
-    static public int[] NumOfSenInModule = new int[10]{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
+    static public int[] NumOfSenInModule = new int[10]{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
 
     //for checking current
     bool firstTouch = true;
     static public bool puzSolved = false;
+    static public bool onPuz = false;
     //check shape
     static public bool checkedSth = false;
     static public int shapeM = 0;
@@ -58,7 +60,8 @@ public class GameManager : MonoBehaviour {
             firstTouch = false;
             myLight.inControl = false;
             //1. show button
-            for (int i = 0; i<=curSentence; i++){
+            for (int i = 0; i<=NumOfSenInModule[curModule]; i++){
+                print(i);
                 if(checkRegion(curModule, i)){
                     checkedSth = true;
                     shapeM = curModule;
@@ -73,7 +76,7 @@ public class GameManager : MonoBehaviour {
 
 
             //2.check puzzle if it is a puzzle
-            if (curModule != -1 && curSentence != -1) //puz mod
+            if (onPuz) //puz mod
             {
                 print("checking");
                 if(checkRegion(curModule,curSentence)){

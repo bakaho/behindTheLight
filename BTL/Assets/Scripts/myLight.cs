@@ -93,8 +93,6 @@ public class myLight : MonoBehaviour {
         {
             yApart = 0f;
         }
-
-
 		
 	}
 

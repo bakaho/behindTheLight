@@ -56,6 +56,7 @@ public class puzzleTextControl : MonoBehaviour {
 
     public void showHint(){
         //set puzzle
+        GameManager.onPuz = true;
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
         //show hint
@@ -64,8 +65,9 @@ public class puzzleTextControl : MonoBehaviour {
 
     public void hideHint(){
         puzHintObj.SetActive(false);
-        GameManager.curModule = -1;
-        GameManager.curSentence = -1;
+        GameManager.onPuz = false;
+        //GameManager.curModule = -1;
+        //GameManager.curSentence = -1;
     }
 
     public void showNext()
