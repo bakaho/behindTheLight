@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour {
             firstTouch = false;
             myLight.inControl = false;
             //1. show button
-            for (int i = 0; i<=NumOfSenInModule[curModule]; i++){
+            for (int i = 0; i<=curSentence; i++){
                 print(i);
                 if(checkRegion(curModule, i)){
                     checkedSth = true;
