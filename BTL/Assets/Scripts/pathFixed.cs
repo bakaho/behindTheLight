@@ -5,6 +5,7 @@ using PathCreation;
 
 public class pathFixed : MonoBehaviour {
     public PathCreator pathCreator;
+    public EndOfPathInstruction EndInstruction;
     public float speed = 5;
     float distanceTraveled;
 
