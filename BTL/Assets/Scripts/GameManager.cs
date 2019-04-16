@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
+    //gameplay control
+    public int gameLoop = 0;
+
     //objects
     public GameObject MainCamObj;
     public GameObject player;
@@ -13,12 +17,20 @@ public class GameManager : MonoBehaviour {
     static public int curSentence = 0;
 
     //game level preset
-    static public int[,] ModuleSentence = new int[10,10];
-    static public int[,] ModuleSentenceUB = new int[10, 10];
+    static public int[,] ModuleSentence = new int[10,10]; //save the current progress
+    static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
+    static public int[] NumOfSenInModule = new int[10]{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
 
     //for checking current
     bool firstTouch = true;
     static public bool puzSolved = false;
+    //check shape
+    static public bool checkedSth = false;
+    static public int shapeM = 0;
+    static public int shapeS = 0;
+
+    //button control
+    //public Image[,] btnImg = new Image[10, 10];
 
 
 	private void Awake()
@@ -28,6 +40,10 @@ public class GameManager : MonoBehaviour {
 
         ModuleSentenceUB[1, 1] = 1;
         ModuleSentence[1, 1] = 0;
+
+        ModuleSentenceUB[1, 2] = 1;
+        ModuleSentence[1, 2] = 0;
+           
 	}
 
 	// Use this for initialization
@@ -42,12 +58,25 @@ public class GameManager : MonoBehaviour {
             firstTouch = false;
             myLight.inControl = false;
             //1. show button
+            for (int i = 0; i<=curSentence; i++){
+                if(checkRegion(curModule, i)){
+                    checkedSth = true;
+                    shapeM = curModule;
+                    shapeS = i;
+                    //show button （check already on)
+                    //assign button, if click button, change mylight shape(save where?) ,how to change?
+                    //TODO: show button
+
+                }
+            }
+
 
 
             //2.check puzzle if it is a puzzle
             if (curModule != -1 && curSentence != -1) //puz mod
             {
-                if(checkPuz()){
+                print("checking");
+                if(checkRegion(curModule,curSentence)){
                     print("Puzzle Solved!!!!!");
                     puzSolved = true;
 
@@ -71,23 +100,24 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-    bool checkPuz(){
-        print("checking");
-        float charX = GetPuzzleRegion(curModule,curSentence)[0];
-        float charZ = GetPuzzleRegion(curModule, curSentence)[1];
-        float CamAngleX = GetPuzzleRegion(curModule, curSentence)[2];
-        float CamAngleY = GetPuzzleRegion(curModule, curSentence)[3];
-        float ChrDeltaX = GetPuzzleRegion(curModule, curSentence)[4];
-        float ChrDeltaZ = GetPuzzleRegion(curModule, curSentence)[5];
-        float CamDeltaX = GetPuzzleRegion(curModule, curSentence)[6];
-        float CamDeltaY = GetPuzzleRegion(curModule, curSentence)[7];
+
+
+    bool checkRegion(int cm,int cs){       
+        float charX = GetPuzzleRegion(cm, cs)[0];
+        float charZ = GetPuzzleRegion(cm, cs)[1];
+        float CamAngleX = GetPuzzleRegion(cm, cs)[2];
+        float CamAngleY = GetPuzzleRegion(cm, cs)[3];
+        float ChrDeltaX = GetPuzzleRegion(cm, cs)[4];
+        float ChrDeltaZ = GetPuzzleRegion(cm, cs)[5];
+        float CamDeltaX = GetPuzzleRegion(cm, cs)[6];
+        float CamDeltaY = GetPuzzleRegion(cm, cs)[7];
         print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
-        print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
+        print(Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ);
         print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) < CamDeltaX);
         print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) < CamDeltaY);
 
         if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
-           && Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
+           && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ
            && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) < CamDeltaX
            && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)) < CamDeltaY){
             return true;

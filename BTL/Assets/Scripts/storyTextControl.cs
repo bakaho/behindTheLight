@@ -8,6 +8,9 @@ public class storyTextControl : MonoBehaviour {
     public GameObject[] nextObj;
     public int moduleN = 0;
     public int sentenceN = 0;
+    //current
+    public int moduleC = 0;
+    public int sentenceC = 0;
     int nextIndex = 0;
 
 	// Use this for initialization
@@ -21,6 +24,8 @@ public class storyTextControl : MonoBehaviour {
 	}
 
     public void showNext(){
+        GameManager.curModule = moduleC;
+        GameManager.curSentence = sentenceC;
         if (!isTheLast)
         {
             nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];

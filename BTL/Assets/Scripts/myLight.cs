@@ -10,6 +10,12 @@ public class myLight : MonoBehaviour {
     //cam
     public Transform CameraTransform;
     private Vector3 cameraOffset;
+    //force apart
+    static public int xApart = 0;
+    static public int yApart = 0;
+    static public int xApartDir = 0;
+    static public int yApartDir = 0;
+
     //hit
     //public static int theTriggerOne = -1;
     //form
@@ -33,9 +39,10 @@ public class myLight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         //character movement
-        float h = joystick.Horizontal();
-        float v = joystick.Vertical();
+        float h = joystick.Horizontal(); //+FANXIANG
+        float v = joystick.Vertical(); //+FANXIANG
         bool move = (Mathf.Abs(v - 0) > 0.001f) || (Mathf.Abs(h - 0) > 0.001f);
         if (move && CameraTilt.canMove && inControl)
         {
@@ -79,6 +86,7 @@ public class myLight : MonoBehaviour {
                 //other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
 
             }
+            //if unlocked -> show next + turn on
         }
     }
 }

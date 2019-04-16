@@ -8,6 +8,7 @@ TagManager:
   - storyText
   - puzzleText
   - UICam
+  - locked
   layers:
   - Default
   - TransparentFX
