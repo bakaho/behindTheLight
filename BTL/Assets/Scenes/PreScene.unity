@@ -3200,3 +3200,5 @@ MonoBehaviour:
   xDel: 0
   yDel: 0
   myCam: {fileID: 0}
+  playerLight: {fileID: 579728148}
+  circleShape: {fileID: 2800000, guid: 1167c0a28d11119930004d8a4241aa39, type: 3}

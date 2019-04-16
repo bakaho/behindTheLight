@@ -12,6 +12,11 @@ public class ControlMove : MonoBehaviour {
     Touch initTouch;
     Vector3 initMouse;
 
+    //show back shape
+    public GameObject playerLight;
+    public Texture circleShape;
+
+
     // Update is called once per frame
     private void Start()
     {
@@ -74,13 +79,14 @@ public class ControlMove : MonoBehaviour {
                 }
 
             }
-            if (Mathf.Abs(xMoved) < 5 && Mathf.Abs(yMoved) < 5)
+            if (Mathf.Abs(xMoved) < 3 && Mathf.Abs(yMoved) < 3)
             {
                 float deltatime = Time.time - touchStartTime;
                 if (deltatime > 2)
                 {
-                    myLight.shapeChange = true;
-                    myLight.lightShape = 0;
+                    //myLight.shapeChange = true;
+                    //myLight.lightShape = 0;
+                    playerLight.GetComponent<Light>().cookie = circleShape;
                     CameraTilt.canMove = true;
                     myLight.inControl = true;
                 }
