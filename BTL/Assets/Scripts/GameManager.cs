@@ -157,12 +157,24 @@ public class GameManager : MonoBehaviour {
         //bounds[6] CamDeltaX
         //bounds[7] CamDeltaY
         if(m == 1){
-            if(s == 1){
+            if (s == 1)
+            {
                 bounds[0] = 17f;
                 bounds[1] = 74f;
                 bounds[2] = 27f;
                 bounds[3] = 0f;
                 bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+            else if (s == 2)
+            {
+                bounds[0] = 55.2f;
+                bounds[1] = 114.5f;
+                bounds[2] = 27f;
+                bounds[3] = 0f;
+                bounds[4] = 3f;
                 bounds[5] = 3f;
                 bounds[6] = 3f;
                 bounds[7] = 3f;
@@ -186,6 +198,9 @@ public class GameManager : MonoBehaviour {
             {
                 shapeMS[0] = 0;
                 shapeMS[1] = 0;
+            }else if(s == 2){
+                shapeMS[0] = 1;
+                shapeMS[1] = 1;
             }
         }
         return shapeMS;

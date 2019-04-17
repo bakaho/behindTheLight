@@ -7,15 +7,22 @@ public class puzzleTextControl : MonoBehaviour {
     //GameManager
     public GameObject GM;
 
+    //Properties
     public bool isTriggered = false;
     public bool isTheLast = false;
     public GameObject[] nextObj;
     public GameObject puzHintObj;
     public int moduleN = 0;
     public int sentenceN = 0;
+    //item drop
+    public bool haveItemDrop = false;
+    public int itemNum = 0;
+
 
     //model
     public GameObject thisModel;
+    public Image itemDropRmd;
+    public Sprite itemSprite;
 
     //button control
     public Sprite btnImg;
@@ -48,6 +55,13 @@ public class puzzleTextControl : MonoBehaviour {
             hideHint();
             showNext();
             transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+            //if have item drop, drop item
+            if(haveItemDrop){
+                //drop item UI
+                itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = itemSprite;
+                itemDropRmd.gameObject.SetActive(true);
+                //add to bar
+            }
         }
     }
 
