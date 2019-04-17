@@ -164,13 +164,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   isTriggered: 0
-  isTheLast: 1
-  nextObj: []
+  isTheLast: 0
+  nextObj:
+  - {fileID: 0}
   puzHintObj: {fileID: 0}
-  moduleN: 0
-  sentenceN: 0
+  moduleN: 1
+  sentenceN: 2
   haveItemDrop: 0
   itemNum: 0
+  inventory: {fileID: 0}
   thisModel: {fileID: 0}
   itemDropRmd: {fileID: 0}
   itemSprite: {fileID: 0}

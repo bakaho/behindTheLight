@@ -17,6 +17,7 @@ public class puzzleTextControl : MonoBehaviour {
     //item drop
     public bool haveItemDrop = false;
     public int itemNum = 0;
+    public GameObject inventory;
 
 
     //model
@@ -61,6 +62,16 @@ public class puzzleTextControl : MonoBehaviour {
                 itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = itemSprite;
                 itemDropRmd.gameObject.SetActive(true);
                 //add to bar
+                //1.show slot
+                for (int i = 0; i < 12; i++){
+                    if(!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered){
+                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite);
+                        inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
+                        break;
+                    }
+                }
+
+
             }
         }
     }
