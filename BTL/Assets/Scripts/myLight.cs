@@ -45,6 +45,7 @@ public class myLight : MonoBehaviour {
 
     //earthquake
     public bool earthquakeOn = false;
+    public GameObject EQSound;
 
 	// Use this for initialization
 	void Start () {
@@ -172,6 +173,7 @@ public class myLight : MonoBehaviour {
         {
             earthquakeOn = true;
             groundAnim.SetBool("isEarthquaking",true);
+            EQSound.gameObject.SetActive(true);
         }
     }
 }
