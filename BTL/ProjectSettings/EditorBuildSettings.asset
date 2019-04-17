@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PreScene.unity
     guid: bef88689a9c7242a286dbdd4a430b03c
+  - enabled: 1
+    path: Assets/Scenes/PureBad.unity
+    guid: 0daab90139ab54ede88735ef4233bdab
+  - enabled: 1
+    path: Assets/Scenes/PureGood.unity
+    guid: cecd260ab56674c52852543f654ffddc
   m_configObjects: {}

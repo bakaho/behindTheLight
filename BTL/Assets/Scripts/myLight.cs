@@ -46,6 +46,7 @@ public class myLight : MonoBehaviour {
     //earthquake
     public bool earthquakeOn = false;
     public GameObject EQSound;
+    public Image darkCurtain;
 
 	// Use this for initialization
 	void Start () {
@@ -177,11 +178,15 @@ public class myLight : MonoBehaviour {
         }
         if (other.gameObject.CompareTag("badline") && earthquakeOn)
         {
-            
+            print("bad line");
+            darkCurtain.gameObject.SetActive(true);
+            darkCurtainControl.nextGoodOrBad = 0;
         }
         if (other.gameObject.CompareTag("goodline") && earthquakeOn)
         {
-
+            print("good line");
+            darkCurtain.gameObject.SetActive(true);
+            darkCurtainControl.nextGoodOrBad = 1;
         }
     }
 }
