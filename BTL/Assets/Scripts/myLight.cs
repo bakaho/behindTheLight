@@ -7,6 +7,10 @@ public class myLight : MonoBehaviour {
     //GameManager
     public GameObject GM;
 
+    //Game Objects
+    public GameObject groundObj;
+    static Animator groundAnim;
+
     //move
     public ControlMove joystick;
     public float speed = 15;
@@ -38,9 +42,14 @@ public class myLight : MonoBehaviour {
     //UI system
     public Text lockedRmd;
 
+
+    //earthquake
+    public bool earthquakeOn = false;
+
 	// Use this for initialization
 	void Start () {
         joystick = GameObject.FindWithTag("joystick").GetComponent<ControlMove>();
+        groundAnim = groundObj.GetComponent<Animator>();
 
         //initialization of camera
         CameraTransform = GameObject.FindWithTag("MainCamera").transform;
@@ -135,6 +144,8 @@ public class myLight : MonoBehaviour {
             //if unlocked -> show next + turn on
         }
 
+
+
         if (other.gameObject.CompareTag("locked"))
         {
             xApart = 2 * hNet;
@@ -144,6 +155,23 @@ public class myLight : MonoBehaviour {
             lockedRmd.gameObject.SetActive(true);
             //Handheld.Vibrate();
             GM.GetComponent<GameManager>().playLockSound();
+        }
+
+        if (other.gameObject.CompareTag("outerline"))
+        {
+            xApart = 2 * hNet;
+            yApart = 2 * vNet;
+            xApartOrg = 2 * hNet;
+            yApartOrg = 2 * vNet;
+            //Handheld.Vibrate();
+            GM.GetComponent<GameManager>().playLockSound();
+        }
+
+        //earthquakeEffect
+        if (other.gameObject.CompareTag("earthquake") && !earthquakeOn)
+        {
+            earthquakeOn = true;
+            groundAnim.SetBool("isEarthquaking",true);
         }
     }
 }

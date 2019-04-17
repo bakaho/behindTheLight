@@ -9,6 +9,8 @@ TagManager:
   - puzzleText
   - UICam
   - locked
+  - outerline
+  - earthquake
   layers:
   - Default
   - TransparentFX

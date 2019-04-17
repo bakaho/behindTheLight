@@ -139,7 +139,7 @@ Light:
   m_Cookie: {fileID: 2800000, guid: 4b78e956b43af4cacb78a14bd09f3ffd, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1335
@@ -174,7 +174,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc473172601cd4f169f9714e1129e602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GM: {fileID: 0}
   isTriggered: 0
+  isTheLast: 0
+  nextObj:
+  - {fileID: 0}
+  moduleN: 1
+  sentenceN: 0
+  moduleC: 0
+  sentenceC: 0
 --- !u!119 &119223480950892928
 Projector:
   m_ObjectHideFlags: 1
