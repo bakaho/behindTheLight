@@ -11,7 +11,7 @@ public class pathFixed : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        speed = Random.Range(20f, 50f);
 	}
 	
 	// Update is called once per frame
