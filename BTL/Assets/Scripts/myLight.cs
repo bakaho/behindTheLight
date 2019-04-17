@@ -175,5 +175,13 @@ public class myLight : MonoBehaviour {
             groundAnim.SetBool("isEarthquaking",true);
             EQSound.gameObject.SetActive(true);
         }
+        if (other.gameObject.CompareTag("badline") && earthquakeOn)
+        {
+            
+        }
+        if (other.gameObject.CompareTag("goodline") && earthquakeOn)
+        {
+
+        }
     }
 }
