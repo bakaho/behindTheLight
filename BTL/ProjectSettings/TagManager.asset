@@ -11,6 +11,8 @@ TagManager:
   - locked
   - outerline
   - earthquake
+  - badline
+  - goodline
   layers:
   - Default
   - TransparentFX

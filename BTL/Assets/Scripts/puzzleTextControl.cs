@@ -18,6 +18,9 @@ public class puzzleTextControl : MonoBehaviour {
     public bool haveItemDrop = false;
     public int itemNum = 0;
     public GameObject inventory;
+    //other trigger
+    public bool haveOtherTrigger = false;
+    public GameObject otherTrigger;
 
 
     //model
@@ -112,6 +115,9 @@ public class puzzleTextControl : MonoBehaviour {
             nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
             nextObj[nextIndex].SetActive(true);
             GM.GetComponent<GameManager>().playNextLineSound();
+            if(haveOtherTrigger){
+                otherTrigger.gameObject.SetActive(true);
+            }
 
         }
     }
