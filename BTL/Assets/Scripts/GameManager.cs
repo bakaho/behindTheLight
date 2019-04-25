@@ -170,13 +170,13 @@ public class GameManager : MonoBehaviour {
             }
             else if (s == 2)
             {
-                bounds[0] = 55.2f;
-                bounds[1] = 114.5f;
-                bounds[2] = 27f;
+                bounds[0] = 43.8f;
+                bounds[1] = 113.8f;
+                bounds[2] = 25f;
                 bounds[3] = 0f;
                 bounds[4] = 3f;
                 bounds[5] = 3f;
-                bounds[6] = 3f;
+                bounds[6] = 1f;
                 bounds[7] = 3f;
             }
         }
