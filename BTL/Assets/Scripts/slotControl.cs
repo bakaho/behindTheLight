@@ -8,6 +8,7 @@ public class slotControl : MonoBehaviour {
     public GameObject panel;
     Sprite myPic;
     string myTxt;
+    public int thisItemNum;
 
 
 	// Use this for initialization
@@ -20,10 +21,11 @@ public class slotControl : MonoBehaviour {
 		
 	}
 
-    public void changeItemImg(Sprite sp, string s){
+    public void changeItemImg(Sprite sp, string s, int num){
         this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = sp;
         myPic = sp;
         myTxt = s;
+        thisItemNum = num;
     }
     public void turnOn(){
         //this.gameObject.SetActive(true);

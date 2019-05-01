@@ -163,6 +163,8 @@ public class myLight : MonoBehaviour {
             lockedRmd.gameObject.SetActive(true);
             //Handheld.Vibrate();
             GM.GetComponent<GameManager>().playLockSound();
+
+            other.GetComponent<lockedAreaControl>().checkUnlock();
         }
 
         if (other.gameObject.CompareTag("outerline"))
@@ -202,7 +204,7 @@ public class myLight : MonoBehaviour {
             if(GM.GetComponent<GameManager>().gameLoop == 0){
                 itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = firstBlockImg;
                 itemDropRmd.gameObject.SetActive(true);
-                theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。");
+                theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。",0);
                 theFirstBlock.GetComponent<slotControl>().turnOn();
             }
             startPassed = true;

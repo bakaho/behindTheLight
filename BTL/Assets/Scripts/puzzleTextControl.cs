@@ -36,7 +36,7 @@ public class puzzleTextControl : MonoBehaviour {
     [Header("Item Drop")]
     //item drop
     public bool haveItemDrop = false;
-    //public int itemNum = 0;
+    public int itemNum = 0;//the overall number
     public Image itemDropRmd;
     public Sprite itemSprite;
     public string itemText;
@@ -79,7 +79,7 @@ public class puzzleTextControl : MonoBehaviour {
                 //1.show slot
                 for (int i = 0; i < 12; i++){
                     if(!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered){
-                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite,itemText);
+                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite,itemText,itemNum);
                         inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
                         break;
                     }
