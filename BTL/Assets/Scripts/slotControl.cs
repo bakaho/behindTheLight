@@ -21,7 +21,7 @@ public class slotControl : MonoBehaviour {
         this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = sp;
     }
     public void turnOn(){
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
         this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
         isTriggered = true;
     }
