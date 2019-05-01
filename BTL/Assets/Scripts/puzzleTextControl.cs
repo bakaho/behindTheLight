@@ -4,43 +4,51 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class puzzleTextControl : MonoBehaviour {
+    [Header("Initial Objects")]
     //GameManager
     public GameObject GM;
 
+    [Header("UI")]
+    //UI
+    public GameObject inventory;
+    public GameObject puzHintObj; //hint
+    public Button shapeBtn;
+    public Sprite btnImg;
+    public Image dateTime;
+
+    [Header("Next Properties")]
+    public int moduleN = 0;
+    public int sentenceN = 0;
+    int nextIndex = 0;
+    public GameObject[] nextObj;
+
+    [Header("This Properties")]
+    //current 
+    public int moduleC = 0;
+    public int sentenceC = 0;
     //Properties
     public bool isTriggered = false;
     public bool isTheLast = false;
-    public GameObject[] nextObj;
-    public GameObject puzHintObj;
-    public int moduleN = 0;
-    public int sentenceN = 0;
+    //external assets
+    public GameObject thisModel;
+    public Texture thisCookie;
 
+    [Header("Item Drop")]
     //item drop
     public bool haveItemDrop = false;
-    public int itemNum = 0;
-    public GameObject inventory;
+    //public int itemNum = 0;
+    public Image itemDropRmd;
+    public Sprite itemSprite;
     public string itemText;
+    public bool itemDropped = false;
 
+    [Header("Other Effects")]
     //other trigger
     public bool haveOtherTrigger = false;
     public GameObject otherTrigger;
 
 
-    //model
-    public GameObject thisModel;
-    public Image itemDropRmd;
-    public Sprite itemSprite;
 
-    //button control
-    public Sprite btnImg;
-    public Button shapeBtn;
-    public Texture thisCookie;
-
-
-    //current 
-    public int moduleC = 0;
-    public int sentenceC = 0;
-    int nextIndex = 0;
 
     // Use this for initialization
     void Start()
@@ -63,7 +71,7 @@ public class puzzleTextControl : MonoBehaviour {
             showNext();
             transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
             //if have item drop, drop item
-            if(haveItemDrop){
+            if(haveItemDrop && !itemDropped){
                 //drop item UI
                 itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = itemSprite;
                 itemDropRmd.gameObject.SetActive(true);
@@ -76,6 +84,7 @@ public class puzzleTextControl : MonoBehaviour {
                         break;
                     }
                 }
+                itemDropped = true;
 
 
             }

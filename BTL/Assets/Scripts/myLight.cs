@@ -4,20 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class myLight : MonoBehaviour {
+    [Header("Initial Objects")]
     //GameManager
     public GameObject GM;
-
     //Game Objects
     public GameObject groundObj;
     static Animator groundAnim;
+    public Transform CameraTransform;
+    private Vector3 cameraOffset;
+    //camera
 
+    [Header("Initial Values")]
+    [Range(0.01f, 1.0f)]
+    public float smoothFactor = 0.01f;
+    public bool startPassed = false; //start trigger
+
+    [Header("Movement Settings")]
     //move
     public ControlMove joystick;
     public float speed = 15;
     public static bool inControl = true;
     //cam
-    public Transform CameraTransform;
-    private Vector3 cameraOffset;
+
     //force apart
     static public float xApart = 0;
     static public float yApart = 0;
@@ -27,25 +35,20 @@ public class myLight : MonoBehaviour {
     public float vNet = 0;
 
 
-    //hit
-    //public static int theTriggerOne = -1;
     //form
-    public static int lightShape = 0;
-    public static bool shapeChange = false;
+    //public static int lightShape = 0;
+    //public static bool showT3 = false;
+    //public static bool shapeChange = false;
 
-    //testing
-    public static bool showT3 = false;
-
-    [Range(0.01f, 1.0f)]
-    public float smoothFactor = 0.01f;
 
     //UI system
+    [Header("UI System")]
     public Text lockedRmd;
     public Image itemDropRmd;
     public Image theFirstBlock;
     public Sprite firstBlockImg;
 
-
+    [Header("Special Effects")]
     //earthquake
     public bool earthquakeOn = false;
     public GameObject EQSound;
@@ -194,7 +197,7 @@ public class myLight : MonoBehaviour {
             darkCurtainControl.nextGoodOrBad = 1;
         }
 
-        if (other.gameObject.CompareTag("start"))
+        if (other.gameObject.CompareTag("start") && !startPassed)
         {
             if(GM.GetComponent<GameManager>().gameLoop == 0){
                 itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = firstBlockImg;
@@ -202,6 +205,7 @@ public class myLight : MonoBehaviour {
                 theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。");
                 theFirstBlock.GetComponent<slotControl>().turnOn();
             }
+            startPassed = true;
         }
     }
 }
