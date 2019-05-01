@@ -141,6 +141,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf075ac8a77924ddba20d0efd3653456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLoop: 0
+  MainCamObj: {fileID: 0}
+  player: {fileID: 0}
+  SoundEffectSrc: {fileID: 0}
+  s_getShape: {fileID: 0}
+  s_nextLine: {fileID: 0}
+  s_locked: {fileID: 0}
 --- !u!4 &68022933
 Transform:
   m_ObjectHideFlags: 0
@@ -965,10 +972,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4123884723d1d42d195e72763f323f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GM: {fileID: 68022931}
+  groundObj: {fileID: 1128418612}
   joystick: {fileID: 0}
   speed: 15
-  CameraTransform: {fileID: 0}
+  CameraTransform: {fileID: 534669905}
+  hNet: 0
+  vNet: 0
   smoothFactor: 0.01
+  lockedRmd: {fileID: 0}
+  earthquakeOn: 0
+  EQSound: {fileID: 0}
+  darkCurtain: {fileID: 0}
 --- !u!54 &958959577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2135,11 +2150,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc473172601cd4f169f9714e1129e602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GM: {fileID: 0}
   isTriggered: 0
+  isTheLast: 0
   nextObj:
   - {fileID: 1280840847}
   moduleN: 1
   sentenceN: 1
+  moduleC: 0
+  sentenceC: 0
 --- !u!65 &2075223975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2291,3 +2310,5 @@ MonoBehaviour:
   xDel: 0
   yDel: 0
   myCam: {fileID: 0}
+  playerLight: {fileID: 0}
+  circleShape: {fileID: 0}
