@@ -13,6 +13,7 @@ TagManager:
   - earthquake
   - badline
   - goodline
+  - start
   layers:
   - Default
   - TransparentFX

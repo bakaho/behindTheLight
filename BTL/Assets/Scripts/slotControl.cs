@@ -7,6 +7,7 @@ public class slotControl : MonoBehaviour {
     public bool isTriggered = false; //if an item in
     public GameObject panel;
     Sprite myPic;
+    string myTxt;
 
 
 	// Use this for initialization
@@ -19,9 +20,10 @@ public class slotControl : MonoBehaviour {
 		
 	}
 
-    public void changeItemImg(Sprite sp){
+    public void changeItemImg(Sprite sp, string s){
         this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = sp;
         myPic = sp;
+        myTxt = s;
     }
     public void turnOn(){
         //this.gameObject.SetActive(true);
@@ -32,7 +34,7 @@ public class slotControl : MonoBehaviour {
     public void showPanel(){
         if(isTriggered){
             panel.gameObject.SetActive(true);
-            panel.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = myPic;
+            panel.gameObject.transform.GetChild(1).GetComponent<Text>().text = myTxt;
         }
     }
 

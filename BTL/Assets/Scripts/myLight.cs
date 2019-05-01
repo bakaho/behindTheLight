@@ -41,6 +41,9 @@ public class myLight : MonoBehaviour {
 
     //UI system
     public Text lockedRmd;
+    public Image itemDropRmd;
+    public Image theFirstBlock;
+    public Sprite firstBlockImg;
 
 
     //earthquake
@@ -176,17 +179,29 @@ public class myLight : MonoBehaviour {
             groundAnim.SetBool("isEarthquaking",true);
             EQSound.gameObject.SetActive(true);
         }
+
         if (other.gameObject.CompareTag("badline") && earthquakeOn)
         {
             print("bad line");
             darkCurtain.gameObject.SetActive(true);
             darkCurtainControl.nextGoodOrBad = 0;
         }
+
         if (other.gameObject.CompareTag("goodline") && earthquakeOn)
         {
             print("good line");
             darkCurtain.gameObject.SetActive(true);
             darkCurtainControl.nextGoodOrBad = 1;
+        }
+
+        if (other.gameObject.CompareTag("start"))
+        {
+            if(GM.GetComponent<GameManager>().gameLoop == 0){
+                itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = firstBlockImg;
+                itemDropRmd.gameObject.SetActive(true);
+                theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。");
+                theFirstBlock.GetComponent<slotControl>().turnOn();
+            }
         }
     }
 }

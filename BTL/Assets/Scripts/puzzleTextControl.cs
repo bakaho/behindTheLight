@@ -14,10 +14,13 @@ public class puzzleTextControl : MonoBehaviour {
     public GameObject puzHintObj;
     public int moduleN = 0;
     public int sentenceN = 0;
+
     //item drop
     public bool haveItemDrop = false;
     public int itemNum = 0;
     public GameObject inventory;
+    public string itemText;
+
     //other trigger
     public bool haveOtherTrigger = false;
     public GameObject otherTrigger;
@@ -68,7 +71,7 @@ public class puzzleTextControl : MonoBehaviour {
                 //1.show slot
                 for (int i = 0; i < 12; i++){
                     if(!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered){
-                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite);
+                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite,itemText);
                         inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
                         break;
                     }
