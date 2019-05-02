@@ -225,6 +225,29 @@ public class myLight : MonoBehaviour {
                 }
                 startPassed = true;
             }
+
+            //waypoint
+            if (other.gameObject.CompareTag("waypoint"))
+            {
+                float h = joystick.Horizontal() - xApart; //+FANXIANG
+                float v = joystick.Vertical() - yApart; //+FANXIANG
+                if(other.GetComponent<waypointControl>().fixX){
+                    if(other.GetComponent<waypointControl>().xDir*h>0){
+                        other.GetComponent<waypointControl>().updateToDatabase();
+                    }
+                }
+                if (other.GetComponent<waypointControl>().fixY)
+                {
+                    if (other.GetComponent<waypointControl>().yDir * v > 0)
+                    {
+                        other.GetComponent<waypointControl>().updateToDatabase();
+                    }
+                }
+                if(!other.GetComponent<waypointControl>().fixY && !other.GetComponent<waypointControl>().fixX){
+                    other.GetComponent<waypointControl>().updateToDatabase();
+                }
+
+            }
         }
     }
 }

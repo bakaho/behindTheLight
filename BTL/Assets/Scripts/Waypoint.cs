@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[Serializable]
+public class Waypoint{
+    public int wpModule;
+    public int times;
+
+    public Waypoint(){
+        
+    }
+}
