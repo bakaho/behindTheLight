@@ -7,7 +7,7 @@ public class slotControl : MonoBehaviour {
     public bool isTriggered = false; //if an item in
     public GameObject panel;
     Sprite myPic;
-    string myTxt;
+    public string myTxt;
     public int thisItemNum;
 
 
