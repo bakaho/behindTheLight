@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     static public string curSentenceKey = "myCurrentSentence";
     static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
     static public string[] moduleProgressKey = new string[17] { "module0", "module1", "module2", "module4", "module5", "module6", "module7", "module8", "module9", "module10", "module11", "module12", "module12", "module13", "module14", "module15", "module16"};
+    static public string goalUpdateKey = "goalNeedUpdate";
+
     //1 = true; 0 = false;
 
     [Header("Game Objects")]
@@ -109,6 +111,12 @@ public class GameManager : MonoBehaviour {
         {
             gameLoop = PlayerPrefs.GetInt(gloopKey, 0);
             print("[loacl storage] Game loop overall loaded");
+        }
+
+        if (!PlayerPrefs.HasKey(goalUpdateKey))
+        {
+            PlayerPrefs.SetInt(goalUpdateKey, 0);
+            print("[loacl storage] First goal!!");
         }
 
         //set item dropped
