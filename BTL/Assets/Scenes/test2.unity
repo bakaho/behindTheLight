@@ -271,10 +271,24 @@ MonoBehaviour:
   gameLoop: 0
   MainCamObj: {fileID: 534669902}
   player: {fileID: 958959574}
+  mainBGM: {fileID: 1211141288}
   SoundEffectSrc: {fileID: 0}
   s_getShape: {fileID: 8300000, guid: 5974a238e75184f589290775b06759db, type: 3}
   s_nextLine: {fileID: 8300000, guid: 16d62066138954d31865557347390953, type: 3}
   s_locked: {fileID: 8300000, guid: 13f83443f20ad409895f39582e44ceb6, type: 3}
+  itemCollectSp:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &68022933
 Transform:
   m_ObjectHideFlags: 0
@@ -304,6 +318,17 @@ MonoBehaviour:
   btnOff: {fileID: 640104589}
   btnOn: {fileID: 571185481}
   statusBar: {fileID: 1623410874}
+  btnSettings: {fileID: 0}
+  settingsBar: {fileID: 0}
+  btnPause: {fileID: 0}
+  toPause: {fileID: 0}
+  toResume: {fileID: 0}
+  pausing: 0
+  btnSound: {fileID: 0}
+  bsOn: {fileID: 0}
+  bsOff: {fileID: 0}
+  muted: 0
+  btnQuit: {fileID: 0}
 --- !u!82 &68022935
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4779,13 +4804,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 68022931}
   groundObj: {fileID: 1229464162}
+  CameraTransform: {fileID: 534669905}
+  smoothFactor: 0.01
+  startPassed: 0
   joystick: {fileID: 0}
   speed: 15
-  CameraTransform: {fileID: 534669905}
   hNet: 0
   vNet: 0
-  smoothFactor: 0.01
   lockedRmd: {fileID: 811198746}
+  itemDropRmd: {fileID: 0}
+  theFirstBlock: {fileID: 0}
+  firstBlockImg: {fileID: 0}
   earthquakeOn: 0
   EQSound: {fileID: 1651941082}
   darkCurtain: {fileID: 1260962456}
@@ -5426,6 +5455,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: dateTime
+      value: 
+      objectReference: {fileID: 920269158}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
   m_IsPrefabAsset: 0
@@ -6579,6 +6613,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: a5d4543b2c4f04fc7b00b2ef0c356433,
         type: 3}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: dateTime
+      value: 
+      objectReference: {fileID: 920269158}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
   m_IsPrefabAsset: 0
@@ -8038,6 +8077,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
+        type: 2}
+      propertyPath: dateTime
+      value: 
+      objectReference: {fileID: 920269158}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db50016dc0c7d43b6978de21d35817af, type: 2}
   m_IsPrefabAsset: 0
@@ -8128,14 +8172,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 68022931}
-  isTriggered: 0
-  isTheLast: 0
-  nextObj:
-  - {fileID: 1280840847}
+  dateTime: {fileID: 920269158}
   moduleN: 1
   sentenceN: 1
+  nextObj:
+  - {fileID: 1280840847}
+  testMode: 0
   moduleC: 1
   sentenceC: 0
+  isTriggered: 0
+  isTheLast: 0
+  curYear: 0
+  curMonth: 0
+  curDay: 0
 --- !u!65 &2075223975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8488,6 +8537,11 @@ Prefab:
       propertyPath: m_Name
       value: Z0_s
       objectReference: {fileID: 0}
+    - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
+        type: 2}
+      propertyPath: dateTime
+      value: 
+      objectReference: {fileID: 920269158}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db50016dc0c7d43b6978de21d35817af, type: 2}
   m_IsPrefabAsset: 0

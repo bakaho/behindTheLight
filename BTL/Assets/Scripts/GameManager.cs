@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour {
     public AudioClip s_locked;
     static public bool isMute = false;
 
+    [Header("UI Control")]
+    public Sprite[] itemCollectSp = new Sprite[12];
+
 
 	private void Awake()
 	{
