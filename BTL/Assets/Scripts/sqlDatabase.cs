@@ -26,7 +26,6 @@ public class sqlDatabase : MonoBehaviour {
     }
 
     public void createTable(){
-        IDbCommand dbcmd;
         //dbcmd = 
     }
 }

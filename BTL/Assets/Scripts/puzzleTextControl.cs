@@ -25,6 +25,7 @@ public class puzzleTextControl : MonoBehaviour {
 
     [Header("This Properties")]
     //current 
+    public bool testMode = false;
     public int moduleC = 0;
     public int sentenceC = 0;
     //Properties
@@ -144,13 +145,22 @@ public class puzzleTextControl : MonoBehaviour {
         //show next line
         if (!isTheLast)
         {
-            nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
+            //nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
+            nextIndex = GameManager.moduleProgress[moduleC];
             nextObj[nextIndex].SetActive(true);
+
             GM.GetComponent<GameManager>().playNextLineSound();
             if(haveOtherTrigger){
                 otherTrigger.gameObject.SetActive(true);
             }
 
+        }else if(!testMode){
+            //is the real last
+            //module loop +1
+            PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
+            print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
+
+            
         }
     }
 

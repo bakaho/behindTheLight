@@ -9,14 +9,24 @@ public class GameManager : MonoBehaviour {
     public int gameLoop = 0;
     static public bool isPaused = false;
 
+    //key names:
+    static public string gloopKey = "myGameLoop";
+    static public string curModuleKey = "myCurrentModule";
+    static public string curSentenceKey = "myCurrentSentence";
+    static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
+    static public string[] moduleProgressKey = new string[17] { "module0", "module1", "module2", "module4", "module5", "module6", "module7", "module8", "module9", "module10", "module11", "module12", "module12", "module13", "module14", "module15", "module16"};
+    //1 = true; 0 = false;
 
     [Header("Game Objects")]
     //objects
     public GameObject MainCamObj;
     public GameObject player;
+    //static public bool[] itemCollectionCheck = new bool[12]{false, false, false, false, false, false, false, false, false, false, false, false};
 
     [Header("Properties Preset")]
     //game level preset
+    static public int[] moduleProgress = new int[17] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    static public int[] moduleProgressUB = new int[17] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     static public int[,] ModuleSentence = new int[10, 10]; //save the current progress
     static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
     static public int[] NumOfSenInModule = new int[10] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
@@ -65,9 +75,47 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
+        initializeGame();
 	}
 	
-	// Update is called once per frame
+
+
+    void initializeGame()
+    {
+        //set game loop
+        if (!PlayerPrefs.HasKey(gloopKey))
+        {
+            PlayerPrefs.SetInt(gloopKey, 0);
+            print("[loacl storage] First time of gameplay!!");
+        }
+        else
+        {
+            gameLoop = PlayerPrefs.GetInt(gloopKey, 0);
+            print("[loacl storage] Game loop overall loaded");
+        }
+
+        //set item dropped
+        for (int i = 0; i < 12;i++){
+            if (PlayerPrefs.HasKey(collectItemKey[i])){
+                //retrieve
+                //call slot control
+                print("[loacl storage] loaded item: item" + i);
+            }
+        }
+
+        //moduleProgressKey
+        for (int i = 0; i < 17; i++)
+        {
+            if (PlayerPrefs.HasKey(moduleProgressKey[i]))
+            {
+                moduleProgress[i] = PlayerPrefs.GetInt(moduleProgressKey[i], 0);
+                print("[loacl storage] loaded module progress in M" + i + " = " + moduleProgress[i]);
+            }
+        }
+    }
+
+
+	// Update is called once per fr ame
 	void Update () {
 
         if (!isPaused)
@@ -121,6 +169,8 @@ public class GameManager : MonoBehaviour {
             mainBGM.Pause();
         }
 	}
+
+
 
 
 

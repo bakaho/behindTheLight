@@ -26,6 +26,12 @@ public class slotControl : MonoBehaviour {
         myPic = sp;
         myTxt = s;
         thisItemNum = num;
+        //GameManager.itemCollectionCheck[num] = true;
+        if (!PlayerPrefs.HasKey(GameManager.collectItemKey[num]))
+        {
+            PlayerPrefs.SetInt(GameManager.collectItemKey[num], 1);
+            print("[loacl storage] Item" + num + " collected!");
+        }
     }
     public void turnOn(){
         //this.gameObject.SetActive(true);
