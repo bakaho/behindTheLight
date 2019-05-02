@@ -13,9 +13,13 @@ public class lightUpText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(turnedOn && countIdx < 70){
-            lightUp();
-            countIdx++;
+        if (!GameManager.isPaused)
+        {
+            if (turnedOn && countIdx < 70)
+            {
+                lightUp();
+                countIdx++;
+            }
         }
 
 	}

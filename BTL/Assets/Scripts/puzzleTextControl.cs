@@ -14,6 +14,7 @@ public class puzzleTextControl : MonoBehaviour {
     public GameObject puzHintObj; //hint
     public Button shapeBtn;
     public Sprite btnImg;
+    //Date
     public Image dateTime;
 
     [Header("Next Properties")]
@@ -32,6 +33,10 @@ public class puzzleTextControl : MonoBehaviour {
     //external assets
     public GameObject thisModel;
     public Texture thisCookie;
+    //time Set
+    public int curYear = 0000;
+    public int curMonth = 00;
+    public int curDay = 00;
 
     [Header("Item Drop")]
     //item drop
@@ -59,37 +64,52 @@ public class puzzleTextControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.checkedSth && GameManager.shapeM == moduleC && GameManager.shapeS == sentenceC)
+        if (!GameManager.isPaused)
         {
-            GameManager.checkedSth = false;
-            changeBtn();
-        }
 
-        if(GameManager.puzSolved && GameManager.curModule == moduleC && GameManager.curSentence == sentenceC){
-            GameManager.puzSolved = false;
-            hideHint();
-            showNext();
-            transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
-            //if have item drop, drop item
-            if(haveItemDrop && !itemDropped){
-                //drop item UI
-                itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = itemSprite;
-                itemDropRmd.gameObject.SetActive(true);
-                //add to bar
-                //1.show slot
-                for (int i = 0; i < 12; i++){
-                    if(!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered){
-                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite,itemText,itemNum);
-                        inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
-                        break;
+            if (GameManager.checkedSth && GameManager.shapeM == moduleC && GameManager.shapeS == sentenceC)
+            {
+                GameManager.checkedSth = false;
+                changeBtn();
+            }
+
+            if (GameManager.puzSolved && GameManager.curModule == moduleC && GameManager.curSentence == sentenceC)
+            {
+                GameManager.puzSolved = false;
+                hideHint();
+                showNext();
+                transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+                //if have item drop, drop item
+                if (haveItemDrop && !itemDropped)
+                {
+                    //drop item UI
+                    itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = itemSprite;
+                    itemDropRmd.gameObject.SetActive(true);
+                    //add to bar
+                    //1.show slot
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered)
+                        {
+                            inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite, itemText, itemNum);
+                            inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
+                            break;
+                        }
                     }
+                    itemDropped = true;
+
+
                 }
-                itemDropped = true;
-
-
             }
         }
     }
+
+    public void changeTime(){
+        dateTime.transform.GetChild(0).GetComponent<Text>().text = curYear.ToString("0000");
+        dateTime.transform.GetChild(1).GetComponent<Text>().text = curMonth.ToString("00");
+        dateTime.transform.GetChild(2).GetComponent<Text>().text = curDay.ToString("00");
+    }
+
 
     //show puz
     void changeBtn(){
@@ -133,4 +153,5 @@ public class puzzleTextControl : MonoBehaviour {
 
         }
     }
+
 }

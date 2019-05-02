@@ -17,14 +17,21 @@ public class lockedAreaControl : MonoBehaviour {
 
     public GameObject hiddenObj;
 
+    [Header("Sound")]
+    public AudioSource myAudio;
+    public AudioClip unlockSound;
+
 
 	// Use this for initialization
 	void Start () {
-        
+        myAudio = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if(!isLocked && !myAudio.isPlaying){
+            levelClearMoveOn();
+        }
 		
 	}
 
@@ -61,9 +68,14 @@ public class lockedAreaControl : MonoBehaviour {
         }
 
         if(levelClear){
-            this.gameObject.SetActive(false);
-            hiddenObj.SetActive(true);
+            isLocked = false;
+            myAudio.PlayOneShot(unlockSound);
         }
 
+    }
+
+    void levelClearMoveOn(){
+        this.gameObject.SetActive(false);
+        hiddenObj.SetActive(true);
     }
 }

@@ -66,148 +66,162 @@ public class myLight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        //character movement
-        hNet = joystick.Horizontal(); //+FANXIANG
-        vNet = joystick.Vertical(); //+FANXIANG
-        float h = joystick.Horizontal() - xApart; //+FANXIANG
-        float v = joystick.Vertical() - yApart; //+FANXIANG
-        bool move = (Mathf.Abs(v - 0) > 0.001f) || (Mathf.Abs(h - 0) > 0.001f);
-        if (move && CameraTilt.canMove && inControl)
-        {
-            //Vector3 newPos = transform.position + new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
-            transform.position += new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
 
-        }
-        Vector3 newCamPos = transform.position + cameraOffset;
+        //if it is on
+        if (!GameManager.isPaused)
+        {
 
-        //camera movement
-        CameraTransform.position = Vector3.Slerp(CameraTransform.position, newCamPos, smoothFactor);
+            //character movement
+            hNet = joystick.Horizontal(); //+FANXIANG
+            vNet = joystick.Vertical(); //+FANXIANG
+            float h = joystick.Horizontal() - xApart; //+FANXIANG
+            float v = joystick.Vertical() - yApart; //+FANXIANG
+            bool move = (Mathf.Abs(v - 0) > 0.001f) || (Mathf.Abs(h - 0) > 0.001f);
+            if (move && CameraTilt.canMove && inControl)
+            {
+                //Vector3 newPos = transform.position + new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
+                transform.position += new Vector3(speed * h * Time.deltaTime, 0, speed * v * Time.deltaTime);
 
-        //update acc
-        if(xApartOrg > 0 && xApart > 0){
-            xApart -= 0.05f;
-        }
-        if (xApartOrg > 0 && xApart <= 0)
-        {
-            xApart = 0f;
-        }
-        if (xApartOrg < 0 && xApart < 0)
-        {
-            xApart += 0.05f;
-        }
-        if (xApartOrg < 0 && xApart >= 0)
-        {
-            xApart = 0f;
-        }
+            }
+            Vector3 newCamPos = transform.position + cameraOffset;
 
-        if (yApartOrg > 0 && yApart > 0)
-        {
-            yApart -= 0.05f;
-        }
-        if (yApartOrg > 0 && yApart <= 0)
-        {
-            yApart = 0f;
-        }
-        if (yApartOrg < 0 && yApart < 0)
-        {
-            yApart += 0.05f;
-        }
-        if (yApartOrg < 0 && yApart >= 0)
-        {
-            yApart = 0f;
+            //camera movement
+            CameraTransform.position = Vector3.Slerp(CameraTransform.position, newCamPos, smoothFactor);
+
+            //update acc
+            if (xApartOrg > 0 && xApart > 0)
+            {
+                xApart -= 0.05f;
+            }
+            if (xApartOrg > 0 && xApart <= 0)
+            {
+                xApart = 0f;
+            }
+            if (xApartOrg < 0 && xApart < 0)
+            {
+                xApart += 0.05f;
+            }
+            if (xApartOrg < 0 && xApart >= 0)
+            {
+                xApart = 0f;
+            }
+
+            if (yApartOrg > 0 && yApart > 0)
+            {
+                yApart -= 0.05f;
+            }
+            if (yApartOrg > 0 && yApart <= 0)
+            {
+                yApart = 0f;
+            }
+            if (yApartOrg < 0 && yApart < 0)
+            {
+                yApart += 0.05f;
+            }
+            if (yApartOrg < 0 && yApart >= 0)
+            {
+                yApart = 0f;
+            }
         }
 		
 	}
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("storyText"))
+        if (!GameManager.isPaused)
         {
-            if (!other.GetComponent<storyTextControl>().isTriggered)
+            if (other.gameObject.CompareTag("storyText"))
             {
-                other.GetComponent<storyTextControl>().isTriggered = true;
-                //other.GetComponentInChildren<lightUpText>().turnedOn = true;
-                other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+                if (!other.GetComponent<storyTextControl>().isTriggered)
+                {
+                    other.GetComponent<storyTextControl>().isTriggered = true;
+                    //other.GetComponentInChildren<lightUpText>().turnedOn = true;
+                    other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
 
-                //showNext
-                other.GetComponent<storyTextControl>().showNext();
+                    //showNext
+                    other.GetComponent<storyTextControl>().showNext();
+
+                }
+                other.GetComponent<storyTextControl>().changeTime();
+
 
             }
 
-        }
-
-        if (other.gameObject.CompareTag("puzzleText"))
-        {
-            
-            if (!other.GetComponent<puzzleTextControl>().isTriggered)
+            if (other.gameObject.CompareTag("puzzleText"))
             {
-                other.GetComponent<puzzleTextControl>().isTriggered = true;
 
-                //show hint
-                other.GetComponent<puzzleTextControl>().showHint();
-                //other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+                if (!other.GetComponent<puzzleTextControl>().isTriggered)
+                {
+                    other.GetComponent<puzzleTextControl>().isTriggered = true;
+
+                    //show hint
+                    other.GetComponent<puzzleTextControl>().showHint();
+                    //other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+
+                }
+                other.GetComponent<puzzleTextControl>().changeTime();
+
 
             }
-            //if unlocked -> show next + turn on
-        }
 
 
 
-        if (other.gameObject.CompareTag("locked"))
-        {
-            xApart = 2 * hNet;
-            yApart = 2 * vNet;
-            xApartOrg = 2 * hNet;
-            yApartOrg = 2 * vNet;
-            lockedRmd.gameObject.SetActive(true);
-            //Handheld.Vibrate();
-            GM.GetComponent<GameManager>().playLockSound();
+            if (other.gameObject.CompareTag("locked"))
+            {
+                xApart = 2 * hNet;
+                yApart = 2 * vNet;
+                xApartOrg = 2 * hNet;
+                yApartOrg = 2 * vNet;
+                lockedRmd.gameObject.SetActive(true);
+                //Handheld.Vibrate();
+                GM.GetComponent<GameManager>().playLockSound();
 
-            other.GetComponent<lockedAreaControl>().checkUnlock();
-        }
-
-        if (other.gameObject.CompareTag("outerline"))
-        {
-            xApart = 2 * hNet;
-            yApart = 2 * vNet;
-            xApartOrg = 2 * hNet;
-            yApartOrg = 2 * vNet;
-            //Handheld.Vibrate();
-            GM.GetComponent<GameManager>().playLockSound();
-        }
-
-        //earthquakeEffect
-        if (other.gameObject.CompareTag("earthquake") && !earthquakeOn)
-        {
-            earthquakeOn = true;
-            groundAnim.SetBool("isEarthquaking",true);
-            EQSound.gameObject.SetActive(true);
-        }
-
-        if (other.gameObject.CompareTag("badline") && earthquakeOn)
-        {
-            print("bad line");
-            darkCurtain.gameObject.SetActive(true);
-            darkCurtainControl.nextGoodOrBad = 0;
-        }
-
-        if (other.gameObject.CompareTag("goodline") && earthquakeOn)
-        {
-            print("good line");
-            darkCurtain.gameObject.SetActive(true);
-            darkCurtainControl.nextGoodOrBad = 1;
-        }
-
-        if (other.gameObject.CompareTag("start") && !startPassed)
-        {
-            if(GM.GetComponent<GameManager>().gameLoop == 0){
-                itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = firstBlockImg;
-                itemDropRmd.gameObject.SetActive(true);
-                theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。",0);
-                theFirstBlock.GetComponent<slotControl>().turnOn();
+                other.GetComponent<lockedAreaControl>().checkUnlock();
             }
-            startPassed = true;
+
+            if (other.gameObject.CompareTag("outerline"))
+            {
+                xApart = 2 * hNet;
+                yApart = 2 * vNet;
+                xApartOrg = 2 * hNet;
+                yApartOrg = 2 * vNet;
+                //Handheld.Vibrate();
+                GM.GetComponent<GameManager>().playLockSound();
+            }
+
+            //earthquakeEffect
+            if (other.gameObject.CompareTag("earthquake") && !earthquakeOn)
+            {
+                earthquakeOn = true;
+                groundAnim.SetBool("isEarthquaking", true);
+                EQSound.gameObject.SetActive(true);
+            }
+
+            if (other.gameObject.CompareTag("badline") && earthquakeOn)
+            {
+                print("bad line");
+                darkCurtain.gameObject.SetActive(true);
+                darkCurtainControl.nextGoodOrBad = 0;
+            }
+
+            if (other.gameObject.CompareTag("goodline") && earthquakeOn)
+            {
+                print("good line");
+                darkCurtain.gameObject.SetActive(true);
+                darkCurtainControl.nextGoodOrBad = 1;
+            }
+
+            if (other.gameObject.CompareTag("start") && !startPassed)
+            {
+                if (GM.GetComponent<GameManager>().gameLoop == 0)
+                {
+                    itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = firstBlockImg;
+                    itemDropRmd.gameObject.SetActive(true);
+                    theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。", 0);
+                    theFirstBlock.GetComponent<slotControl>().turnOn();
+                }
+                startPassed = true;
+            }
         }
     }
 }

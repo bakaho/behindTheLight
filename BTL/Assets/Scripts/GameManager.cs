@@ -5,13 +5,23 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     //gameplay control
+    [Header("Game Flow Control")]
     public int gameLoop = 0;
+    static public bool isPaused = false;
 
 
+    [Header("Game Objects")]
     //objects
     public GameObject MainCamObj;
     public GameObject player;
+
+    [Header("Properties Preset")]
+    //game level preset
+    static public int[,] ModuleSentence = new int[10, 10]; //save the current progress
+    static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
+    static public int[] NumOfSenInModule = new int[10] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
     
+    [Header("Current Game Status")]
     //current level
     //static public int currentPuzzle = -1;
     static public int curModule = 0;
@@ -19,11 +29,6 @@ public class GameManager : MonoBehaviour {
     //current shape
     static public int curShapeM = 0;
     static public int curShapeS = 0;
-
-    //game level preset
-    static public int[,] ModuleSentence = new int[10,10]; //save the current progress
-    static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
-    static public int[] NumOfSenInModule = new int[10]{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
 
     //for checking current
     bool firstTouch = true;
@@ -34,11 +39,14 @@ public class GameManager : MonoBehaviour {
     static public int shapeM = 0;
     static public int shapeS = 0;
 
+    [Header("Sound Control")]
     //Sound
+    public AudioSource mainBGM;
     public AudioSource SoundEffectSrc;
     public AudioClip s_getShape;
     public AudioClip s_nextLine;
     public AudioClip s_locked;
+    static public bool isMute = false;
 
 
 	private void Awake()
@@ -62,47 +70,55 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(firstTouch && (Input.touchCount >= 2 || Input.GetKeyDown(KeyCode.Return))){
-            firstTouch = false;
-            myLight.inControl = false;
-            //1. show button
-            for (int i = 0; i<=curSentence; i++){
-                print(i);
-                if(checkRegion(curModule, i)){
-                    checkedSth = true;
-                    shapeM = curModule;
-                    shapeS = i;
-                    SoundEffectSrc.PlayOneShot(s_getShape);
-
-                }
-            }
-
-
-            //2.check puzzle if it is a puzzle
-            if (onPuz) //puz mod
+        if (!isPaused)
+        {
+            mainBGM.UnPause();
+            if (firstTouch && (Input.touchCount >= 2 || Input.GetKeyDown(KeyCode.Return)))
             {
-                print("checking");
-                if(checkRegion(curModule,curSentence)){
-                    print("Puzzle Solved!!!!!");
-                    puzSolved = true;
+                firstTouch = false;
+                myLight.inControl = false;
+                //1. show button
+                for (int i = 0; i <= curSentence; i++)
+                {
+                    print(i);
+                    if (checkRegion(curModule, i))
+                    {
+                        checkedSth = true;
+                        shapeM = curModule;
+                        shapeS = i;
+                        SoundEffectSrc.PlayOneShot(s_getShape);
 
+                    }
                 }
+
+
+                //2.check puzzle if it is a puzzle
+                if (onPuz) //puz mod
+                {
+                    print("checking");
+                    if (checkRegion(curModule, curSentence))
+                    {
+                        print("Puzzle Solved!!!!!");
+                        puzSolved = true;
+
+                    }
+                }
+
+
+
             }
 
 
-
+            //if hands up, 
+            if (Input.GetMouseButtonUp(0))
+            {
+                firstTouch = true;
+                myLight.inControl = true;
+            }
         }
 
-
-
-
-
-
-        //if hands up, 
-        if (Input.GetMouseButtonUp(0))
-        {
-            firstTouch = true;
-            myLight.inControl = true;
+        if(isPaused){
+            mainBGM.Pause();
         }
 	}
 

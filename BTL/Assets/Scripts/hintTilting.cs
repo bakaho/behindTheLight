@@ -17,55 +17,59 @@ public class hintTilting : MonoBehaviour {
     }
     void Update()
     {
-        //rotate to play around with the floating 3d ui
-
-        //if start drag from inside of the object
-        if (Input.GetMouseButtonDown(0))
+        if (!GameManager.isPaused)
         {
-            myLight.inControl = false;
-            initMouse = Input.mousePosition;
-            Ray ray = uiCam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit))
+
+            //rotate to play around with the floating 3d ui
+
+            //if start drag from inside of the object
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.transform.gameObject == this.gameObject)
+                myLight.inControl = false;
+                initMouse = Input.mousePosition;
+                Ray ray = uiCam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit = new RaycastHit();
+                if (Physics.Raycast(ray, out hit))
                 {
-                    print("hit!");
-                    rotateAllow = true;
+                    if (hit.transform.gameObject == this.gameObject)
+                    {
+                        print("hit!");
+                        rotateAllow = true;
+                    }
                 }
             }
-        }
-        else if (Input.GetMouseButton(0))
-        {
-
-            float xMoved = Input.mousePosition.x - initMouse.x;
-            float yMoved = Input.mousePosition.y - initMouse.y;
-            float distance = Mathf.Sqrt((xMoved * xMoved) + (xMoved * xMoved));
-            if (rotateAllow)
+            else if (Input.GetMouseButton(0))
             {
-                float rotX = xMoved / 5f * rotSpeed * Mathf.Deg2Rad;
-                float rotY = yMoved / 5f * rotSpeed * Mathf.Deg2Rad;
 
-                transform.Rotate(Vector3.up, -rotX);
-                transform.Rotate(Vector3.right, rotY);
-                myLight.inControl = false;
+                float xMoved = Input.mousePosition.x - initMouse.x;
+                float yMoved = Input.mousePosition.y - initMouse.y;
+                float distance = Mathf.Sqrt((xMoved * xMoved) + (xMoved * xMoved));
+                if (rotateAllow)
+                {
+                    float rotX = xMoved / 5f * rotSpeed * Mathf.Deg2Rad;
+                    float rotY = yMoved / 5f * rotSpeed * Mathf.Deg2Rad;
+
+                    transform.Rotate(Vector3.up, -rotX);
+                    transform.Rotate(Vector3.right, rotY);
+                    myLight.inControl = false;
+                }
+                else
+                {
+                    myLight.inControl = true;
+                }
+
             }
-            else
+
+
+            //if let go, start over again
+            else if (Input.GetMouseButtonUp(0))
             {
                 myLight.inControl = true;
+                rotateAllow = false;
             }
 
+            //print(myLight.inControl);
         }
-
-
-        //if let go, start over again
-        else if (Input.GetMouseButtonUp(0))
-        {
-            myLight.inControl = true;
-            rotateAllow = false;
-        }
-
-        //print(myLight.inControl);
 
 
 

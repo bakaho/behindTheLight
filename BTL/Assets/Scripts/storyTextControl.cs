@@ -8,6 +8,10 @@ public class storyTextControl : MonoBehaviour {
     //GameManager
     public GameObject GM;
 
+    [Header("UI")]
+    //UI 
+    public Image dateTime;
+
     [Header("Next Properties")]
     public int moduleN = 0;
     public int sentenceN = 0;
@@ -20,10 +24,11 @@ public class storyTextControl : MonoBehaviour {
     public int sentenceC = 0;
     public bool isTriggered = false;
     public bool isTheLast = false;
+    //time Set
+    public int curYear = 0000;
+    public int curMonth = 00;
+    public int curDay = 00;
 
-    [Header("UI")]
-    //UI 
-    public Image dateTime;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +39,13 @@ public class storyTextControl : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void changeTime()
+    {
+        dateTime.transform.GetChild(0).GetComponent<Text>().text = curYear.ToString("0000");
+        dateTime.transform.GetChild(1).GetComponent<Text>().text = curMonth.ToString("00");
+        dateTime.transform.GetChild(2).GetComponent<Text>().text = curDay.ToString("00");
+    }
 
     public void showNext(){
         GameManager.curModule = moduleC;

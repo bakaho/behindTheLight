@@ -23,51 +23,55 @@ public class CameraTilt : MonoBehaviour {
     void Update()
     {
 
-        accSmooth = lowpass();
-        float xRot = accSmooth.x;
-        float yRot = accSmooth.y;
+        if (!GameManager.isPaused)
+        {
 
-        float xGap = xRot - initAngle.x;
-        float yGap = yRot - initAngle.y;
+            accSmooth = lowpass();
+            float xRot = accSmooth.x;
+            float yRot = accSmooth.y;
 
-        float turnX = 0;
-        float turnY = 0;
+            float xGap = xRot - initAngle.x;
+            float yGap = yRot - initAngle.y;
 
-        if (yGap > 0.5)
-        {
-            turnY = 5;
-        }
-        else if (yGap < -0.5)
-        {
-            turnY = -5;
-        }
-        else
-        {
-            turnY = yGap * 10;
-        }
+            float turnX = 0;
+            float turnY = 0;
 
-        if (xGap > 0.3)
-        {
-            turnX = 6;
-        }
-        else if (xGap < -0.3)
-        {
-            turnX = -6;
-        }
-        else
-        {
-            turnX = xGap * 20;
-        }
+            if (yGap > 0.5)
+            {
+                turnY = 5;
+            }
+            else if (yGap < -0.5)
+            {
+                turnY = -5;
+            }
+            else
+            {
+                turnY = yGap * 10;
+            }
 
-        //if(xRot < -1f){
-        //    xRot = -1f;
-        //}else if(xRot > 1f){
-        //    xRot = 1f;
-        //}
-        //transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(-yRot, -xRot, 0, camSpeed), Time.deltaTime * camSpeed);
-        if (canMove)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30 + turnY, -turnX, 0), Time.deltaTime * camSpeed);
+            if (xGap > 0.3)
+            {
+                turnX = 6;
+            }
+            else if (xGap < -0.3)
+            {
+                turnX = -6;
+            }
+            else
+            {
+                turnX = xGap * 20;
+            }
+
+            //if(xRot < -1f){
+            //    xRot = -1f;
+            //}else if(xRot > 1f){
+            //    xRot = 1f;
+            //}
+            //transform.rotation = Quaternion.Lerp(transform.rotation, new Quaternion(-yRot, -xRot, 0, camSpeed), Time.deltaTime * camSpeed);
+            if (canMove)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(30 + turnY, -turnX, 0), Time.deltaTime * camSpeed);
+            }
         }
 
     }
