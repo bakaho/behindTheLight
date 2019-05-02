@@ -61,6 +61,18 @@ public class GameManager : MonoBehaviour {
 
     [Header("UI Control")]
     public Sprite[] itemCollectSp = new Sprite[12];
+    public string[] thisItemText = new string[12]{"记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>" + GameManager.collectTotalNum + "个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",
+        "二：\n我是第二个！",};
     public Image inventory;
 
 
@@ -102,19 +114,15 @@ public class GameManager : MonoBehaviour {
         //set item dropped
         for (int i = 0; i < 12;i++){
             if (PlayerPrefs.HasKey(collectItemKey[i])){
-                //for (int i = 0; i < 12; i++)
-                //{
-                //    if (!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered)
-                //    {
-                //        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemSprite, itemText, itemNum);
-                //        inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
-                //        break;
-                //    }
-                //}
-                ////retrieve
-                ////call slot control
-                //theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>三个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。", 0);
-                //theFirstBlock.GetComponent<slotControl>().turnOn();
+                for (int j = 0; j < 12; j++)
+                {
+                    if (!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered)
+                    {
+                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemCollectSp[i], thisItemText[i], i);
+                        inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
+                        break;
+                    }
+                }
                 print("[loacl storage] loaded item: item" + i);
             }
         }
