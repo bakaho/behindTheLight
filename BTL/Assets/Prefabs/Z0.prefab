@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1415126089265494
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1862394695112688
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4638067935925532
 Transform:
   m_ObjectHideFlags: 1
@@ -94,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169599525659170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 54.6}
+  m_LocalPosition: {x: 77, y: 0, z: 156.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4638067935925532}
@@ -110,10 +110,10 @@ BoxCollider:
   m_GameObject: {fileID: 1169599525659170}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 24.16919, y: 9.30624, z: 5.3545227}
-  m_Center: {x: -0.33562088, y: 0.7052517, z: 3.2230072}
+  m_Size: {x: 22.998055, y: 9.30624, z: 10.039108}
+  m_Center: {x: 0.2499466, y: 0.7052517, z: 0.29514313}
 --- !u!108 &108469726902224496
 Light:
   m_ObjectHideFlags: 1
@@ -136,7 +136,7 @@ Light:
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
-  m_Cookie: {fileID: 2800000, guid: 4b78e956b43af4cacb78a14bd09f3ffd, type: 3}
+  m_Cookie: {fileID: 2800000, guid: 29d3f1ccde3724b4ba4dba49a69989c4, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 1
@@ -169,20 +169,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169599525659170}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc473172601cd4f169f9714e1129e602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
-  isTriggered: 0
-  isTheLast: 0
-  nextObj:
-  - {fileID: 0}
+  dateTime: {fileID: 0}
   moduleN: 1
   sentenceN: 0
-  moduleC: 0
-  sentenceC: 0
+  nextObj:
+  - {fileID: 0}
+  testMode: 0
+  moduleC: 1
+  sentenceC: 3
+  isTriggered: 0
+  isTheLast: 1
+  curYear: 2019
+  curMonth: 5
+  curDay: 9
+  borderToClose: {fileID: 0}
 --- !u!119 &119223480950892928
 Projector:
   m_ObjectHideFlags: 1
@@ -197,7 +203,7 @@ Projector:
   m_AspectRatio: 1
   m_Orthographic: 0
   m_OrthographicSize: 10
-  m_Material: {fileID: 2100000, guid: 206872f90779d44b994b15f067c61a7c, type: 2}
+  m_Material: {fileID: 2100000, guid: 1d355db1b4c574c0f9d0925d3e69529d, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
     m_Bits: 0

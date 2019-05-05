@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
     static public string curSentenceKey = "myCurrentSentence";
+    static public string inRoundKey = "isInRound";
+    static public string goodBadKey = "goodBad"; //0 = bad; 1 = good
     static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
     static public string[] moduleProgressKey = new string[17] { "module0", "module1", "module2", "module4", "module5", "module6", "module7", "module8", "module9", "module10", "module11", "module12", "module12", "module13", "module14", "module15", "module16"};
     static public string goalUpdateKey = "goalNeedUpdate";
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
+        PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
@@ -152,6 +155,51 @@ public class GameManager : MonoBehaviour {
                 print("[loacl storage] loaded module progress in M" + i + " = " + moduleProgress[i]);
             }
         }
+
+        //retrieve before
+        if (PlayerPrefs.HasKey(inRoundKey) && PlayerPrefs.GetInt(inRoundKey) == 1)
+        {
+            //puzzles
+            GameObject[] pTxts = GameObject.FindGameObjectsWithTag("puzzleText");
+            foreach(GameObject pt in pTxts){
+                
+                //pt.SetActive(true);
+                if(PlayerPrefs.HasKey("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) &&
+                    PlayerPrefs.GetInt("M"+pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) == 1){
+                    print("?!");
+                    pt.GetComponent<BoxCollider>().enabled = true;
+                    //pt.GetComponent<puzzleTextControl>().enabled = true;
+
+                    pt.transform.GetChild(0).gameObject.SetActive(true);
+                    pt.transform.GetChild(1).gameObject.SetActive(true);
+                    pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                    pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
+                }
+
+            }
+
+            //stories
+            GameObject[] sTxts = GameObject.FindGameObjectsWithTag("storyText");
+            foreach (GameObject st in sTxts)
+            {
+                if (PlayerPrefs.HasKey("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) &&
+                    PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) == 1)
+                {
+                    //st.SetActive(true);
+                    st.GetComponent<BoxCollider>().enabled = true;
+                    //st.GetComponent<storyTextControl>().enabled = true;
+
+                    st.transform.GetChild(0).gameObject.SetActive(true);
+                    st.transform.GetChild(1).gameObject.SetActive(true);
+                    st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                    st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                }
+            }
+        }
+
+
+        //set in round
+        PlayerPrefs.SetInt(inRoundKey, 1);
     }
 
 

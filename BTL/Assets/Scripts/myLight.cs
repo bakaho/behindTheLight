@@ -54,6 +54,7 @@ public class myLight : MonoBehaviour {
     public bool earthquakeOn = false;
     public GameObject EQSound;
     public Image darkCurtain;
+    bool darkCurtainFinished = false;
 
 	// Use this for initialization
 	void Start () {
@@ -62,7 +63,7 @@ public class myLight : MonoBehaviour {
 
         //initialization of camera
         CameraTransform = GameObject.FindWithTag("MainCamera").transform;
-        cameraOffset = CameraTransform.transform.position - this.transform.position;
+        cameraOffset = CameraTransform.transform.position - new Vector3(0,0,0);
 	}
 	
 	// Update is called once per frame
@@ -198,18 +199,22 @@ public class myLight : MonoBehaviour {
                 EQSound.gameObject.SetActive(true);
             }
 
-            if (other.gameObject.CompareTag("badline") && earthquakeOn)
+            if (other.gameObject.CompareTag("badline") && earthquakeOn && !darkCurtainFinished)
             {
                 print("bad line");
                 darkCurtain.gameObject.SetActive(true);
+                groundAnim.SetBool("isEarthquaking", false);
                 darkCurtainControl.nextGoodOrBad = 0;
+                darkCurtainFinished = true;
             }
 
-            if (other.gameObject.CompareTag("goodline") && earthquakeOn)
+            if (other.gameObject.CompareTag("goodline") && earthquakeOn && !darkCurtainFinished)
             {
                 print("good line");
                 darkCurtain.gameObject.SetActive(true);
+                groundAnim.SetBool("isEarthquaking", false);
                 darkCurtainControl.nextGoodOrBad = 1;
+                darkCurtainFinished = true;
             }
 
             if (other.gameObject.CompareTag("start") && !startPassed)
@@ -251,6 +256,8 @@ public class myLight : MonoBehaviour {
                 }
 
             }
+
+
         }
     }
 }

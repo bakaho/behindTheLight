@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1122552111393520
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1149472349261888
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4056771416931714
 Transform:
   m_ObjectHideFlags: 1
@@ -110,7 +110,7 @@ BoxCollider:
   m_GameObject: {fileID: 1149472349261888}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 9.271194, y: 9.30624, z: 3.386856}
   m_Center: {x: 4.3961334, y: 0.7052517, z: 4.8627243}
@@ -157,30 +157,40 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149472349261888}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa4faafedfb4d45f68d373f3609ab862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
-  isTriggered: 0
-  isTheLast: 0
-  nextObj:
-  - {fileID: 0}
+  inventory: {fileID: 0}
   puzHintObj: {fileID: 0}
+  shapeBtn: {fileID: 0}
+  btnImg: {fileID: 21300000, guid: f3def1eb826ed48f689ae6ef0ecae9bf, type: 3}
+  dateTime: {fileID: 0}
   moduleN: 1
   sentenceN: 2
-  haveItemDrop: 0
-  itemNum: 0
-  inventory: {fileID: 0}
-  thisModel: {fileID: 0}
-  itemDropRmd: {fileID: 0}
-  itemSprite: {fileID: 0}
-  btnImg: {fileID: 21300000, guid: f3def1eb826ed48f689ae6ef0ecae9bf, type: 3}
-  shapeBtn: {fileID: 0}
-  thisCookie: {fileID: 2800000, guid: f3def1eb826ed48f689ae6ef0ecae9bf, type: 3}
+  nextObj:
+  - {fileID: 0}
+  testMode: 0
   moduleC: 1
   sentenceC: 1
+  isTriggered: 0
+  isTheLast: 0
+  thisModel: {fileID: 0}
+  thisCookie: {fileID: 2800000, guid: f3def1eb826ed48f689ae6ef0ecae9bf, type: 3}
+  curYear: 2019
+  curMonth: 5
+  curDay: 9
+  haveItemDrop: 0
+  itemNum: 0
+  itemDropRmd: {fileID: 0}
+  itemSprite: {fileID: 0}
+  itemText: 
+  itemDropped: 0
+  haveOtherTrigger: 0
+  otherTrigger: {fileID: 0}
+  borderToClose: {fileID: 0}
 --- !u!114 &114856683087481172
 MonoBehaviour:
   m_ObjectHideFlags: 1

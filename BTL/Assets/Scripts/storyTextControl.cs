@@ -29,6 +29,7 @@ public class storyTextControl : MonoBehaviour {
     public int curYear = 0000;
     public int curMonth = 00;
     public int curDay = 00;
+    public GameObject borderToClose;
 
 
 	// Use this for initialization
@@ -59,7 +60,19 @@ public class storyTextControl : MonoBehaviour {
         {
             //nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
             nextIndex = GameManager.moduleProgress[moduleC];
-            nextObj[nextIndex].SetActive(true);
+            //nextObj[nextIndex].SetActive(true);
+            nextObj[nextIndex].GetComponent<BoxCollider>().enabled = true;
+            if (nextObj[nextIndex].tag == "puzzleText")
+            {
+                nextObj[nextIndex].GetComponent<puzzleTextControl>().enabled = true;
+            }
+            else
+            {
+                nextObj[nextIndex].GetComponent<storyTextControl>().enabled = true;
+            }
+            nextObj[nextIndex].transform.GetChild(0).gameObject.SetActive(true);
+            nextObj[nextIndex].transform.GetChild(1).gameObject.SetActive(true);
+
             GM.GetComponent<GameManager>().playNextLineSound();
         }else if (!testMode)
         {
@@ -71,6 +84,11 @@ public class storyTextControl : MonoBehaviour {
             }
             print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
 
+            //close bolder
+            borderToClose.SetActive(false);
         }
+
+        PlayerPrefs.SetInt("M" + moduleC + "S" + sentenceC, 1);
+        print("[loacl storage] M" + moduleC + "S" + sentenceC + " is saved as triggered");
     }
 }
