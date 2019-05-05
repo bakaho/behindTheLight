@@ -220,10 +220,13 @@ public class myLight : MonoBehaviour {
                     itemDropRmd.gameObject.SetActive(true);
                     theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>"+GameManager.collectTotalNum+"个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。", 0);
                     theFirstBlock.GetComponent<slotControl>().turnOn();
+                    //not sure
+                    //PlayerPrefs.SetInt(GameManager.goalUpdateKey, 1);
                 }else if(PlayerPrefs.GetInt(GameManager.goalUpdateKey) == 1){
                     goalUpdateRmd.gameObject.SetActive(true);
                 }
                 startPassed = true;
+                PlayerPrefs.SetInt(GameManager.goalUpdateKey, 0);
             }
 
             //waypoint

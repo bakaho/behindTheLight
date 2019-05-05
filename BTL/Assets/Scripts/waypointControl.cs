@@ -29,17 +29,18 @@ public class waypointControl : MonoBehaviour {
 
     public void updateToDatabase(){
         print("[Online Database] Retrieving");
-        RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json").Then(onResolved:response =>
-        {
-            retrieveWp = response;
-            tempTimes = retrieveWp.times + 1;
-            print(tempTimes);
-            Waypoint wp = new Waypoint();
-            wp.wpModule = myModule;
-            wp.times = tempTimes;
-            PlayerPrefs.SetInt(GameManager.moduleTriggerTimes[myModule], tempTimes);
-            print("[Online Database] Storing");
-            RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json",wp);
+
+        RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json").Then(onResolved: response =>
+         {
+             retrieveWp = response;
+             tempTimes = retrieveWp.times + 1;
+             print(tempTimes);
+             Waypoint wp = new Waypoint();
+             wp.wpModule = myModule;
+             wp.times = tempTimes;
+             PlayerPrefs.SetInt(GameManager.moduleTriggerTimes[myModule], tempTimes);
+             print("[Online Database] Storing!");
+             RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json", wp);
             //updateTempTimes();
         });
         print("[Online Database] Finished");
