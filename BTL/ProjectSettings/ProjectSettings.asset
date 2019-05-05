@@ -770,9 +770,9 @@ PlayerSettings:
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
   apiCompatibilityLevelPerPlatform:
-    Android: 3
-    Standalone: 3
-    iOS: 3
+    Android: 2
+    Standalone: 2
+    iOS: 2
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template_3D
@@ -843,7 +843,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 3
+  apiCompatibilityLevel: 2
   cloudProjectId: 9a92a69d-26aa-40ee-a9bb-b494e0d4b6ed
   projectName: BTL
   organizationId: 755616862-qq-com

@@ -106,7 +106,6 @@ public class GameManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey(gloopKey))
         {
             PlayerPrefs.SetInt(gloopKey, 0);
-            print("[loacl storage] First time of gameplay!!");
         }
         else
         {

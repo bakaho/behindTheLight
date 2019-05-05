@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Models;
 using Proyecto26;
 
 public class waypointControl : MonoBehaviour {
@@ -43,7 +42,7 @@ public class waypointControl : MonoBehaviour {
             RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json",wp);
             //updateTempTimes();
         });
-
+        print("[Online Database] Finished");
 
     }
 
