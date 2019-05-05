@@ -135,6 +135,14 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+        //set module and sentence
+        if(PlayerPrefs.HasKey(curModuleKey) && PlayerPrefs.HasKey(curSentenceKey)){
+            curModule = PlayerPrefs.GetInt(curModuleKey);
+            curSentence = PlayerPrefs.GetInt(curSentenceKey);
+            print("[loacl storage] Reloaded M = " + curModule + " S = " + curSentence);
+        }
+
+
         //moduleProgressKey
         for (int i = 0; i < 17; i++)
         {

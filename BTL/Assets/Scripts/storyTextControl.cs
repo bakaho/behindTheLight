@@ -51,6 +51,10 @@ public class storyTextControl : MonoBehaviour {
     public void showNext(){
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
+        PlayerPrefs.SetInt(GameManager.curModuleKey, moduleC);
+        PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
+        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey));
+
         if (!isTheLast)
         {
             //nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];

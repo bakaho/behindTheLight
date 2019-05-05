@@ -6667,6 +6667,11 @@ Prefab:
       propertyPath: m_Intensity
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: isTriggered
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
   m_IsPrefabAsset: 0
@@ -8154,6 +8159,11 @@ Prefab:
         type: 2}
       propertyPath: m_Intensity
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: isTriggered
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
@@ -9758,6 +9768,11 @@ Prefab:
       propertyPath: m_Intensity
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
+        type: 2}
+      propertyPath: isTriggered
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db50016dc0c7d43b6978de21d35817af, type: 2}
   m_IsPrefabAsset: 0
@@ -9887,7 +9902,7 @@ MonoBehaviour:
   testMode: 0
   moduleC: 1
   sentenceC: 0
-  isTriggered: 0
+  isTriggered: 1
   isTheLast: 0
   curYear: 2019
   curMonth: 5
@@ -10273,6 +10288,11 @@ Prefab:
         type: 2}
       propertyPath: m_Intensity
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
+        type: 2}
+      propertyPath: isTriggered
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db50016dc0c7d43b6978de21d35817af, type: 2}

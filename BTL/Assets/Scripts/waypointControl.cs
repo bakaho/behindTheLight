@@ -39,9 +39,8 @@ public class waypointControl : MonoBehaviour {
              wp.wpModule = myModule;
              wp.times = tempTimes;
              PlayerPrefs.SetInt(GameManager.moduleTriggerTimes[myModule], tempTimes);
-             print("[Online Database] Storing!");
+             print("[Online Database] Storing");
              RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json", wp);
-            //updateTempTimes();
         });
         print("[Online Database] Finished");
 

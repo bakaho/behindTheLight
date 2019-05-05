@@ -126,6 +126,10 @@ public class puzzleTextControl : MonoBehaviour {
         GameManager.onPuz = true;
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
+        //set player pref
+        PlayerPrefs.SetInt(GameManager.curModuleKey,moduleC);
+        PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
+        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey));
         //show hint
         puzHintObj.SetActive(true);
     }
