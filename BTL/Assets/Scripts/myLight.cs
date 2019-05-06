@@ -48,6 +48,7 @@ public class myLight : MonoBehaviour {
     public Image theFirstBlock;
     public Sprite firstBlockImg;
     public Image goalUpdateRmd;
+    public collectCheckerControl checker;
 
     [Header("Special Effects")]
     //earthquake
@@ -211,6 +212,7 @@ public class myLight : MonoBehaviour {
                 darkCurtainControl.nextGoodOrBad = 0;
                 EQSound1.GetComponent<audioFadeOut>().fade();
                 EQSound2.GetComponent<audioFadeOut>().fade();
+                PlayerPrefs.SetInt(GameManager.goodBadKey, 0);
                 darkCurtainFinished = true;
             }
 
@@ -222,6 +224,7 @@ public class myLight : MonoBehaviour {
                 darkCurtainControl.nextGoodOrBad = 1;
                 EQSound1.GetComponent<audioFadeOut>().fade();
                 EQSound2.GetComponent<audioFadeOut>().fade();
+                PlayerPrefs.SetInt(GameManager.goodBadKey, 1);
                 darkCurtainFinished = true;
             }
 
@@ -233,6 +236,7 @@ public class myLight : MonoBehaviour {
                     itemDropRmd.gameObject.SetActive(true);
                     theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>"+GameManager.collectTotalNum+"个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。", 0);
                     theFirstBlock.GetComponent<slotControl>().turnOn();
+                    checker.lightOn();
                     //not sure
                     //PlayerPrefs.SetInt(GameManager.goalUpdateKey, 1);
                 }else if(PlayerPrefs.GetInt(GameManager.goalUpdateKey) == 1){
@@ -263,6 +267,12 @@ public class myLight : MonoBehaviour {
                     other.GetComponent<waypointControl>().updateToDatabase();
                 }
 
+            }
+
+            //end
+            if (other.gameObject.CompareTag("end"))
+            {
+                
             }
 
 

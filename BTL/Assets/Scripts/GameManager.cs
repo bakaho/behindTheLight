@@ -14,13 +14,15 @@ public class GameManager : MonoBehaviour {
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
     static public string curSentenceKey = "myCurrentSentence";
+    static public string curGoalNumKey = "curGoalNum";
+    static public string nextGoalNumKey = "nextGoalNum";
     static public string inModuleKey = "isInModule"; //equal to a module number
     static public string inRoundKey = "isInRound";
     static public string goodBadKey = "goodBad"; //0 = bad; 1 = good
     static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
-    static public string[] moduleProgressKey = new string[17] { "module0", "module1", "module2", "module4", "module5", "module6", "module7", "module8", "module9", "module10", "module11", "module12", "module12", "module13", "module14", "module15", "module16"};
+    static public string[] moduleProgressKey = new string[7] { "module0", "module1", "module2", "module3", "module4", "module5", "module6"};
     static public string goalUpdateKey = "goalNeedUpdate";
-    static public string[] moduleTriggerTimes = new string[17] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6", "trigger7", "trigger8", "trigger9", "trigger10", "trigger11", "trigger12", "trigger13", "trigger14", "trigger15", "trigger16" };
+    static public string[] moduleTriggerTimes = new string[7] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6"};
 
     //1 = true; 0 = false;
 
@@ -32,11 +34,21 @@ public class GameManager : MonoBehaviour {
 
     [Header("Properties Preset")]
     //game level preset
-    static public int[] moduleProgress = new int[17] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    static public int[] moduleProgressUB = new int[17] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+    static public int[] moduleProgress = new int[7] {0, 0, 0, 0, 0, 0, 0};
+    static public int[] moduleProgressUB = new int[7] {1, 1, 1, 1, 1, 1, 1};
     static public int[,] ModuleSentence = new int[10, 10]; //save the current progress
     static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
     static public int[] NumOfSenInModule = new int[10] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
+    //how many piece can be found after unlocking this level
+    static public int[,] mAdd = new int[,] {
+        //{can be unlocked at lv1, lv2}
+        //total num should be 8
+        {0, 0}, {1, 0}, {0, 1}, 
+        {1, 1}, {0, 0}, {1, 1}, 
+        {1, 1}
+        //or set d and f to item drop
+    };
+
     
     [Header("Current Game Status")]
     //current level
@@ -66,6 +78,7 @@ public class GameManager : MonoBehaviour {
     static public bool isMute = false;
 
     [Header("UI Control")]
+    public collectCheckerControl checker;
     public Sprite[] itemCollectSp = new Sprite[12];
     public string[] thisItemText = new string[12]{"记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>" + GameManager.collectTotalNum + "个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。",
         "二：\n我是第二个！",
@@ -123,6 +136,16 @@ public class GameManager : MonoBehaviour {
             print("[loacl storage] First goal!!");
         }
 
+
+        //set cur goal
+        if (PlayerPrefs.GetInt(inRoundKey, 0) == 0)
+        {
+            PlayerPrefs.SetInt(curGoalNumKey, PlayerPrefs.GetInt(nextGoalNumKey, 4));
+            print("[local storage] current goal is set to" + PlayerPrefs.GetInt(curGoalNumKey));
+        }
+        collectTotalNum = PlayerPrefs.GetInt(curGoalNumKey) - 1;
+
+
         //set item dropped
         for (int i = 0; i < 12;i++){
             if (PlayerPrefs.HasKey(collectItemKey[i])){
@@ -135,6 +158,7 @@ public class GameManager : MonoBehaviour {
                         break;
                     }
                 }
+                checker.lightOn();
                 print("[loacl storage] loaded item: item" + i);
             }
         }
@@ -148,7 +172,7 @@ public class GameManager : MonoBehaviour {
 
 
         //moduleProgressKey
-        for (int i = 0; i < 17; i++)
+        for (int i = 0; i < 7; i++)
         {
             if (PlayerPrefs.HasKey(moduleProgressKey[i]))
             {
@@ -170,7 +194,7 @@ public class GameManager : MonoBehaviour {
                     pt.GetComponent<BoxCollider>().enabled = true;
                     pt.transform.GetChild(0).gameObject.SetActive(true);
                     pt.transform.GetChild(1).gameObject.SetActive(true);
-                    if (PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) == 1)
+                    if (PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) != 2)
                     {
                         pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
                         pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
@@ -190,7 +214,7 @@ public class GameManager : MonoBehaviour {
                     st.GetComponent<BoxCollider>().enabled = true;
                     st.transform.GetChild(0).gameObject.SetActive(true);
                     st.transform.GetChild(1).gameObject.SetActive(true);
-                    if (PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) == 1)
+                    if (PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) != 2)
                     {
                         st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
                         st.transform.GetComponent<storyTextControl>().isTriggered = true;

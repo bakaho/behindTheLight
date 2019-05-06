@@ -15,6 +15,7 @@ TagManager:
   - goodline
   - start
   - waypoint
+  - end
   layers:
   - Default
   - TransparentFX

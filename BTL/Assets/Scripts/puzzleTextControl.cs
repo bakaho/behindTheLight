@@ -51,6 +51,7 @@ public class puzzleTextControl : MonoBehaviour {
     public Sprite itemSprite;
     public string itemText;
     public bool itemDropped = false;
+    public collectCheckerControl checker;
 
     [Header("Other Effects")]
     //other trigger
@@ -105,6 +106,8 @@ public class puzzleTextControl : MonoBehaviour {
                             break;
                         }
                     }
+                    //2.light dot
+                    checker.lightOn();
                     itemDropped = true;
 
 
@@ -166,14 +169,16 @@ public class puzzleTextControl : MonoBehaviour {
             //nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
             nextIndex = GameManager.moduleProgress[moduleC];
             //nextObj[nextIndex].SetActive(true);
-            nextObj[nextIndex].GetComponent<BoxCollider>().enabled = true;
-            nextObj[nextIndex].transform.GetChild(0).gameObject.SetActive(true);
-            nextObj[nextIndex].transform.GetChild(1).gameObject.SetActive(true);
+            int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
+            nextObj[2 * nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
+            nextObj[2 * nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
+            nextObj[2 * nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
 
             GM.GetComponent<GameManager>().playNextLineSound();
 
         }else if(!testMode){
             //is the real last
+            updateGoal();
             //module loop +1
             if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
             {
@@ -191,6 +196,7 @@ public class puzzleTextControl : MonoBehaviour {
         print("[loacl storage] M" + moduleN + "S" + sentenceN + " is saved as the next");
     }
 
+   
     public void finishedShowNext(){
         //set puzzle
         GameManager.onPuz = true;
@@ -200,6 +206,7 @@ public class puzzleTextControl : MonoBehaviour {
         PlayerPrefs.SetInt(GameManager.curModuleKey, moduleC);
         PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
         print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey));
+
         //show next
         showNext();
     }
@@ -266,6 +273,10 @@ public class puzzleTextControl : MonoBehaviour {
                 aiDot[j].GetComponent<pathFixed>().resetDistanceOut();
             }
         }
+    }
+
+    public void updateGoal(){
+        PlayerPrefs.SetInt(GameManager.nextGoalNumKey,PlayerPrefs.GetInt(GameManager.nextGoalNumKey)+GameManager.mAdd[moduleC,GameManager.moduleProgress[moduleC]]);
     }
 
 

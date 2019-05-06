@@ -67,10 +67,12 @@ public class storyTextControl : MonoBehaviour {
         {
             //nextIndex = GameManager.ModuleSentence[moduleN, sentenceN];
             nextIndex = GameManager.moduleProgress[moduleC];
+
             //nextObj[nextIndex].SetActive(true);
-            nextObj[nextIndex].GetComponent<BoxCollider>().enabled = true;
-            nextObj[nextIndex].transform.GetChild(0).gameObject.SetActive(true);
-            nextObj[nextIndex].transform.GetChild(1).gameObject.SetActive(true);
+            int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
+            nextObj[2 * nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
+            nextObj[2 * nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
+            nextObj[2 * nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
 
             GM.GetComponent<GameManager>().playNextLineSound();
         }else if (!testMode)
