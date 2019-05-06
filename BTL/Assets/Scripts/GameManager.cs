@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour {
     static public string inRoundKey = "isInRound";
     static public string goodBadKey = "goodBad"; //0 = bad; 1 = good
     static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
-    static public string[] moduleProgressKey = new string[7] { "module0", "module1", "module2", "module3", "module4", "module5", "module6"};
+    static public string[] moduleProgressKey = new string[8] { "module0", "module1", "module2", "module3", "module4", "module5", "module6", "module7"};
     static public string goalUpdateKey = "goalNeedUpdate";
-    static public string[] moduleTriggerTimes = new string[7] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6"};
+    static public string[] moduleTriggerTimes = new string[8] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6", "module7"};
 
     //1 = true; 0 = false;
 
@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour {
 
     [Header("Properties Preset")]
     //game level preset
-    static public int[] moduleProgress = new int[7] {0, 0, 0, 0, 0, 0, 0};
-    static public int[] moduleProgressUB = new int[7] {1, 1, 1, 1, 1, 1, 1};
+    static public int[] moduleProgress = new int[8] {0, 0, 0, 0, 0, 0, 0, 0};
+    static public int[] moduleProgressUB = new int[8] {1, 1, 1, 1, 1, 1, 1, 1};
     static public int[,] ModuleSentence = new int[10, 10]; //save the current progress
     static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
     static public int[] NumOfSenInModule = new int[10] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
     static public int[,] mAdd = new int[,] {
         //{can be unlocked at lv1, lv2}
         //total num should be 8
-        {0, 0}, {1, 0}, {0, 1}, 
+        {0, 0}, {0, 0}, {1, 0}, {0, 1}, 
         {1, 1}, {0, 0}, {1, 1}, 
         {1, 1}
         //or set d and f to item drop
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour {
 
 
         //moduleProgressKey
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             if (PlayerPrefs.HasKey(moduleProgressKey[i]))
             {

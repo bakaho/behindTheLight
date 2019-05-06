@@ -272,7 +272,9 @@ public class myLight : MonoBehaviour {
             //end
             if (other.gameObject.CompareTag("end"))
             {
-                
+                if(checker.checkPassed()){
+                    //pass end
+                }
             }
 
 
