@@ -21,4 +21,15 @@ public class pathFixed : MonoBehaviour {
         transform.rotation = Quaternion.identity;
 		
 	}
+
+    public void resetDistanceOut(){
+        speed = Random.Range(100f, 200f);
+        distanceTraveled = 0;
+    }
+
+    public void resetDistanceIn()
+    {
+        speed = Random.Range(20f, 50f);
+        distanceTraveled = 0;
+    }
 }

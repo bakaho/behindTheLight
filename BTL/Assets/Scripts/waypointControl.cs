@@ -29,6 +29,10 @@ public class waypointControl : MonoBehaviour {
 
     public void updateToDatabase(){
         print("[Online Database] Retrieving");
+        RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json").Catch(onRejected: response =>
+        {
+            print("[Online Database] No internet connection");
+        });
 
         RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json").Then(onResolved: response =>
          {

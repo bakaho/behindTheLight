@@ -55,6 +55,8 @@ public class myLight : MonoBehaviour {
     public GameObject EQSound;
     public Image darkCurtain;
     bool darkCurtainFinished = false;
+    public GameObject EQSound1;
+    public GameObject EQSound2;
 
 	// Use this for initialization
 	void Start () {
@@ -139,7 +141,6 @@ public class myLight : MonoBehaviour {
                     other.GetComponent<storyTextControl>().isTriggered = true;
                     //other.GetComponentInChildren<lightUpText>().turnedOn = true;
                     other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
-
                     //showNext
                     other.GetComponent<storyTextControl>().showNext();
 
@@ -154,11 +155,14 @@ public class myLight : MonoBehaviour {
 
                 if (!other.GetComponent<puzzleTextControl>().isTriggered)
                 {
+                    if(!other.GetComponent<puzzleTextControl>().isFinished){
                     other.GetComponent<puzzleTextControl>().isTriggered = true;
-
                     //show hint
                     other.GetComponent<puzzleTextControl>().showHint();
-                    //other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
+
+                    }else{
+                        other.GetComponent<puzzleTextControl>().finishedShowNext();
+                    }
 
                 }
                 other.GetComponent<puzzleTextControl>().changeTime();
@@ -192,34 +196,38 @@ public class myLight : MonoBehaviour {
             }
 
             //earthquakeEffect
-            if (other.gameObject.CompareTag("earthquake") && !earthquakeOn)
+            if (GameManager.gameLoop == 0 && other.gameObject.CompareTag("earthquake") && !earthquakeOn)
             {
                 earthquakeOn = true;
                 groundAnim.SetBool("isEarthquaking", true);
                 EQSound.gameObject.SetActive(true);
             }
 
-            if (other.gameObject.CompareTag("badline") && earthquakeOn && !darkCurtainFinished)
+            if (GameManager.gameLoop == 0 && other.gameObject.CompareTag("badline") && earthquakeOn && !darkCurtainFinished)
             {
                 print("bad line");
                 darkCurtain.gameObject.SetActive(true);
                 groundAnim.SetBool("isEarthquaking", false);
                 darkCurtainControl.nextGoodOrBad = 0;
+                EQSound1.GetComponent<audioFadeOut>().fade();
+                EQSound2.GetComponent<audioFadeOut>().fade();
                 darkCurtainFinished = true;
             }
 
-            if (other.gameObject.CompareTag("goodline") && earthquakeOn && !darkCurtainFinished)
+            if (GameManager.gameLoop == 0 && other.gameObject.CompareTag("goodline") && earthquakeOn && !darkCurtainFinished)
             {
                 print("good line");
                 darkCurtain.gameObject.SetActive(true);
                 groundAnim.SetBool("isEarthquaking", false);
                 darkCurtainControl.nextGoodOrBad = 1;
+                EQSound1.GetComponent<audioFadeOut>().fade();
+                EQSound2.GetComponent<audioFadeOut>().fade();
                 darkCurtainFinished = true;
             }
 
             if (other.gameObject.CompareTag("start") && !startPassed)
             {
-                if (GM.GetComponent<GameManager>().gameLoop == 0)
+                if (GameManager.gameLoop == 0)
                 {
                     itemDropRmd.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = firstBlockImg;
                     itemDropRmd.gameObject.SetActive(true);

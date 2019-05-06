@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class darkCurtainControl : MonoBehaviour {
     static public int nextGoodOrBad;
+    public GameObject borderJ;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -21,6 +23,7 @@ public class darkCurtainControl : MonoBehaviour {
         }else{
             //SceneManager.LoadScene(sceneName: "PureGood");
         }
+        borderJ.SetActive(true);
         this.gameObject.SetActive(false);
     }
 }

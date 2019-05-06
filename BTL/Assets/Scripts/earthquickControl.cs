@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class earthquickControl : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -14,7 +14,5 @@ public class earthquickControl : MonoBehaviour {
 		
 	}
 
-    public void stopShaking(){
-        
-    }
+
 }

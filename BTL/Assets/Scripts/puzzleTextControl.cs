@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Proyecto26;
+using System.Linq;
+using PathCreation;
 
 public class puzzleTextControl : MonoBehaviour {
     [Header("Initial Objects")]
@@ -30,6 +33,7 @@ public class puzzleTextControl : MonoBehaviour {
     public int sentenceC = 0;
     //Properties
     public bool isTriggered = false;
+    public bool isFinished = false;
     public bool isTheLast = false;
     //external assets
     public GameObject thisModel;
@@ -52,8 +56,12 @@ public class puzzleTextControl : MonoBehaviour {
     //other trigger
     public bool haveOtherTrigger = false;
     public GameObject otherTrigger;
-
     public GameObject borderToClose;
+
+    [Header("Path Selector")]
+    public GameObject[] aiDot = new GameObject[4];
+    public PathCreator[] pathForward;
+    int totalLevel = 7;
 
 
     // Use this for initialization
@@ -159,14 +167,6 @@ public class puzzleTextControl : MonoBehaviour {
             nextIndex = GameManager.moduleProgress[moduleC];
             //nextObj[nextIndex].SetActive(true);
             nextObj[nextIndex].GetComponent<BoxCollider>().enabled = true;
-            if (nextObj[nextIndex].tag == "puzzleText")
-            {
-                nextObj[nextIndex].GetComponent<puzzleTextControl>().enabled = true;
-            }
-            else
-            {
-                nextObj[nextIndex].GetComponent<storyTextControl>().enabled = true;
-            }
             nextObj[nextIndex].transform.GetChild(0).gameObject.SetActive(true);
             nextObj[nextIndex].transform.GetChild(1).gameObject.SetActive(true);
 
@@ -182,10 +182,91 @@ public class puzzleTextControl : MonoBehaviour {
             print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
 
             borderToClose.SetActive(false);
+            choosePath();
             
         }
         PlayerPrefs.SetInt("M" + moduleC + "S" + sentenceC,1);
         print("[loacl storage] M" + moduleC + "S" + sentenceC + " is saved as triggered");
+        PlayerPrefs.SetInt("M" + moduleN + "S" + sentenceN, 2);
+        print("[loacl storage] M" + moduleN + "S" + sentenceN + " is saved as the next");
     }
+
+    public void finishedShowNext(){
+        //set puzzle
+        GameManager.onPuz = true;
+        GameManager.curModule = moduleC;
+        GameManager.curSentence = sentenceC;
+        //set player pref
+        PlayerPrefs.SetInt(GameManager.curModuleKey, moduleC);
+        PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
+        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey));
+        //show next
+        showNext();
+    }
+
+    public void choosePath()
+    {
+        List<int> counts = new List<int>();
+
+        if (pathForward.Length > 4)
+        {
+            //get server
+            print("[Online Database] Retrieving");
+
+            for (int i = moduleC + 1; i < totalLevel; i++)
+            {
+                RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + i + ".json").Catch(onRejected: response =>
+                {
+                    print("[Online Database] No internet connection, added from local storage");
+                    counts.Add(PlayerPrefs.GetInt(GameManager.moduleTriggerTimes[i], 1));
+                    if (i == totalLevel)
+                    {
+                        var sorted = counts.Select((x, k) => new KeyValuePair<int, int>(x, k)).OrderBy(x => x.Key).ToList();
+
+                        List<int> B = sorted.Select(x => x.Key).ToList();
+                        List<int> idx = sorted.Select(x => x.Value).ToList();
+
+                        for (int j = 0; j < 4; j++)
+                        {
+                            aiDot[j].GetComponent<pathFixed>().pathCreator = pathForward[idx[j]];
+                            aiDot[j].GetComponent<pathFixed>().resetDistanceOut();
+                        }
+                    }
+                });
+
+                RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + i + ".json").Then(onResolved: response =>
+                {
+                    print("[Online Database] Retrieved from online database");
+                    counts.Add(response.times);
+                    if (i == totalLevel)
+                    {
+                        var sorted = counts.Select((x, k) => new KeyValuePair<int, int>(x, k)).OrderBy(x => x.Key).ToList();
+
+                        List<int> B = sorted.Select(x => x.Key).ToList();
+                        List<int> idx = sorted.Select(x => x.Value).ToList();
+
+                        for (int j = 0; j < 4; j++)
+                        {
+                            aiDot[j].GetComponent<pathFixed>().pathCreator = pathForward[idx[j]];
+                            aiDot[j].GetComponent<pathFixed>().resetDistanceOut();
+                        }
+                    }
+                });
+            }
+
+            print("[Online Database] Finished");
+
+
+        }
+        else
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                aiDot[j].GetComponent<pathFixed>().pathCreator = pathForward[j];
+                aiDot[j].GetComponent<pathFixed>().resetDistanceOut();
+            }
+        }
+    }
+
 
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     //gameplay control
     [Header("Game Flow Control")]
-    public int gameLoop = 0;
+    static public int gameLoop = 0;
     static public bool isPaused = false;
     static public int collectTotalNum = 3;
 
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
     static public string curSentenceKey = "myCurrentSentence";
+    static public string inModuleKey = "isInModule"; //equal to a module number
     static public string inRoundKey = "isInRound";
     static public string goodBadKey = "goodBad"; //0 = bad; 1 = good
     static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
@@ -165,15 +166,15 @@ public class GameManager : MonoBehaviour {
                 
                 //pt.SetActive(true);
                 if(PlayerPrefs.HasKey("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) &&
-                    PlayerPrefs.GetInt("M"+pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) == 1){
-                    print("?!");
+                    PlayerPrefs.GetInt("M"+pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) != 0){
                     pt.GetComponent<BoxCollider>().enabled = true;
-                    //pt.GetComponent<puzzleTextControl>().enabled = true;
-
                     pt.transform.GetChild(0).gameObject.SetActive(true);
                     pt.transform.GetChild(1).gameObject.SetActive(true);
-                    pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
-                    pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
+                    if (PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) == 1)
+                    {
+                        pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                        pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
+                    }
                 }
 
             }
@@ -183,16 +184,17 @@ public class GameManager : MonoBehaviour {
             foreach (GameObject st in sTxts)
             {
                 if (PlayerPrefs.HasKey("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) &&
-                    PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) == 1)
+                    PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) != 0)
                 {
                     //st.SetActive(true);
                     st.GetComponent<BoxCollider>().enabled = true;
-                    //st.GetComponent<storyTextControl>().enabled = true;
-
                     st.transform.GetChild(0).gameObject.SetActive(true);
                     st.transform.GetChild(1).gameObject.SetActive(true);
-                    st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
-                    st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                    if (PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) == 1)
+                    {
+                        st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                        st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                    }
                 }
             }
         }
