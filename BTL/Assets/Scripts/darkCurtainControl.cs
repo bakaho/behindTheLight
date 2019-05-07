@@ -26,4 +26,13 @@ public class darkCurtainControl : MonoBehaviour {
         borderJ.SetActive(true);
         this.gameObject.SetActive(false);
     }
+
+    public void toGame(){
+        SceneManager.LoadScene(sceneName: "oneForAll");
+        //this.gameObject.SetActive(false);
+    }
+
+    public void closeMe(){
+        this.gameObject.SetActive(false);
+    }
 }

@@ -7,13 +7,36 @@ public class startMenuManager : MonoBehaviour {
     [Header("Percentage Bar")]
     public Slider progressBar;
 
+    [Header("Sound")]
+    public AudioSource myBGM;
+    public AudioClip[] mySound;
+
+    [Header("Curtain")]
+    public GameObject curtain;
+
+    [Header("Start Button")]
+    public Button startBtn;
+    public Sprite spStart;
+    public Sprite spResume;
+
 	// Use this for initialization
 	void Start () {
+        if(PlayerPrefs.GetInt("isInRound",0) == 0){
+            startBtn.GetComponent<Image>().sprite = spStart;
+        }else{
+            startBtn.GetComponent<Image>().sprite = spResume;
+        }
         progressBar.value = PlayerPrefs.GetFloat("percentage", 0);
+        progressBar.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetFloat("percentage", 0) + "%";
+        myBGM.clip = mySound[PlayerPrefs.GetInt("finalMood", 2)];
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void startGame(){
+        curtain.SetActive(true);
+    }
 }

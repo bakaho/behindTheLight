@@ -36,6 +36,8 @@ public class puzzleTextControl : MonoBehaviour {
     public bool isTriggered = false;
     public bool isFinished = false;
     public bool isTheLast = false;
+    public bool isTheFirst = false;
+    public int myMood = 0;
     //external assets
     public GameObject thisModel;
     public Texture[] thisCookie;//change
@@ -138,6 +140,9 @@ public class puzzleTextControl : MonoBehaviour {
     //set
 
     public void showHint(){
+        if(isTheFirst){
+            PlayerPrefs.SetInt("finalMood", myMood);
+        }
         //firstTime count
         PlayerPrefs.SetInt(GameManager.unlockedLineKey, PlayerPrefs.GetInt(GameManager.unlockedLineKey, 0) + 1);
         //set puzzle
@@ -207,6 +212,10 @@ public class puzzleTextControl : MonoBehaviour {
 
    
     public void finishedShowNext(){
+        if (isTheFirst)
+        {
+            PlayerPrefs.SetInt("finalMood", myMood);
+        }
         //set puzzle
         GameManager.onPuz = true;
         GameManager.curModule = moduleC;

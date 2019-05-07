@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
@@ -442,6 +442,7 @@ public class GameManager : MonoBehaviour {
         }
         return maxNum;
     }
+
 
 
 

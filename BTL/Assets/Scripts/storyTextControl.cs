@@ -28,6 +28,8 @@ public class storyTextControl : MonoBehaviour {
     public int sentenceC = 0;
     public bool isTriggered = false;
     public bool isTheLast = false;
+    public bool isTheFirst = false;
+    public int myMood = 0;
     //time Set
     public int curYear = 0000;
     public int curMonth = 00;
@@ -57,6 +59,10 @@ public class storyTextControl : MonoBehaviour {
     }
 
     public void showNext(){
+        if (isTheFirst)
+        {
+            PlayerPrefs.SetInt("finalMood", myMood);
+        }
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
         PlayerPrefs.SetInt(GameManager.curModuleKey, moduleC);
