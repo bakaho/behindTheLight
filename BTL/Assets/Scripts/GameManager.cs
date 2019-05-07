@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
@@ -490,6 +490,28 @@ public class GameManager : MonoBehaviour {
                 bounds[5] = 3f;
                 bounds[6] = 3f;
                 bounds[7] = 3f;
+            }else if (s == 5)
+            {
+                if (idx == 0)
+                {
+                    bounds[0] = 21.4f;
+                    bounds[1] = 293f;
+                    bounds[2] = 29f;
+                    bounds[3] = 0f;
+                    bounds[4] = 1.5f;
+                    bounds[5] = 3f;
+                    bounds[6] = 3f;
+                    bounds[7] = 3f;
+                }else{
+                    bounds[0] = 37.8f;
+                    bounds[1] = 279.1f;
+                    bounds[2] = 29f;
+                    bounds[3] = 0f;
+                    bounds[4] = 1.5f;
+                    bounds[5] = 3f;
+                    bounds[6] = 3f;
+                    bounds[7] = 3f;
+                }
             }
         }
         return bounds;
@@ -524,6 +546,18 @@ public class GameManager : MonoBehaviour {
                 shapeMSI[0] = 0;
                 shapeMSI[1] = 0;
                 shapeMSI[2] = 0;
+            }else if (s == 5)
+            {
+                if (idx == 0)
+                {
+                    shapeMSI[0] = 2;
+                    shapeMSI[1] = 0;
+                    shapeMSI[2] = 0;
+                }else{
+                    shapeMSI[0] = 2;
+                    shapeMSI[1] = 5;
+                    shapeMSI[2] = 0;
+                }
             }
         }
         return shapeMSI;
@@ -540,6 +574,10 @@ public class GameManager : MonoBehaviour {
             else if (s == 2)
             {
                 maxNum = 1;
+            }
+        }else if (m == 2){
+            if(s == 5){
+                maxNum = 2;
             }
         }
         return maxNum;

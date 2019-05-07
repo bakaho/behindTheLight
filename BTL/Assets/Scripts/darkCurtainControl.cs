@@ -25,7 +25,7 @@ public class darkCurtainControl : MonoBehaviour {
             //SceneManager.LoadScene(sceneName: "PureGood");
         }
         borderJ.SetActive(true);
-        earth.SetBool("isEarthquaking", false);
+        //earth.SetBool("isEarthquaking", false);
         this.gameObject.SetActive(false);
     }
 

@@ -214,6 +214,7 @@ public class myLight : MonoBehaviour {
             if (GameManager.gameLoop == 0 && other.gameObject.CompareTag("badline") && earthquakeOn && !darkCurtainFinished)
             {
                 print("bad line");
+                groundAnim.SetBool("isEarthquaking", false);
                 darkCurtain.gameObject.SetActive(true);
                 darkCurtainControl.nextGoodOrBad = 0;
                 EQSound1.GetComponent<audioFadeOut>().fade();
@@ -228,6 +229,7 @@ public class myLight : MonoBehaviour {
             if (GameManager.gameLoop == 0 && other.gameObject.CompareTag("goodline") && earthquakeOn && !darkCurtainFinished)
             {
                 print("good line");
+                groundAnim.SetBool("isEarthquaking", false);
                 darkCurtain.gameObject.SetActive(true);
                 darkCurtainControl.nextGoodOrBad = 1;
                 EQSound1.GetComponent<audioFadeOut>().fade();
