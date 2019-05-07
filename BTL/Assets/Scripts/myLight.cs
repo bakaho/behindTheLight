@@ -49,6 +49,7 @@ public class myLight : MonoBehaviour {
     public Sprite firstBlockImg;
     public Image goalUpdateRmd;
     public collectCheckerControl checker;
+    public Image inventoryRmd;
 
     [Header("Special Effects")]
     //earthquake
@@ -240,6 +241,9 @@ public class myLight : MonoBehaviour {
                     checker.lightOn();
                     //not sure
                     //PlayerPrefs.SetInt(GameManager.goalUpdateKey, 1);
+                    if(PlayerPrefs.GetInt(GameManager.guidedKey,0) == 0){
+                        inventoryRmd.gameObject.SetActive(true);
+                    }
                 }else if(PlayerPrefs.GetInt(GameManager.goalUpdateKey) == 1){
                     goalUpdateRmd.gameObject.SetActive(true);
                 }

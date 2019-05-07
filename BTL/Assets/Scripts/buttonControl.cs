@@ -33,6 +33,9 @@ public class buttonControl : MonoBehaviour {
     [Header("Quit Button")]
     public Button btnQuit;
 
+    [Header("Guide")]
+    public Animator inventGuide;
+
 
 	// Use this for initialization
 	void Start () {
@@ -61,6 +64,11 @@ public class buttonControl : MonoBehaviour {
         statusBar.gameObject.SetActive(true);
         //cornerSpriteNum = (cornerSpriteNum + 1) % 2;
         //cornerBtn.GetComponent<Image>().sprite = crnImg[cornerSpriteNum];
+        if(PlayerPrefs.GetInt(GameManager.guidedKey) == 0){
+            inventGuide.SetBool("hide", true);
+            PlayerPrefs.SetInt(GameManager.guidedKey, 1);
+        }
+
         
     }
 

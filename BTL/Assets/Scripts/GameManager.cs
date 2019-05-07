@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     static public int collectTotalNum = 3;
 
     //key names:
+    static public string guidedKey = "guided";
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
     static public string curSentenceKey = "myCurrentSentence";
@@ -111,7 +112,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
