@@ -61,6 +61,11 @@ public class myLight : MonoBehaviour {
     public GameObject EQSound2;
     public Animator endAnim;
 
+    [Header("Good or bad")]
+    public GameObject good;
+    public GameObject bad;
+
+
 	// Use this for initialization
 	void Start () {
         joystick = GameObject.FindWithTag("joystick").GetComponent<ControlMove>();
@@ -210,11 +215,13 @@ public class myLight : MonoBehaviour {
             {
                 print("bad line");
                 darkCurtain.gameObject.SetActive(true);
-                groundAnim.SetBool("isEarthquaking", false);
                 darkCurtainControl.nextGoodOrBad = 0;
                 EQSound1.GetComponent<audioFadeOut>().fade();
                 EQSound2.GetComponent<audioFadeOut>().fade();
                 PlayerPrefs.SetInt(GameManager.goodBadKey, 0);
+                bad.GetComponent<BoxCollider>().enabled = true;
+                bad.transform.GetChild(0).gameObject.SetActive(true);
+                bad.transform.GetChild(1).gameObject.SetActive(true);
                 darkCurtainFinished = true;
             }
 
@@ -222,7 +229,6 @@ public class myLight : MonoBehaviour {
             {
                 print("good line");
                 darkCurtain.gameObject.SetActive(true);
-                groundAnim.SetBool("isEarthquaking", false);
                 darkCurtainControl.nextGoodOrBad = 1;
                 EQSound1.GetComponent<audioFadeOut>().fade();
                 EQSound2.GetComponent<audioFadeOut>().fade();

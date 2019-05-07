@@ -22,7 +22,7 @@ public class puzzleTextControl : MonoBehaviour {
     public Image dateTime;
 
     [Header("Next Properties")]
-    public bool nextIsPuz = false;
+    public bool[] nextIsPuz;
     public int moduleN = 0;
     public int sentenceN = 0;
     public int nextIndex = 0;
@@ -71,6 +71,9 @@ public class puzzleTextControl : MonoBehaviour {
     public GameObject[] aiDot = new GameObject[4];
     public PathCreator[] pathForward;
     int totalLevel = 7;
+
+    [Header("Inner Path Selector")]
+    public PathCreator[] pathInside = new PathCreator[3];
 
 
     // Use this for initialization
@@ -148,6 +151,7 @@ public class puzzleTextControl : MonoBehaviour {
         
         if(isTheFirst){
             PlayerPrefs.SetInt("finalMood", myMood);
+            choosePathInsed();
         }
         //firstTime count
         PlayerPrefs.SetInt(GameManager.unlockedLineKey, PlayerPrefs.GetInt(GameManager.unlockedLineKey, 0) + 1);
@@ -231,6 +235,7 @@ public class puzzleTextControl : MonoBehaviour {
         if (isTheFirst)
         {
             PlayerPrefs.SetInt("finalMood", myMood);
+            choosePathInsed();
         }
         //set puzzle
         GameManager.onPuz = true;
@@ -307,6 +312,15 @@ public class puzzleTextControl : MonoBehaviour {
                 aiDot[j].GetComponent<pathFixed>().pathCreator = pathForward[j];
                 aiDot[j].GetComponent<pathFixed>().resetDistanceOut();
             }
+        }
+    }
+
+    public void choosePathInsed()
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            aiDot[j].GetComponent<pathFixed>().pathCreator = pathInside[j];
+            aiDot[j].GetComponent<pathFixed>().resetDistanceIn();
         }
     }
 

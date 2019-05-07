@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class darkCurtainControl : MonoBehaviour {
     static public int nextGoodOrBad;
+    public Animator earth;
     public GameObject borderJ;
 
 	// Use this for initialization
@@ -24,6 +25,7 @@ public class darkCurtainControl : MonoBehaviour {
             //SceneManager.LoadScene(sceneName: "PureGood");
         }
         borderJ.SetActive(true);
+        earth.SetBool("isEarthquaking", false);
         this.gameObject.SetActive(false);
     }
 

@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour {
                         pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
                         pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
                         pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].transform.GetChild(1).GetComponent<Light>().intensity = 0;
-                        if (pt.GetComponent<puzzleTextControl>().nextIsPuz)
+                        if (pt.GetComponent<puzzleTextControl>().nextIsPuz[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb])
                         {
                             pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<puzzleTextControl>().isTriggered = false;
                         }
@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour {
                         st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
                         st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
                         st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(1).GetComponent<Light>().intensity = 0;
-                        if (st.GetComponent<storyTextControl>().nextIsPuz)
+                        if (st.GetComponent<storyTextControl>().nextIsPuz[2 * st.GetComponent<storyTextControl>().nextIndex + gb])
                         {
                             st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<puzzleTextControl>().isTriggered = false;
                         }

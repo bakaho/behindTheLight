@@ -17,7 +17,7 @@ public class storyTextControl : MonoBehaviour {
     public Image dateTime;
 
     [Header("Next Properties")]
-    public bool nextIsPuz = false;
+    public bool[] nextIsPuz;
     public int moduleN = 0;
     public int sentenceN = 0;
     public int nextIndex = 0;
@@ -46,6 +46,9 @@ public class storyTextControl : MonoBehaviour {
     public PathCreator[] pathForward;
     int totalLevel = 7;
 
+    [Header("Inner Path Selector")]
+    public PathCreator[] pathInside = new PathCreator[3];
+
 	// Use this for initialization
 	void Start () {
 		
@@ -64,6 +67,7 @@ public class storyTextControl : MonoBehaviour {
     }
 
     public void showNext(){
+        saveThis();
         if(!GameManager.isMute){
             Read.Stop();
             Read.PlayOneShot(voiceOver);
@@ -71,6 +75,8 @@ public class storyTextControl : MonoBehaviour {
         if (isTheFirst)
         {
             PlayerPrefs.SetInt("finalMood", myMood);
+            //
+            choosePathInsed();
         }
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
@@ -174,6 +180,15 @@ public class storyTextControl : MonoBehaviour {
             }
         }
     }
+
+    public void choosePathInsed(){
+        for (int j = 0; j < 3; j++)
+        {
+            aiDot[j].GetComponent<pathFixed>().pathCreator = pathInside[j];
+            aiDot[j].GetComponent<pathFixed>().resetDistanceIn();
+        }
+    }
+
 
     public void saveThis(){
         if(!PlayerPrefs.HasKey("M" + moduleC + "S" + sentenceC + "Finish")){
