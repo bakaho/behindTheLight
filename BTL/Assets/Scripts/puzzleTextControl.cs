@@ -16,7 +16,7 @@ public class puzzleTextControl : MonoBehaviour {
     public GameObject inventory;
     public GameObject puzHintObj; //hint
     public Button shapeBtn;
-    public Sprite btnImg;
+    public Sprite[] btnImg;
     //Date
     public Image dateTime;
 
@@ -31,13 +31,14 @@ public class puzzleTextControl : MonoBehaviour {
     public bool testMode = false;
     public int moduleC = 0;
     public int sentenceC = 0;
+    public int indexC = 0;
     //Properties
     public bool isTriggered = false;
     public bool isFinished = false;
     public bool isTheLast = false;
     //external assets
     public GameObject thisModel;
-    public Texture thisCookie;
+    public Texture[] thisCookie;//change
     //time Set
     public int curYear = 0000;
     public int curMonth = 00;
@@ -77,14 +78,17 @@ public class puzzleTextControl : MonoBehaviour {
         if (!GameManager.isPaused)
         {
 
+            //shapeI ==
             if (GameManager.checkedSth && GameManager.shapeM == moduleC && GameManager.shapeS == sentenceC)
             {
                 GameManager.checkedSth = false;
                 //add a i to set which
-                changeBtn();
+                //changeBtn(shapeI)
+                changeBtn(GameManager.shapeI);
             }
 
-            if (GameManager.puzSolved && GameManager.curModule == moduleC && GameManager.curSentence == sentenceC)
+            // && shape index = thisImg.length-1
+            if (GameManager.puzSolved && GameManager.curModule == moduleC && GameManager.curSentence == sentenceC && GameManager.curIndex == indexC)
             {
                 GameManager.puzSolved = false;
                 hideHint();
@@ -125,10 +129,10 @@ public class puzzleTextControl : MonoBehaviour {
 
 
     //show puz
-    void changeBtn(){
+    void changeBtn(int i){
         shapeBtn.gameObject.SetActive(true);
-        shapeBtn.GetComponent<Image>().sprite = btnImg;
-        buttonControl.lightCookie = thisCookie;
+        shapeBtn.GetComponent<Image>().sprite = btnImg[i];
+        buttonControl.lightCookie = thisCookie[i];
     }
 
     //set
@@ -138,10 +142,12 @@ public class puzzleTextControl : MonoBehaviour {
         GameManager.onPuz = true;
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
+        GameManager.curIndex = indexC;
         //set player pref
         PlayerPrefs.SetInt(GameManager.curModuleKey,moduleC);
         PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
-        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey));
+        PlayerPrefs.SetInt(GameManager.curIndexKey, indexC);
+        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey) + ", Index saved: " + PlayerPrefs.GetInt(GameManager.curIndexKey));
         //show hint
         puzHintObj.SetActive(true);
     }
@@ -203,11 +209,12 @@ public class puzzleTextControl : MonoBehaviour {
         GameManager.onPuz = true;
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
+        GameManager.curIndex = indexC;
         //set player pref
         PlayerPrefs.SetInt(GameManager.curModuleKey, moduleC);
         PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
-        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey));
-
+        PlayerPrefs.SetInt(GameManager.curIndexKey, indexC);
+        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey) + ", Index saved: " + PlayerPrefs.GetInt(GameManager.curIndexKey));
         //show next
         showNext();
     }

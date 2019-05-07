@@ -11296,8 +11296,18 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
         type: 2}
+      propertyPath: btnImg.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
       propertyPath: nextObj.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: thisCookie.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4580712745801986, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
       propertyPath: m_LocalPosition.x
@@ -11386,6 +11396,17 @@ Prefab:
       propertyPath: checker
       value: 
       objectReference: {fileID: 103953095}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: btnImg.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f3def1eb826ed48f689ae6ef0ecae9bf,
+        type: 3}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: thisCookie.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: b8b78462ecc9b44b2b90a0736070ab5c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
   m_IsPrefabAsset: 0
@@ -15318,8 +15339,18 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
         type: 2}
+      propertyPath: btnImg.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
       propertyPath: nextObj.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: thisCookie.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4580712745801986, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
       propertyPath: m_LocalPosition.x
@@ -15470,13 +15501,12 @@ Prefab:
         type: 2}
       propertyPath: thisCookie
       value: 
-      objectReference: {fileID: 2800000, guid: 030cdd04ffc20401ebdd34b1e2508e24, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
         type: 2}
       propertyPath: btnImg
       value: 
-      objectReference: {fileID: 21300000, guid: a5d4543b2c4f04fc7b00b2ef0c356433,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
         type: 2}
       propertyPath: itemText
@@ -15534,6 +15564,17 @@ Prefab:
       propertyPath: checker
       value: 
       objectReference: {fileID: 103953095}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: btnImg.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: a5d4543b2c4f04fc7b00b2ef0c356433,
+        type: 3}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: thisCookie.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 030cdd04ffc20401ebdd34b1e2508e24, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
   m_IsPrefabAsset: 0

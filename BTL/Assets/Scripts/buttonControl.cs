@@ -50,7 +50,8 @@ public class buttonControl : MonoBehaviour {
     public void changeShape(){
         GameManager.curShapeM = GameManager.shapeM;
         GameManager.curShapeS = GameManager.shapeS;
-        print(GameManager.curShapeM + " + " + GameManager.curShapeS);
+        GameManager.curShapeI = GameManager.shapeI;
+        print(GameManager.curShapeM + " + " + GameManager.curShapeS + " + " + GameManager.curShapeI);
         lightPlayer.GetComponent<Light>().cookie = lightCookie;
         //hide button
         btn.gameObject.SetActive(false);

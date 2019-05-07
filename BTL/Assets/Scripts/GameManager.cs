@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
     static public string curSentenceKey = "myCurrentSentence";
+    static public string curIndexKey = "myCurrentIndex";
     static public string curGoalNumKey = "curGoalNum";
     static public string nextGoalNumKey = "nextGoalNum";
     static public string inModuleKey = "isInModule"; //equal to a module number
@@ -51,15 +52,18 @@ public class GameManager : MonoBehaviour {
         //or set d and f to item drop
     };
 
+
     
     [Header("Current Game Status")]
     //current level
     //static public int currentPuzzle = -1;
     static public int curModule = 0;
     static public int curSentence = 0;
+    static public int curIndex = 0;
     //current shape
     static public int curShapeM = 0;
     static public int curShapeS = 0;
+    static public int curShapeI = 0;
 
     //for checking current
     bool firstTouch = true;
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour {
     static public bool checkedSth = false;
     static public int shapeM = 0;
     static public int shapeS = 0;
+    static public int shapeI = 0;
 
     [Header("Sound Control")]
     //Sound
@@ -270,13 +275,16 @@ public class GameManager : MonoBehaviour {
                 for (int i = 0; i <= curSentence; i++)
                 {
                     print(i);
-                    if (checkRegion(curModule, i))
-                    {
-                        checkedSth = true;
-                        shapeM = curModule;
-                        shapeS = i;
-                        SoundEffectSrc.PlayOneShot(s_getShape);
+                    for (int j = 0; j < lineIndexMax(curModule, i); j++){
+                        if (checkRegion(curModule, i, j))
+                        {
+                            checkedSth = true;
+                            shapeM = curModule;
+                            shapeS = i;
+                            shapeI = j;
+                            SoundEffectSrc.PlayOneShot(s_getShape);
 
+                        }
                     }
                 }
 
@@ -285,7 +293,7 @@ public class GameManager : MonoBehaviour {
                 if (onPuz) //puz mod
                 {
                     print("checking");
-                    if (checkRegion(curModule, curSentence))
+                    if (checkRegion(curModule, curSentence, curIndex))
                     {
                         print("Puzzle Solved!!!!!");
                         puzSolved = true;
@@ -315,17 +323,18 @@ public class GameManager : MonoBehaviour {
 
 
 
-    bool checkRegion(int cm,int cs){       
-        float charX = GetPuzzleRegion(cm, cs)[0];
-        float charZ = GetPuzzleRegion(cm, cs)[1];
-        float CamAngleX = GetPuzzleRegion(cm, cs)[2];
-        float CamAngleY = GetPuzzleRegion(cm, cs)[3];
-        float ChrDeltaX = GetPuzzleRegion(cm, cs)[4];
-        float ChrDeltaZ = GetPuzzleRegion(cm, cs)[5];
-        float CamDeltaX = GetPuzzleRegion(cm, cs)[6];
-        float CamDeltaY = GetPuzzleRegion(cm, cs)[7];
-        int sm = GetShapeUsed(cm, cs)[0];
-        int ss = GetShapeUsed(cm, cs)[1];
+    bool checkRegion(int cm,int cs, int idx){       
+        float charX = GetPuzzleRegion(cm, cs, idx)[0];
+        float charZ = GetPuzzleRegion(cm, cs, idx)[1];
+        float CamAngleX = GetPuzzleRegion(cm, cs, idx)[2];
+        float CamAngleY = GetPuzzleRegion(cm, cs, idx)[3];
+        float ChrDeltaX = GetPuzzleRegion(cm, cs, idx)[4];
+        float ChrDeltaZ = GetPuzzleRegion(cm, cs, idx)[5];
+        float CamDeltaX = GetPuzzleRegion(cm, cs, idx)[6];
+        float CamDeltaY = GetPuzzleRegion(cm, cs, idx)[7];
+        int sm = GetShapeUsed(cm, cs, idx)[0];
+        int ss = GetShapeUsed(cm, cs, idx)[1];
+        int si = GetShapeUsed(cm, cs, idx)[2];
 
         float curAngley;
         if(MainCamObj.transform.rotation.eulerAngles.y>180){
@@ -340,12 +349,13 @@ public class GameManager : MonoBehaviour {
         //print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)));
         print(curShapeM == sm);
         print(curShapeS == ss);
+        print(curShapeS == si);
 
         if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
            && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ
            && Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) <= CamDeltaX
            && Mathf.Abs((float)(curAngley - CamAngleY)) <= CamDeltaY
-           && curShapeM == sm && curShapeS == ss){
+           && curShapeM == sm && curShapeS == ss && curShapeI == si){
             return true;
         }
         else{
@@ -353,7 +363,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    float[] GetPuzzleRegion(int m, int s){
+    float[] GetPuzzleRegion(int m, int s, int idx){
         float[] bounds = new float[9];
         //bounds[0] CharX
         //bounds[1] CharZ
@@ -393,10 +403,10 @@ public class GameManager : MonoBehaviour {
 
 
     //for solving puzzles
-    int[] GetShapeUsed(int m, int s)
+    int[] GetShapeUsed(int m, int s, int idx)
     {
         // add a bit n
-        int[] shapeMS = new int[2];
+        int[] shapeMSI = new int[3];
         //bounds[0] CharX
         //bounds[1] CharZ
 
@@ -404,14 +414,32 @@ public class GameManager : MonoBehaviour {
         {
             if (s == 1)
             {
-                shapeMS[0] = 0;
-                shapeMS[1] = 0;
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
+                shapeMSI[2] = 0;
             }else if(s == 2){
-                shapeMS[0] = 1;
-                shapeMS[1] = 1;
+                shapeMSI[0] = 1;
+                shapeMSI[1] = 1;
+                shapeMSI[2] = 0;
             }
         }
-        return shapeMS;
+        return shapeMSI;
+    }
+
+    int lineIndexMax(int m, int s){
+        int maxNum = 1;
+        if (m == 1)
+        {
+            if (s == 1)
+            {
+                maxNum = 1;
+            }
+            else if (s == 2)
+            {
+                maxNum = 1;
+            }
+        }
+        return maxNum;
     }
 
 
@@ -442,6 +470,7 @@ public class GameManager : MonoBehaviour {
         }
         //save percentage
         //PlayerPrefs.SetFloat(percentangeKey, );
+
 
         PlayerPrefs.SetInt(inRoundKey, 0);
     }
