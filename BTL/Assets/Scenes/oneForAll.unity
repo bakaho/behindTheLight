@@ -18842,7 +18842,7 @@ Prefab:
         type: 2}
       propertyPath: nextObj.Array.data[0]
       value: 
-      objectReference: {fileID: 2075223972}
+      objectReference: {fileID: 2090856118}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: borderToClose
@@ -18910,7 +18910,7 @@ Prefab:
         type: 2}
       propertyPath: nextObj.Array.data[1]
       value: 
-      objectReference: {fileID: 2075223972}
+      objectReference: {fileID: 2090856118}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: voiceOver
@@ -19619,6 +19619,11 @@ Transform:
   m_Father: {fileID: 1854865928}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2090856118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1149472349261888, guid: f401dee0820744c3dafbd299a0e20b76,
+    type: 2}
+  m_PrefabInternal: {fileID: 177133132}
 --- !u!1 &2099200099
 GameObject:
   m_ObjectHideFlags: 0

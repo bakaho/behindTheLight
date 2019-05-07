@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour {
 
     [Header("Properties Preset")]
     //game level preset
-    static public int[] moduleProgress = new int[8] {0, 0, 0, 0, 0, 0, 0, 0};
-    static public int[] moduleProgressUB = new int[8] {1, 1, 1, 1, 1, 1, 1, 1};
+    static public int[] moduleProgress = new int[8] {0, 0, 0, 0, 0, 0, 0, 0};//useless?
+    static public int[] moduleProgressUB = new int[8] {1, 1, 1, 1, 1, 1, 1, 1}; 
     static public int[,] ModuleSentence = new int[10, 10]; //save the current progress
     static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
     static public int[] NumOfSenInModule = new int[10] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
@@ -181,7 +181,12 @@ public class GameManager : MonoBehaviour {
         }
 
         //set border
-        moduleBorder[curModule].SetActive(true);
+        if(curModule == 1 && curSentence == 3){
+            moduleBorder[2].SetActive(true);
+        }else{
+            moduleBorder[curModule].SetActive(true);
+        }
+
 
 
         //moduleProgressKey
@@ -295,6 +300,39 @@ public class GameManager : MonoBehaviour {
                 PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC + "Finish") == 1)
             {
                 pt.transform.GetComponent<puzzleTextControl>().isFinished = true;
+            }
+        }
+
+        if (PlayerPrefs.GetInt(inRoundKey, 0) == 0)
+        {
+            //set totally finished modules to all up
+            for (int i = 0; i < 8; i++)
+            {
+                if (PlayerPrefs.GetInt(moduleProgressKey[i], 0) == moduleProgressUB[i])
+                {
+                    GameObject[] pTxts = GameObject.FindGameObjectsWithTag("puzzleText");
+                    foreach (GameObject pt in pTxts)
+                    {
+                        //fully turn on
+                        pt.GetComponent<BoxCollider>().enabled = true;
+                        pt.transform.GetChild(0).gameObject.SetActive(true);
+                        pt.transform.GetChild(1).gameObject.SetActive(true);
+                        pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                        pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
+                        pt.transform.GetComponent<puzzleTextControl>().thisModel.SetActive(true);
+                    }
+
+                    GameObject[] sTxt = GameObject.FindGameObjectsWithTag("storyText");
+                    foreach (GameObject st in sTxt)
+                    {
+                        //fully turn on
+                        st.GetComponent<BoxCollider>().enabled = true;
+                        st.transform.GetChild(0).gameObject.SetActive(true);
+                        st.transform.GetChild(1).gameObject.SetActive(true);
+                        st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                        st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                    }
+                }
             }
         }
 
