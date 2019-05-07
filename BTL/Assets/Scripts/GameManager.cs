@@ -266,6 +266,7 @@ public class GameManager : MonoBehaviour {
                 firstTouch = false;
                 myLight.inControl = false;
                 //1. show button
+                //add a n
                 for (int i = 0; i <= curSentence; i++)
                 {
                     print(i);
@@ -391,9 +392,10 @@ public class GameManager : MonoBehaviour {
 
 
 
-
+    //for solving puzzles
     int[] GetShapeUsed(int m, int s)
     {
+        // add a bit n
         int[] shapeMS = new int[2];
         //bounds[0] CharX
         //bounds[1] CharZ
@@ -411,6 +413,9 @@ public class GameManager : MonoBehaviour {
         }
         return shapeMS;
     }
+
+
+
 
     public void playNextLineSound(){
         SoundEffectSrc.PlayOneShot(s_nextLine);

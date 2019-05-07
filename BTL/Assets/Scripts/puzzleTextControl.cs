@@ -80,6 +80,7 @@ public class puzzleTextControl : MonoBehaviour {
             if (GameManager.checkedSth && GameManager.shapeM == moduleC && GameManager.shapeS == sentenceC)
             {
                 GameManager.checkedSth = false;
+                //add a i to set which
                 changeBtn();
             }
 
