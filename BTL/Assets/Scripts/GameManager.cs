@@ -479,6 +479,18 @@ public class GameManager : MonoBehaviour {
                 bounds[6] = 1f;
                 bounds[7] = 3f;
             }
+        }else if(m == 2){
+            if (s == 0)
+            {
+                bounds[0] = -67.7f;
+                bounds[1] = 225.2f;
+                bounds[2] = 29f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
         }
         return bounds;
     }
@@ -503,6 +515,14 @@ public class GameManager : MonoBehaviour {
             }else if(s == 2){
                 shapeMSI[0] = 1;
                 shapeMSI[1] = 1;
+                shapeMSI[2] = 0;
+            }
+        }else if (m == 2){
+            if (s == 0)
+            {
+                //use circle
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
                 shapeMSI[2] = 0;
             }
         }
