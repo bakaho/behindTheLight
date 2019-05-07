@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
     //key names:
     static public string guidedKey = "guided";
+    static public string percentangeKey = "percentage";
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
     static public string curSentenceKey = "myCurrentSentence";
@@ -434,6 +435,9 @@ public class GameManager : MonoBehaviour {
 
 
         }
+        //save percentage
+        //PlayerPrefs.SetFloat(percentangeKey, );
+
         PlayerPrefs.SetInt(inRoundKey, 0);
     }
 }
