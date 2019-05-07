@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 9b5b78c4a07fc4e99b596124e33ec37a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ffd1Base
+    100002: ffd1Lattice
+    100004: group2
+    100006: //RootNode
+    100008: nurbsCircle1
+    100010: nurbsCircle2
+    100012: nurbsToPoly1
+    100014: place3dTexture1
+    100016: place3dTexture2
+    100018: polySurface135
+    100020: polySurface136
+    100022: pSphere1
+    100024: pSphere2
+    100026: The_Kings_Treasure:Crown1
+    100028: The_Kings_Treasure:polySurface18
+    100030: The_Kings_Treasure:polySurface19
+    100032: The_Kings_Treasure:polySurface41
+    100034: The_Kings_Treasure:polySurface42
+    100036: The_Kings_Treasure:polySurface43
+    100038: The_Kings_Treasure:polySurface44
+    100040: The_Kings_Treasure:polySurface45
+    100042: The_Kings_Treasure:polySurface46
+    100044: The_Kings_Treasure:polySurface47
+    100046: The_Kings_Treasure:polySurface48
+    100048: The_Kings_Treasure:polySurface49
+    100050: The_Kings_Treasure:polySurface50
+    100052: The_Kings_Treasure:polySurface51
+    100054: The_Kings_Treasure:polySurface52
+    100056: The_Kings_Treasure:polySurface53
+    100058: The_Kings_Treasure:polySurface54
+    100060: transform1
+    100062: transform10
+    100064: transform11
+    100066: transform12
+    100068: transform13
+    100070: transform14
+    100072: transform15
+    100074: transform16
+    100076: transform17
+    100078: transform18
+    100080: transform2
+    100082: transform3
+    100084: transform4
+    100086: transform5
+    100088: transform6
+    100090: transform7
+    100092: transform8
+    100094: transform9
+    400000: ffd1Base
+    400002: ffd1Lattice
+    400004: group2
+    400006: //RootNode
+    400008: nurbsCircle1
+    400010: nurbsCircle2
+    400012: nurbsToPoly1
+    400014: place3dTexture1
+    400016: place3dTexture2
+    400018: polySurface135
+    400020: polySurface136
+    400022: pSphere1
+    400024: pSphere2
+    400026: The_Kings_Treasure:Crown1
+    400028: The_Kings_Treasure:polySurface18
+    400030: The_Kings_Treasure:polySurface19
+    400032: The_Kings_Treasure:polySurface41
+    400034: The_Kings_Treasure:polySurface42
+    400036: The_Kings_Treasure:polySurface43
+    400038: The_Kings_Treasure:polySurface44
+    400040: The_Kings_Treasure:polySurface45
+    400042: The_Kings_Treasure:polySurface46
+    400044: The_Kings_Treasure:polySurface47
+    400046: The_Kings_Treasure:polySurface48
+    400048: The_Kings_Treasure:polySurface49
+    400050: The_Kings_Treasure:polySurface50
+    400052: The_Kings_Treasure:polySurface51
+    400054: The_Kings_Treasure:polySurface52
+    400056: The_Kings_Treasure:polySurface53
+    400058: The_Kings_Treasure:polySurface54
+    400060: transform1
+    400062: transform10
+    400064: transform11
+    400066: transform12
+    400068: transform13
+    400070: transform14
+    400072: transform15
+    400074: transform16
+    400076: transform17
+    400078: transform18
+    400080: transform2
+    400082: transform3
+    400084: transform4
+    400086: transform5
+    400088: transform6
+    400090: transform7
+    400092: transform8
+    400094: transform9
+    2100000: blinn2
+    2100002: The_Kings_Treasure_Tapestry_Rope
+    2100004: lambert2
+    2300000: polySurface136
+    2300002: pSphere1
+    2300004: pSphere2
+    3300000: polySurface136
+    3300002: pSphere1
+    3300004: pSphere2
+    4300000: polySurface136
+    4300002: pSphere1
+    4300004: pSphere2
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
