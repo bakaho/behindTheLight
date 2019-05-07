@@ -14,5 +14,8 @@ public class endingControl : MonoBehaviour {
 		
 	}
 
+    public void hideEndingLine(){
+        this.gameObject.SetActive(false);
+    }
 
 }

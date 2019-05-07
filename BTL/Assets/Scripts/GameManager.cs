@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
@@ -184,10 +184,14 @@ public class GameManager : MonoBehaviour {
         //retrieve before
         if (PlayerPrefs.HasKey(inRoundKey) && PlayerPrefs.GetInt(inRoundKey) == 1)
         {
+            bool alreadyFindCur = false;
             //puzzles
             GameObject[] pTxts = GameObject.FindGameObjectsWithTag("puzzleText");
             foreach(GameObject pt in pTxts){
-                
+                if(!alreadyFindCur && pt.GetComponent<puzzleTextControl>().moduleC== curModule && pt.GetComponent<puzzleTextControl>().sentenceC == curSentence){
+                    player.transform.position = pt.transform.position - new Vector3(0, 0, 54);
+                    //MainCamObj.transform.position = player.transform.position + new Vector3(0, 65, -68);
+                }
                 //pt.SetActive(true);
                 if(PlayerPrefs.HasKey("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) &&
                     PlayerPrefs.GetInt("M"+pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) != 0){
@@ -207,6 +211,12 @@ public class GameManager : MonoBehaviour {
             GameObject[] sTxts = GameObject.FindGameObjectsWithTag("storyText");
             foreach (GameObject st in sTxts)
             {
+                if (!alreadyFindCur && st.GetComponent<storyTextControl>().moduleC == curModule && st.GetComponent<storyTextControl>().sentenceC == curSentence)
+                {
+                    player.transform.position = st.transform.position - new Vector3(0, 0, 54);
+                    //MainCamObj.transform.position = player.transform.position + new Vector3(0, 65, -68);
+                }
+
                 if (PlayerPrefs.HasKey("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) &&
                     PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) != 0)
                 {
@@ -222,6 +232,20 @@ public class GameManager : MonoBehaviour {
                 }
             }
         }
+
+        //set is finished
+        GameObject[] pTxtF = GameObject.FindGameObjectsWithTag("puzzleText");
+        foreach (GameObject pt in pTxtF)
+        {
+
+            //pt.SetActive(true);
+            if (PlayerPrefs.HasKey("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC + "Finish") &&
+                PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC + "Finish") == 1)
+            {
+                pt.transform.GetComponent<puzzleTextControl>().isFinished = true;
+            }
+        }
+
 
 
         //set in round
@@ -393,5 +417,22 @@ public class GameManager : MonoBehaviour {
     public void playLockSound()
     {
         SoundEffectSrc.PlayOneShot(s_locked);
+    }
+
+    public void finishRound(){
+        GameObject[] pTxts = GameObject.FindGameObjectsWithTag("puzzleText");
+        foreach (GameObject pt in pTxts)
+        {
+            //sabe finished clear triggered
+            if(pt.GetComponent<puzzleTextControl>().isTriggered){
+                PlayerPrefs.SetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC + "Finish", 1);
+                print("[local storage] M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC + " is saved as Finished Forever");
+
+                PlayerPrefs.SetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC, 0);
+            }
+
+
+        }
+        PlayerPrefs.SetInt(inRoundKey, 0);
     }
 }

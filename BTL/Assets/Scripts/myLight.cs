@@ -58,6 +58,7 @@ public class myLight : MonoBehaviour {
     bool darkCurtainFinished = false;
     public GameObject EQSound1;
     public GameObject EQSound2;
+    public Animator endAnim;
 
 	// Use this for initialization
 	void Start () {
@@ -274,6 +275,15 @@ public class myLight : MonoBehaviour {
             {
                 if(checker.checkPassed()){
                     //pass end
+                    endAnim.SetBool("passed", true);
+                    GM.GetComponent<GameManager>().finishRound();
+                }else{
+                    xApart = 2 * hNet;
+                    yApart = 2 * vNet;
+                    xApartOrg = 2 * hNet;
+                    yApartOrg = 2 * vNet;
+                    //Handheld.Vibrate();
+                    GM.GetComponent<GameManager>().playLockSound();
                 }
             }
 
