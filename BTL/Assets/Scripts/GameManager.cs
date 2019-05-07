@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
     //key names:
     static public string guidedKey = "guided";
+    static public string unlockedLineKey = "unlockedLineNum";
     static public string percentangeKey = "percentage";
     static public string gloopKey = "myGameLoop";
     static public string curModuleKey = "myCurrentModule";
@@ -465,11 +466,25 @@ public class GameManager : MonoBehaviour {
 
                 PlayerPrefs.SetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC, 0);
             }
-
-
         }
+
+        GameObject[] sTxts = GameObject.FindGameObjectsWithTag("storyText");
+        foreach (GameObject st in sTxts)
+        {
+            //sabe finished clear triggered
+            if (st.GetComponent<puzzleTextControl>().isTriggered)
+            {
+                PlayerPrefs.SetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC, 0);
+            }
+        }
+
         //save percentage
         //PlayerPrefs.SetFloat(percentangeKey, );
+        int totalLines = GameObject.FindGameObjectsWithTag("puzzleText").Length + GameObject.FindGameObjectsWithTag("storyText").Length;
+        int got = PlayerPrefs.GetInt(GameManager.unlockedLineKey, 0);
+        float percent = (float)got/(float)totalLines;
+        PlayerPrefs.SetFloat(percentangeKey, percent);
+
 
 
         PlayerPrefs.SetInt(inRoundKey, 0);

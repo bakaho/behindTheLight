@@ -138,6 +138,8 @@ public class puzzleTextControl : MonoBehaviour {
     //set
 
     public void showHint(){
+        //firstTime count
+        PlayerPrefs.SetInt(GameManager.unlockedLineKey, PlayerPrefs.GetInt(GameManager.unlockedLineKey, 0) + 1);
         //set puzzle
         GameManager.onPuz = true;
         GameManager.curModule = moduleC;

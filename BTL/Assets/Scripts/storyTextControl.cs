@@ -159,4 +159,12 @@ public class storyTextControl : MonoBehaviour {
             }
         }
     }
+
+    public void saveThis(){
+        if(!PlayerPrefs.HasKey("M" + moduleC + "S" + sentenceC + "Finish")){
+            PlayerPrefs.SetInt("M" + moduleC + "S" + sentenceC + "Finish", 1);
+            PlayerPrefs.SetInt(GameManager.unlockedLineKey,PlayerPrefs.GetInt(GameManager.unlockedLineKey,0)+1);
+        }
+            
+    }
 }
