@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
     //objects
     public GameObject MainCamObj;
     public GameObject player;
+    public GameObject[] moduleBorder;
     //static public bool[] itemCollectionCheck = new bool[12]{false, false, false, false, false, false, false, false, false, false, false, false};
 
     [Header("Properties Preset")]
@@ -175,8 +176,12 @@ public class GameManager : MonoBehaviour {
         if(PlayerPrefs.HasKey(curModuleKey) && PlayerPrefs.HasKey(curSentenceKey)){
             curModule = PlayerPrefs.GetInt(curModuleKey);
             curSentence = PlayerPrefs.GetInt(curSentenceKey);
+            curIndex = PlayerPrefs.GetInt(curIndexKey);
             print("[loacl storage] Reloaded M = " + curModule + " S = " + curSentence);
         }
+
+        //set border
+        moduleBorder[curModule].SetActive(true);
 
 
         //moduleProgressKey
@@ -196,21 +201,42 @@ public class GameManager : MonoBehaviour {
             //puzzles
             GameObject[] pTxts = GameObject.FindGameObjectsWithTag("puzzleText");
             foreach(GameObject pt in pTxts){
-                if(!alreadyFindCur && pt.GetComponent<puzzleTextControl>().moduleC== curModule && pt.GetComponent<puzzleTextControl>().sentenceC == curSentence){
-                    player.transform.position = pt.transform.position - new Vector3(0, 0, 54);
-                    //MainCamObj.transform.position = player.transform.position + new Vector3(0, 65, -68);
-                }
                 //pt.SetActive(true);
                 if(PlayerPrefs.HasKey("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) &&
-                    PlayerPrefs.GetInt("M"+pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) != 0){
+                    PlayerPrefs.GetInt("M"+pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) == 1){
                     pt.GetComponent<BoxCollider>().enabled = true;
                     pt.transform.GetChild(0).gameObject.SetActive(true);
                     pt.transform.GetChild(1).gameObject.SetActive(true);
-                    if (PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) != 2)
-                    {
+
+                    //if (PlayerPrefs.GetInt("M" + pt.GetComponent<puzzleTextControl>().moduleC + "S" + pt.GetComponent<puzzleTextControl>().sentenceC) != 2)
+                    //{
                         pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
                         pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
+                    pt.transform.GetComponent<puzzleTextControl>().thisModel.SetActive(true);
+                    //}
+                }
+                //find current and next
+                if (!alreadyFindCur && pt.GetComponent<puzzleTextControl>().moduleC == curModule && pt.GetComponent<puzzleTextControl>().sentenceC == curSentence)
+                {
+                    player.transform.position = pt.transform.position - new Vector3(0, 0, 54);
+
+                    if (!pt.GetComponent<puzzleTextControl>().isTheLast)
+                    {
+                        int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
+                        pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
+                        pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
+                        pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
+                        pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].transform.GetChild(1).GetComponent<Light>().intensity = 0;
+                        if (pt.GetComponent<puzzleTextControl>().nextIsPuz)
+                        {
+                            pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<puzzleTextControl>().isTriggered = false;
+                        }
+                        else
+                        {
+                            pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<storyTextControl>().isTriggered = false;
+                        }
                     }
+                    alreadyFindCur = true;
                 }
 
             }
@@ -219,24 +245,42 @@ public class GameManager : MonoBehaviour {
             GameObject[] sTxts = GameObject.FindGameObjectsWithTag("storyText");
             foreach (GameObject st in sTxts)
             {
-                if (!alreadyFindCur && st.GetComponent<storyTextControl>().moduleC == curModule && st.GetComponent<storyTextControl>().sentenceC == curSentence)
-                {
-                    player.transform.position = st.transform.position - new Vector3(0, 0, 54);
-                    //MainCamObj.transform.position = player.transform.position + new Vector3(0, 65, -68);
-                }
-
                 if (PlayerPrefs.HasKey("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) &&
-                    PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) != 0)
+                    PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) == 1)
                 {
                     //st.SetActive(true);
                     st.GetComponent<BoxCollider>().enabled = true;
                     st.transform.GetChild(0).gameObject.SetActive(true);
                     st.transform.GetChild(1).gameObject.SetActive(true);
-                    if (PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) != 2)
-                    {
+                    //if (PlayerPrefs.GetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC) != 2)
+                    //{
                         st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
                         st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                    //}
+                }
+
+                if (!alreadyFindCur && st.GetComponent<storyTextControl>().moduleC == curModule && st.GetComponent<storyTextControl>().sentenceC == curSentence)
+                {
+                    player.transform.position = st.transform.position - new Vector3(0, 0, 54);
+
+                    if (!st.GetComponent<storyTextControl>().isTheLast)
+                    {
+                        int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
+                        st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
+                        st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
+                        st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
+                        st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(1).GetComponent<Light>().intensity = 0;
+                        if (st.GetComponent<storyTextControl>().nextIsPuz)
+                        {
+                            st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<puzzleTextControl>().isTriggered = false;
+                        }
+                        else
+                        {
+                            st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<storyTextControl>().isTriggered = false;
+                        }
                     }
+                    alreadyFindCur = true;
+
                 }
             }
         }

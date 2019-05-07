@@ -10,15 +10,17 @@ public class storyTextControl : MonoBehaviour {
     [Header("Initial Objects")]
     //GameManager
     public GameObject GM;
+    public AudioSource Read;
 
     [Header("UI")]
     //UI 
     public Image dateTime;
 
     [Header("Next Properties")]
+    public bool nextIsPuz = false;
     public int moduleN = 0;
     public int sentenceN = 0;
-    int nextIndex = 0;
+    public int nextIndex = 0;
     public GameObject[] nextObj;
 
     [Header("This Properties")]
@@ -35,6 +37,9 @@ public class storyTextControl : MonoBehaviour {
     public int curMonth = 00;
     public int curDay = 00;
     public GameObject borderToClose;
+
+    [Header("Sound")]
+    public AudioClip voiceOver;
 
     [Header("Path Selector")]
     public GameObject[] aiDot = new GameObject[4];
@@ -59,6 +64,10 @@ public class storyTextControl : MonoBehaviour {
     }
 
     public void showNext(){
+        if(!GameManager.isMute){
+            Read.Stop();
+            Read.PlayOneShot(voiceOver);
+        }
         if (isTheFirst)
         {
             PlayerPrefs.SetInt("finalMood", myMood);
