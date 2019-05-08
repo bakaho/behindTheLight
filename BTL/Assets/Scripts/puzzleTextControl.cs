@@ -221,8 +221,8 @@ public class puzzleTextControl : MonoBehaviour {
         }
         PlayerPrefs.SetInt("M" + moduleC + "S" + sentenceC,1);
         print("[loacl storage] M" + moduleC + "S" + sentenceC + " is saved as triggered");
-        PlayerPrefs.SetInt("M" + moduleN + "S" + sentenceN, 2);
-        print("[loacl storage] M" + moduleN + "S" + sentenceN + " is saved as the next");
+        //PlayerPrefs.SetInt("M" + moduleN + "S" + sentenceN, 2);
+        //print("[loacl storage] M" + moduleN + "S" + sentenceN + " is saved as the next");
     }
 
    
