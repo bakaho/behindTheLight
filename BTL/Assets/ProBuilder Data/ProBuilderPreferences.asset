@@ -14,25 +14,14 @@ MonoBehaviour:
   m_Bool_keys: []
   m_Int_keys:
   - pbHandleAlignment
-  - pbDefaultEditLevel
   m_Float_keys:
   - pbEditorScroll.x
   - pbEditorScroll.y
   m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-<<<<<<< HEAD
-<<<<<<< HEAD
   m_Bool_values: 
   m_Int_values: 00000000
-=======
-  m_Bool_values: 01
-  m_Int_values: 0000000000000000
->>>>>>> parent of ba283e4... updateCodeLib
-=======
-  m_Bool_values: 01
-  m_Int_values: 0000000000000000
->>>>>>> parent of ba283e4... updateCodeLib
   m_Float_values:
   - 0
   - 0

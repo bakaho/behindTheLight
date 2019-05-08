@@ -160,11 +160,6 @@ public class puzzleTextControl : MonoBehaviour {
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;
         GameManager.curIndex = indexC;
-        //set player pref
-        PlayerPrefs.SetInt(GameManager.curModuleKey,moduleC);
-        PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
-        PlayerPrefs.SetInt(GameManager.curIndexKey, indexC);
-        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey) + ", Index saved: " + PlayerPrefs.GetInt(GameManager.curIndexKey));
         //show hint
         puzHintObj.SetActive(true);
     }
@@ -178,6 +173,14 @@ public class puzzleTextControl : MonoBehaviour {
 
     public void showNext()
     {
+        //set player pref
+        PlayerPrefs.SetInt(GameManager.curModuleKey,moduleC);
+        PlayerPrefs.SetInt(GameManager.curSentenceKey, sentenceC);
+        PlayerPrefs.SetInt(GameManager.curIndexKey, indexC);
+        print("[loacl storage] Module saved: " + PlayerPrefs.GetInt(GameManager.curModuleKey) + ", Sentence saved: " + PlayerPrefs.GetInt(GameManager.curSentenceKey) + ", Index saved: " + PlayerPrefs.GetInt(GameManager.curIndexKey));
+
+
+
         if (!GameManager.isMute)
         {
             Read.Stop();

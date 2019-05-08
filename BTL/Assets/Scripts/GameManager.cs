@@ -380,8 +380,7 @@ public class GameManager : MonoBehaviour {
 
                         }
                     }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                 }
 
                 if(curModule == 2){
@@ -399,10 +398,7 @@ public class GameManager : MonoBehaviour {
                             }
                         }
                     }
-=======
->>>>>>> parent of ba283e4... updateCodeLib
-=======
->>>>>>> parent of ba283e4... updateCodeLib
+
                 }
 
 
