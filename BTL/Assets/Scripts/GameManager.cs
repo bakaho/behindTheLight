@@ -384,6 +384,7 @@ public class GameManager : MonoBehaviour {
 
                 if(curModule == 2){
                     for (int i = 0; i <= 2; i++){
+                        print("checking level 1");
                         for (int j = 0; j < lineIndexMax(1, i); j++)
                         {
                             if (checkRegion(1, i, j))
