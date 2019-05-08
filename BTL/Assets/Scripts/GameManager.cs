@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //set path
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < 4; j++)
         {
             aiDot[j].GetComponent<pathFixed>().pathCreator = moduleInnerPath[curModule].transform.GetChild(j).GetComponent<PathCreator>();
             aiDot[j].GetComponent<pathFixed>().resetDistanceIn();
@@ -380,6 +380,7 @@ public class GameManager : MonoBehaviour {
 
                         }
                     }
+<<<<<<< HEAD
                 }
 
                 if(curModule == 2){
@@ -397,6 +398,8 @@ public class GameManager : MonoBehaviour {
                             }
                         }
                     }
+=======
+>>>>>>> parent of ba283e4... updateCodeLib
                 }
 
 
@@ -518,20 +521,7 @@ public class GameManager : MonoBehaviour {
                 bounds[5] = 3f;
                 bounds[6] = 3f;
                 bounds[7] = 3f;
-            }
-
-            else if(s == 2){
-                bounds[0] = 50.1f;
-                bounds[1] = 215.5f;
-                bounds[2] = 28f;
-                bounds[3] = 0f;
-                bounds[4] = 2f;
-                bounds[5] = 3f;
-                bounds[6] = 3f;
-                bounds[7] = 3f;
-            }
-
-            else if (s == 5)
+            }else if (s == 5)
             {
                 if (idx == 0)
                 {
@@ -553,66 +543,6 @@ public class GameManager : MonoBehaviour {
                     bounds[6] = 3f;
                     bounds[7] = 3f;
                 }
-            }
-
-            else if (s == 8)
-            {
-                bounds[0] = 111.8f;
-                bounds[1] = 372.1f;
-                bounds[2] = 28f;
-                bounds[3] = 0f;
-                bounds[4] = 2f;
-                bounds[5] = 3f;
-                bounds[6] = 3f;
-                bounds[7] = 3f;
-            }
-
-            else if (s == 10)
-            {
-                bounds[0] = 72.1f;
-                bounds[1] = 374.6f;
-                bounds[2] = 28f;
-                bounds[3] = 0f;
-                bounds[4] = 2f;
-                bounds[5] = 3f;
-                bounds[6] = 3f;
-                bounds[7] = 3f;
-            }
-
-            else if (s == 13)
-            {
-                bounds[0] = 280f;
-                bounds[1] = 408f;
-                bounds[2] = 28f;
-                bounds[3] = 0f;
-                bounds[4] = 2f;
-                bounds[5] = 3f;
-                bounds[6] = 3f;
-                bounds[7] = 3f;
-            }
-
-            else if(s == 16)
-            {
-                bounds[0] = -50.7f;
-                bounds[1] = 299.3f;
-                bounds[2] = 29f;
-                bounds[3] = 0f;
-                bounds[4] = 2f;
-                bounds[5] = 3f;
-                bounds[6] = 3f;
-                bounds[7] = 3f;
-            }
-
-            else if (s == 22)
-            {
-                bounds[0] = 148.5f;
-                bounds[1] = 404.5f;
-                bounds[2] = 28f;
-                bounds[3] = 0f;
-                bounds[4] = 2f;
-                bounds[5] = 3f;
-                bounds[6] = 3f;
-                bounds[7] = 3f;
             }
         }
         return bounds;
@@ -647,77 +577,18 @@ public class GameManager : MonoBehaviour {
                 shapeMSI[0] = 0;
                 shapeMSI[1] = 0;
                 shapeMSI[2] = 0;
-            }
-
-            else if (s == 2){
-                //use circle
-                shapeMSI[0] = 1;
-                shapeMSI[1] = 2;
-                shapeMSI[2] = 0;
-            }
-
-            else if (s == 5)
+            }else if (s == 5)
             {
                 if (idx == 0)
                 {
                     shapeMSI[0] = 2;
                     shapeMSI[1] = 0;
                     shapeMSI[2] = 0;
-                }
-                else
-                {
+                }else{
                     shapeMSI[0] = 2;
                     shapeMSI[1] = 5;
                     shapeMSI[2] = 0;
                 }
-            }
-
-            else if (s == 8)
-            {
-                //use circle
-                shapeMSI[0] = 0;
-                shapeMSI[1] = 0;
-                shapeMSI[2] = 0;
-            }
-
-            else if (s == 10)
-            {
-                //use circle
-                shapeMSI[0] = 1;
-                shapeMSI[1] = 1;
-                shapeMSI[2] = 0;
-            }
-
-            else if (s == 13)
-            {
-                //use circle
-                shapeMSI[0] = 0;
-                shapeMSI[1] = 0;
-                shapeMSI[2] = 0;
-            }
-
-
-            else if(s == 16)
-            {
-                shapeMSI[0] = 1;
-                shapeMSI[1] = 2;
-                shapeMSI[2] = 0;
-            }
-
-            else if (s == 20)
-            {
-                //use circle
-                shapeMSI[0] = 2;
-                shapeMSI[1] = 13;
-                shapeMSI[2] = 0;
-            }
-
-            else if (s == 22)
-            {
-                //use circle
-                shapeMSI[0] = 2;
-                shapeMSI[1] = 2;
-                shapeMSI[2] = 0;
             }
         }
         return shapeMSI;
