@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class buttonControl : MonoBehaviour {
     [Header("Cookie Button")]
@@ -120,7 +121,7 @@ public class buttonControl : MonoBehaviour {
     }
 
     public void quitGame(){
-        
+        SceneManager.LoadScene(sceneName: "startScene");
     }
 
     public void settingTrigger()
