@@ -235,6 +235,9 @@ public class myLight : MonoBehaviour {
                 EQSound1.GetComponent<audioFadeOut>().fade();
                 EQSound2.GetComponent<audioFadeOut>().fade();
                 PlayerPrefs.SetInt(GameManager.goodBadKey, 1);
+                good.GetComponent<BoxCollider>().enabled = true;
+                good.transform.GetChild(0).gameObject.SetActive(true);
+                good.transform.GetChild(1).gameObject.SetActive(true);
                 darkCurtainFinished = true;
             }
 
