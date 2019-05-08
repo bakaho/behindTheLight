@@ -16,6 +16,7 @@ TagManager:
   - start
   - waypoint
   - end
+  - soundEffect
   layers:
   - Default
   - TransparentFX
