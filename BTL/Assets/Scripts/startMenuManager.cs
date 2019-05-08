@@ -19,6 +19,9 @@ public class startMenuManager : MonoBehaviour {
     public Sprite spStart;
     public Sprite spResume;
 
+    [Header("Help")]
+    public GameObject helpCurtain;
+
 	// Use this for initialization
 	void Start () {
         if(PlayerPrefs.GetInt("isInRound",0) == 0){
@@ -38,5 +41,14 @@ public class startMenuManager : MonoBehaviour {
 
     public void startGame(){
         curtain.SetActive(true);
+    }
+
+    public void showHelp(){
+        helpCurtain.SetActive(true);
+    }
+
+    public void closeHelp()
+    {
+        helpCurtain.SetActive(false);
     }
 }

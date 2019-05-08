@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PathCreation;
 
 public class GameManager : MonoBehaviour {
     //gameplay control
@@ -53,6 +54,8 @@ public class GameManager : MonoBehaviour {
         {1, 1}
         //or set d and f to item drop
     };
+    public GameObject[] moduleInnerPath;
+    public GameObject[] aiDot = new GameObject[4];
 
 
     
@@ -85,6 +88,8 @@ public class GameManager : MonoBehaviour {
     public AudioClip s_nextLine;
     public AudioClip s_locked;
     static public bool isMute = false;
+
+
 
     [Header("UI Control")]
     public collectCheckerControl checker;
@@ -187,6 +192,12 @@ public class GameManager : MonoBehaviour {
             moduleBorder[curModule].SetActive(true);
         }
 
+        //set path
+        for (int j = 0; j < 4; j++)
+        {
+            aiDot[j].GetComponent<pathFixed>().pathCreator = moduleInnerPath[curModule].transform.GetChild(j).GetComponent<PathCreator>();
+            aiDot[j].GetComponent<pathFixed>().resetDistanceIn();
+        }
 
 
         //moduleProgressKey
