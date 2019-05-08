@@ -252,7 +252,11 @@ public class GameManager : MonoBehaviour {
                         {
                             pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<storyTextControl>().isTriggered = false;
                         }
+                    }else if (pt.GetComponent<puzzleTextControl>().isTheLast){
+                        pt.GetComponent<puzzleTextControl>().isTriggered = false;
+                        pt.transform.GetChild(1).GetComponent<Light>().intensity = 0;
                     }
+
                     alreadyFindCur = true;
                 }
 
@@ -296,6 +300,10 @@ public class GameManager : MonoBehaviour {
                         {
                             st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<storyTextControl>().isTriggered = false;
                         }
+                    }else if (st.GetComponent<storyTextControl>().isTheLast)
+                    {
+                        st.GetComponent<storyTextControl>().isTriggered = false;
+                        st.transform.GetChild(1).GetComponent<Light>().intensity = 0;
                     }
                     alreadyFindCur = true;
 
@@ -603,8 +611,8 @@ public class GameManager : MonoBehaviour {
 
             else if (s == 16)
             {
-                bounds[0] = -50.7f;
-                bounds[1] = 299.3f;
+                bounds[0] = -128.7f;
+                bounds[1] = 333.5f;
                 bounds[2] = 28f;
                 bounds[3] = 0f;
                 bounds[4] = 2f;
@@ -612,6 +620,19 @@ public class GameManager : MonoBehaviour {
                 bounds[6] = 3f;
                 bounds[7] = 3f;
             }
+
+            else if (s == 20)
+            {
+                bounds[0] = -103.7f;
+                bounds[1] = 453.4f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
 
             else if (s == 22)
             {
