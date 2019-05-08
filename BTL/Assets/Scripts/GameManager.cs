@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
@@ -236,7 +236,8 @@ public class GameManager : MonoBehaviour {
                 {
                     player.transform.position = pt.transform.position - new Vector3(0, 0, 54);
 
-                    if (!pt.GetComponent<puzzleTextControl>().isTheLast)
+                    if (!pt.GetComponent<puzzleTextControl>().isTheLast
+                        || curModule == 1 && curSentence == 3)
                     {
                         int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
                         pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
@@ -279,7 +280,8 @@ public class GameManager : MonoBehaviour {
                 {
                     player.transform.position = st.transform.position - new Vector3(0, 0, 54);
 
-                    if (!st.GetComponent<storyTextControl>().isTheLast)
+                    if (!st.GetComponent<storyTextControl>().isTheLast
+                        || curModule == 1 && curSentence == 3)
                     {
                         int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
                         st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
@@ -576,8 +578,8 @@ public class GameManager : MonoBehaviour {
 
             else if (s == 10)
             {
-                bounds[0] = 72.1f;
-                bounds[1] = 374.6f;
+                bounds[0] = 33.7f;
+                bounds[1] = 371.2f;
                 bounds[2] = 28f;
                 bounds[3] = 0f;
                 bounds[4] = 2f;
@@ -613,8 +615,8 @@ public class GameManager : MonoBehaviour {
 
             else if (s == 22)
             {
-                bounds[0] = 148.5f;
-                bounds[1] = 404.5f;
+                bounds[0] = 110.0f;
+                bounds[1] = 401.2f;
                 bounds[2] = 28f;
                 bounds[3] = 0f;
                 bounds[4] = 2f;
