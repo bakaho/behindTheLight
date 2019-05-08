@@ -372,6 +372,7 @@ public class GameManager : MonoBehaviour {
                     for (int j = 0; j < lineIndexMax(curModule, i); j++){
                         if (checkRegion(curModule, i, j))
                         {
+                            print("true lv current");
                             checkedSth = true;
                             shapeM = curModule;
                             shapeS = i;
@@ -390,6 +391,7 @@ public class GameManager : MonoBehaviour {
                         {
                             if (checkRegion(1, i, j))
                             {
+                                print("true lv 1");
                                 checkedSth = true;
                                 shapeM = 1;
                                 shapeS = i;
@@ -455,14 +457,14 @@ public class GameManager : MonoBehaviour {
         }else{
             curAngley = MainCamObj.transform.rotation.eulerAngles.y;
         }
-        print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
-        print(Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ);
-        print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) <= CamDeltaX);
-        print(Mathf.Abs((float)(curAngley - CamAngleY)) <= CamDeltaY);
-        //print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)));
-        print(curShapeM == sm);
-        print(curShapeS == ss);
-        print(curShapeS == si);
+        //print(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX);
+        //print(Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ);
+        //print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.x - CamAngleX)) <= CamDeltaX);
+        //print(Mathf.Abs((float)(curAngley - CamAngleY)) <= CamDeltaY);
+        ////print(Mathf.Abs((float)(MainCamObj.transform.rotation.eulerAngles.y - CamAngleY)));
+        //print(curShapeM == sm);
+        //print(curShapeS == ss);
+        //print(curShapeS == si);
 
         if(Mathf.Abs((float)(player.transform.position.x - charX)) <= ChrDeltaX
            && Mathf.Abs((float)(player.transform.position.z - charZ)) <= ChrDeltaZ
@@ -520,7 +522,22 @@ public class GameManager : MonoBehaviour {
                 bounds[5] = 3f;
                 bounds[6] = 3f;
                 bounds[7] = 3f;
-            }else if (s == 5)
+            }
+
+            else if (s == 2)
+            {
+                bounds[0] = 50.1f;
+                bounds[1] = 215.5f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+
+            else if (s == 5)
             {
                 if (idx == 0)
                 {
@@ -542,6 +559,68 @@ public class GameManager : MonoBehaviour {
                     bounds[6] = 3f;
                     bounds[7] = 3f;
                 }
+            }
+
+
+            else if (s == 8)
+            {
+                bounds[0] = 85f;
+                bounds[1] = 369f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+            else if (s == 10)
+            {
+                bounds[0] = 72.1f;
+                bounds[1] = 374.6f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+
+            else if (s == 13)
+            {
+                bounds[0] = 240f;
+                bounds[1] = 405f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+            else if (s == 16)
+            {
+                bounds[0] = -50.7f;
+                bounds[1] = 299.3f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+            else if (s == 22)
+            {
+                bounds[0] = 148.5f;
+                bounds[1] = 404.5f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 2f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
             }
         }
         return bounds;
@@ -576,7 +655,16 @@ public class GameManager : MonoBehaviour {
                 shapeMSI[0] = 0;
                 shapeMSI[1] = 0;
                 shapeMSI[2] = 0;
-            }else if (s == 5)
+            }
+
+            else if (s == 2)
+            {
+                shapeMSI[0] = 1;
+                shapeMSI[1] = 2;
+                shapeMSI[2] = 0;
+            }
+
+            else if (s == 5)
             {
                 if (idx == 0)
                 {
@@ -588,6 +676,49 @@ public class GameManager : MonoBehaviour {
                     shapeMSI[1] = 5;
                     shapeMSI[2] = 0;
                 }
+            }
+
+            else if (s == 8)
+            {
+                //use circle
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
+                shapeMSI[2] = 0;
+            }
+
+            else if (s == 10)
+            {
+                shapeMSI[0] = 1;
+                shapeMSI[1] = 1;
+                shapeMSI[2] = 0;
+            }
+
+            else if (s == 13)
+            {
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
+                shapeMSI[2] = 0;
+            }
+
+            else if (s == 16)
+            {
+                shapeMSI[0] = 1;
+                shapeMSI[1] = 2;
+                shapeMSI[2] = 0;
+            }
+
+            else if (s == 20)
+            {
+                shapeMSI[0] = 2;
+                shapeMSI[1] = 13;
+                shapeMSI[2] = 0;
+            }
+
+            else if (s == 22)
+            {
+                shapeMSI[0] = 2;
+                shapeMSI[1] = 2;
+                shapeMSI[2] = 0;
             }
         }
         return shapeMSI;

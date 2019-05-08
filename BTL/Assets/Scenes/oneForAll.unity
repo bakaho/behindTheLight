@@ -2415,7 +2415,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1656884155672982, guid: 65a0aceb24bca4d5f836318b03b378f4, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0aceb24bca4d5f836318b03b378f4, type: 2}
@@ -16842,6 +16842,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1169599525659170, guid: db50016dc0c7d43b6978de21d35817af,
     type: 2}
   m_PrefabInternal: {fileID: 941985064}
+--- !u!1 &950315671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 9ee7953c0b86e43dbbf41308a61c3923,
+    type: 3}
+  m_PrefabInternal: {fileID: 1931585995}
 --- !u!1 &954985423
 GameObject:
   m_ObjectHideFlags: 0
@@ -19458,7 +19463,7 @@ Prefab:
         type: 2}
       propertyPath: thisModel
       value: 
-      objectReference: {fileID: 1431443515}
+      objectReference: {fileID: 950315671}
     - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
         type: 2}
       propertyPath: itemDropRmd
@@ -22178,7 +22183,7 @@ Prefab:
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: testMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
@@ -32425,7 +32430,7 @@ Prefab:
         type: 2}
       propertyPath: thisModel
       value: 
-      objectReference: {fileID: 481860933}
+      objectReference: {fileID: 950315671}
     - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
         type: 2}
       propertyPath: itemDropRmd

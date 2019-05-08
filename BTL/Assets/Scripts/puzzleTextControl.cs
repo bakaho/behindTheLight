@@ -165,6 +165,7 @@ public class puzzleTextControl : MonoBehaviour {
     }
 
     public void hideHint(){
+        print("run hide hints");
         puzHintObj.SetActive(false);
         GameManager.onPuz = false;
         //GameManager.curModule = -1;
