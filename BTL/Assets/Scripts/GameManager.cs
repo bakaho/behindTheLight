@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
         "玻璃杯：\n这是大学时我买给妻子的杯子，她一直在用，直到儿子把它摔碎。后来我想，这大概也算是一种最后的了结。",
         "感谢信：\n离开学校后好多年，我还常常能够收到学生的感谢信。我还记能记得他们初中的样子，现在他们都成为了各个行业优秀的人才。",
         "刀片：\n家里大大小小这些样的刀片收到了不少，我也已经习惯了，回想起来，孙子的手工课这些他不知道从哪里来的刀片还派上了很大的用场。",
-        "全家福：\n这是地震后我拍的第一张全家福，人生波折几经变化，友人聚散分分合合，然而无论如何，那个瞬间仍旧感到感激和温暖。",};
+        "全家福：\n这是地震后我拍的第一张全家福，人生波折几经变化，友人聚散分分合合，然而无论如何，那个瞬间仍旧感到感激和温暖。"};
     public Image inventory;
     public Text EndScript;
 
@@ -166,10 +166,11 @@ public class GameManager : MonoBehaviour {
             if (PlayerPrefs.HasKey(collectItemKey[i])){
                 for (int j = 0; j < 12; j++)
                 {
-                    if (!inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered)
+                    if (!inventory.transform.GetChild(j).GetComponent<slotControl>().isTriggered)
                     {
-                        inventory.transform.GetChild(i).GetComponent<slotControl>().changeItemImg(itemCollectSp[i], thisItemText[i], i);
-                        inventory.transform.GetChild(i).GetComponent<slotControl>().turnOn();
+                        print("run set text");
+                        inventory.transform.GetChild(j).GetComponent<slotControl>().changeItemImg(itemCollectSp[i], thisItemText[i], i);
+                        inventory.transform.GetChild(j).GetComponent<slotControl>().turnOn();
                         break;
                     }
                 }

@@ -2504,7 +2504,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1656884155672982, guid: 65a0aceb24bca4d5f836318b03b378f4, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a0aceb24bca4d5f836318b03b378f4, type: 2}
@@ -7557,11 +7557,11 @@ Prefab:
       objectReference: {fileID: 1185350912}
     - target: {fileID: 4806306486292370, guid: db50016dc0c7d43b6978de21d35817af, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4638067935925532, guid: db50016dc0c7d43b6978de21d35817af, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
@@ -26213,6 +26213,27 @@ Prefab:
       propertyPath: nextIsPuz.Array.data[7]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: haveItemDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: itemNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb360e60fcf724828b2bbaec6259fc2d,
+        type: 3}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: itemText
+      value: "\u6279\u8BC4\u4FE1\uFF1A \u5B66\u6821\u5728\u5927\u4F1A\u4E0A\u6279\u8BC4\u6211\u73ED\u7EA7\u6210\u7EE9\u5DEE\uFF0C\u5B66\u751F\u592A\u8FC7\u677E\u6563\u3002\u6211\u5411\u6765\u4E0D\u5C51\u8FD9\u4E9B\u8A00\u8BBA\uFF0C\u6279\u8BC4\u4FE1\u88AB\u6211\u80E1\u4E71\u4E22\u5728\u4E86\u4E0D\u77E5\u9053\u90A3\u91CC\u3002"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
   m_IsPrefabAsset: 0
@@ -33375,6 +33396,27 @@ Prefab:
         type: 2}
       propertyPath: curDay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: haveItemDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: itemNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a4c898d69e694cda89a0d23b7e1a635,
+        type: 3}
+    - target: {fileID: 114205594190785614, guid: f401dee0820744c3dafbd299a0e20b76,
+        type: 2}
+      propertyPath: itemText
+      value: "\u4F5C\u4E1A\u672C\uFF1A \u5B66\u751F\u4EEC\u90FD\u5F88\u559C\u6B22\u6211\u7684\u8BFE\uFF0C\u5B66\u671F\u672B\u7684\u65F6\u5019\uFF0C\u751A\u81F3\u8FD8\u4E0D\u5C11\u540C\u5B66\u5728\u4F5C\u4E1A\u672C\u4E0A\u7ED9\u6211\u5199\u4E0B\u7559\u8A00\uFF0C\u5E0C\u671B\u4E0B\u4E2A\u5B66\u671F\u8FD8\u662F\u6211\u6765\u6559\u8BFE\u3002\u8FD9\u4E9B\u6E29\u6696\u7684\u4F5C\u4E1A\u672C\uFF0C\u73B0\u5728\u8FD8\u6709\u51E0\u672C\u88AB\u6211\u73CD\u85CF\u5728\u5BB6\u3002"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}

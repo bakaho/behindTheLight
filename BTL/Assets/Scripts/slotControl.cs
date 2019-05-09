@@ -43,6 +43,7 @@ public class slotControl : MonoBehaviour {
         if(isTriggered){
             panel.gameObject.SetActive(true);
             panel.gameObject.transform.GetChild(1).GetComponent<Text>().text = myTxt;
+            panel.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = myPic;
         }
     }
 
