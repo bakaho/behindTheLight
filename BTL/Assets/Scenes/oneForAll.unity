@@ -2094,19 +2094,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2f800e66010e741d9b2b22969c09c12c, type: 3}
   - {fileID: 21300000, guid: 11f74b061df2b433ba90736f44f1727e, type: 3}
   - {fileID: 21300000, guid: 2930be132043e4c268f3955b920695e2, type: 3}
-  thisItemText:
-  - "\u8BB0\u5FC6\u901A\u884C\u7B26\uFF1A\n\u8FD9\u662F\u8BB0\u5FC6\u5927\u9646\u552F\u4E00\u7684\u901A\u884C\u8BC1\u3002\n\u8BF7\u5E26\u4E0A\u5B83\u4E0A\u8DEF\uFF0C\u6536\u96C6\u53E6\u5916<b><color=red>3\u4E2A</color></b>\u8BB0\u5FC6\u788E\u7247\uFF0C\u8D70\u5411\u65E0\u9650\u5149\u660E\u7684\u7EC8\u70B9\u3002\u79BB\u5F00\u65F6\uFF0C\u7CFB\u7EDF\u4F1A\u5C06\u5B83\u548C\u8BB0\u5FC6\u788E\u7247\u4E00\u5E76\u56DE\u6536\u3002\u795D\u4F60\u597D\u8FD0\u3002"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
   inventory: {fileID: 710675542}
   EndScript: {fileID: 1837728280}
 --- !u!4 &68022933
@@ -2643,7 +2630,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: 191ca25e272de4aa78f899a293017e38, type: 3}
     - target: {fileID: 1149472349261888, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
       propertyPath: m_Name
       value: m2s22_p(need tweet
@@ -3631,7 +3618,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: 0d37a2c95f1a7416dacdeaab1becadd0, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -4023,7 +4010,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: f0581d03582ef4b0086466766b8cac94, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -7106,7 +7093,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: e3060b9736fda4c8e9598f9f22dfadf1, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -11760,7 +11747,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: 213ec26f359024ad1a06613392177aa2, type: 3}
     - target: {fileID: 1149472349261888, guid: f401dee0820744c3dafbd299a0e20b76, type: 2}
       propertyPath: m_Name
       value: m2s20_p(moon
@@ -12633,7 +12620,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: 6234e4f4cec414239a661b26923e7cc3, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -19260,11 +19247,13 @@ MonoBehaviour:
   itemToBeUnlocked:
   - {fileID: 812407899}
   - {fileID: 1925864779}
-  itemNumbers: 0000000001000000
+  - {fileID: 1508013074}
+  itemNumbers: 060000000b00000002000000
   itemAlreadyUnlocked:
   - {fileID: 21300000, guid: 0dbe936720dda4e439de65b7834e3cd4, type: 3}
-  - {fileID: 21300000, guid: 0dbe936720dda4e439de65b7834e3cd4, type: 3}
-  itemIsUnlocked: 0100000001000000
+  - {fileID: 21300000, guid: 2930be132043e4c268f3955b920695e2, type: 3}
+  - {fileID: 21300000, guid: 8a4c898d69e694cda89a0d23b7e1a635, type: 3}
+  itemIsUnlocked: 010000000100000001000000
   levelClear: 0
   hiddenObj: {fileID: 214091446}
   myAudio: {fileID: 0}
@@ -24223,7 +24212,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: 06c24eb3250af4087b381c868fdb3127, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -27844,7 +27833,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: b4cd4f4b796e94655b8e88c38525200d, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -29346,7 +29335,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fb93b1de1753a4b1d8f8b2f823a7b467, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8833ccef371b4404d8bb13823f18294e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34567,7 +34556,7 @@ Prefab:
         type: 2}
       propertyPath: voiceOver
       value: 
-      objectReference: {fileID: 8300000, guid: 1d4f04c7a074b4538b944d3d046ee31a, type: 3}
+      objectReference: {fileID: 8300000, guid: 27368d5e3f3494e24821c1344c99751c, type: 3}
     - target: {fileID: 114429553666426172, guid: db50016dc0c7d43b6978de21d35817af,
         type: 2}
       propertyPath: Read
@@ -37638,7 +37627,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: fb93b1de1753a4b1d8f8b2f823a7b467, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fc0310e5d1f74c7aa45b5936d8ca770, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
