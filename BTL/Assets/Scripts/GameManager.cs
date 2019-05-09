@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour {
         "刀片：\n家里大大小小这些样的刀片收到了不少，我也已经习惯了，回想起来，孙子的手工课这些他不知道从哪里来的刀片还派上了很大的用场。",
         "全家福：\n这是地震后我拍的第一张全家福，人生波折几经变化，友人聚散分分合合，然而无论如何，那个瞬间仍旧感到感激和温暖。",};
     public Image inventory;
+    public Text EndScript;
 
 
 	private void Awake()
@@ -361,6 +362,17 @@ public class GameManager : MonoBehaviour {
 
         //set in round
         PlayerPrefs.SetInt(inRoundKey, 1);
+
+        if(PlayerPrefs.GetInt(curGoalNumKey,4) == 4){
+            EndScript.GetComponent<Text>().text = "“你看见的，是你的选择”";
+        }else if(PlayerPrefs.GetInt(curGoalNumKey, 4) <= 10){
+            EndScript.GetComponent<Text>().text = "“了解真相是质疑的过程”";
+        }else if (PlayerPrefs.GetInt(curGoalNumKey, 4) <= 11)
+        {
+            EndScript.GetComponent<Text>().text = "“细节改变理解”";
+        }else{
+            EndScript.GetComponent<Text>().text = "“真相在光影之间”";
+        }
     }
 
 
@@ -812,6 +824,6 @@ public class GameManager : MonoBehaviour {
 
 
 
-        PlayerPrefs.SetInt(inRoundKey, 0);
+        PlayerPrefs.SetInt(inRoundKey, 0); 
     }
 }

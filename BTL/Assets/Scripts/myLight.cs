@@ -50,6 +50,7 @@ public class myLight : MonoBehaviour {
     public Image goalUpdateRmd;
     public collectCheckerControl checker;
     public Image inventoryRmd;
+    public GameObject endScene;
 
     [Header("Special Effects")]
     //earthquake
@@ -300,6 +301,11 @@ public class myLight : MonoBehaviour {
                     //Handheld.Vibrate();
                     GM.GetComponent<GameManager>().playLockSound();
                 }
+            }
+
+
+            if(other.gameObject.CompareTag("showEnd")){
+                endScene.SetActive(true);
             }
 
 

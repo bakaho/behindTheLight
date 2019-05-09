@@ -28,7 +28,7 @@ public class collectCheckerControl : MonoBehaviour {
     }
 
     public bool checkPassed(){
-        for (int i = 0; i < this.transform.childCount; i++)
+        for (int i = 0; i < PlayerPrefs.GetInt(GameManager.curGoalNumKey,4); i++)
         {
             if (!this.transform.GetChild(i).GetComponent<checkerDotControl>().isOn)
             {

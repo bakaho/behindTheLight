@@ -127,5 +127,10 @@ public class buttonControl : MonoBehaviour {
     public void settingTrigger()
     {
         settingsBar.gameObject.SetActive(true);
+
+    }
+
+    public void endtostart(){
+        SceneManager.LoadScene(sceneName: "startScene");
     }
 }
