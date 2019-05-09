@@ -231,6 +231,11 @@ public class puzzleTextControl : MonoBehaviour {
 
    
     public void finishedShowNext(){
+        if (haveOtherTrigger)
+        {
+            otherTrigger.gameObject.SetActive(true);
+        }
+
         if (!GameManager.isMute)
         {
             Read.Stop();

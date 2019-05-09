@@ -37,6 +37,7 @@ public class storyTextControl : MonoBehaviour {
     public int curMonth = 00;
     public int curDay = 00;
     public GameObject borderToClose;
+    public GameObject borderToShow;
 
     [Header("Sound")]
     public AudioClip voiceOver;
@@ -72,11 +73,12 @@ public class storyTextControl : MonoBehaviour {
             Read.Stop();
             Read.PlayOneShot(voiceOver);
         }
-        if (isTheFirst)
+        if (isTheFirst && !testMode)
         {
             PlayerPrefs.SetInt("finalMood", myMood);
             //
             choosePathInsed();
+            borderToShow.SetActive(true);
         }
         GameManager.curModule = moduleC;
         GameManager.curSentence = sentenceC;

@@ -658,6 +658,19 @@ public class GameManager : MonoBehaviour {
                 bounds[7] = 3f;
             }
         }
+        else if (m == 3){
+            if (s == 6 || s == 7)
+            {
+                bounds[0] = -217f;
+                bounds[1] = 702.6f;
+                bounds[2] = 27f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+        }
         return bounds;
     }
 
