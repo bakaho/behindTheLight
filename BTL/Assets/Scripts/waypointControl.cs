@@ -32,19 +32,23 @@ public class waypointControl : MonoBehaviour {
         RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json").Catch(onRejected: response =>
         {
             print("[Online Database] No internet connection");
+            PlayerPrefs.SetInt("ModuleLocalPresave" + myModule,PlayerPrefs.GetInt("ModuleLocalPresave" + myModule,0));
+
         });
 
         RestClient.Get<Waypoint>("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json").Then(onResolved: response =>
          {
-             retrieveWp = response;
-             tempTimes = retrieveWp.times + 1;
-             print(tempTimes);
-             Waypoint wp = new Waypoint();
-             wp.wpModule = myModule;
-             wp.times = tempTimes;
-             PlayerPrefs.SetInt(GameManager.moduleTriggerTimes[myModule], tempTimes);
-             print("[Online Database] Storing");
-             RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json", wp);
+            int localNum = PlayerPrefs.GetInt("ModuleLocalPresave" + myModule, 0); 
+            retrieveWp = response;
+            tempTimes = retrieveWp.times + 1 + localNum;
+            print(tempTimes);
+            Waypoint wp = new Waypoint();
+            wp.wpModule = myModule;
+            wp.times = tempTimes;
+            PlayerPrefs.SetInt(GameManager.moduleTriggerTimes[myModule], tempTimes);
+            print("[Online Database] Storing");
+            RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json", wp);
+            PlayerPrefs.SetInt("ModuleLocalPresave" + myModule, 0);
         });
         print("[Online Database] Finished");
 

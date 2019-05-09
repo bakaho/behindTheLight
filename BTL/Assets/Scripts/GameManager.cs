@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //set path
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < 3; j++)
         {
             aiDot[j].GetComponent<pathFixed>().pathCreator = moduleInnerPath[curModule].transform.GetChild(j).GetComponent<PathCreator>();
             aiDot[j].GetComponent<pathFixed>().resetDistanceIn();
@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour {
                     player.transform.position = pt.transform.position - new Vector3(0, 0, 54);
 
                     if (!pt.GetComponent<puzzleTextControl>().isTheLast
-                        || curModule == 1 && curSentence == 3)
+                        || (curModule == 1 && curSentence == 3))
                     {
                         int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
                         pt.GetComponent<puzzleTextControl>().nextObj[2 * pt.GetComponent<puzzleTextControl>().nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
@@ -287,7 +287,7 @@ public class GameManager : MonoBehaviour {
                     player.transform.position = st.transform.position - new Vector3(0, 0, 54);
 
                     if (!st.GetComponent<storyTextControl>().isTheLast
-                        || curModule == 1 && curSentence == 3)
+                        || (curModule == 1 && curSentence == 3))
                     {
                         int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
                         st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<BoxCollider>().enabled = true;
@@ -300,10 +300,15 @@ public class GameManager : MonoBehaviour {
                         }
                         else
                         {
+                            print(2 * st.GetComponent<storyTextControl>().nextIndex + gb);
                             st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<storyTextControl>().isTriggered = false;
                         }
                     }else if (st.GetComponent<storyTextControl>().isTheLast)
                     {
+                        print("end level show");
+                        st.GetComponent<BoxCollider>().enabled = true;
+                        st.transform.GetChild(1).gameObject.SetActive(true);
+                        st.transform.GetChild(0).gameObject.SetActive(true);
                         st.GetComponent<storyTextControl>().isTriggered = false;
                         st.transform.GetChild(1).GetComponent<Light>().intensity = 0;
                     }
@@ -672,6 +677,60 @@ public class GameManager : MonoBehaviour {
                 bounds[7] = 3f;
             }
         }
+        else if (m == 5)
+        {
+            if (s == 2 || s == 6)
+            {
+                bounds[0] = 152f;
+                bounds[1] = 1085f;
+                bounds[2] = 27f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+        }
+
+        else if (m == 4)
+        {
+            if (s == 3)
+            {
+                bounds[0] = 308.6f;
+                bounds[1] = 700.4f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+            else if (s == 4)
+            {
+                bounds[0] = 265.2f;
+                bounds[1] = 730f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+            else if (s == 5)
+            {
+                bounds[0] = 144.1f;
+                bounds[1] = 768.1f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+        }
         return bounds;
     }
 
@@ -767,6 +826,33 @@ public class GameManager : MonoBehaviour {
             {
                 shapeMSI[0] = 2;
                 shapeMSI[1] = 2;
+                shapeMSI[2] = 0;
+            }
+        }
+        else if(m == 3){
+            if (s == 6 || s == 7)
+            {
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
+                shapeMSI[2] = 0;
+            }
+        }
+        else if (m == 5)
+        {
+            if (s == 2 || s == 6)
+            {
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
+                shapeMSI[2] = 0;
+            }
+        }
+
+        else if (m == 4)
+        {
+            if (s == 1 || s == 3 || s == 4 || s == 5){
+
+                shapeMSI[0] = 0;
+                shapeMSI[1] = 0;
                 shapeMSI[2] = 0;
             }
         }
