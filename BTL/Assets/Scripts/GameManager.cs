@@ -134,6 +134,9 @@ public class GameManager : MonoBehaviour {
 
     void initializeGame()
     {
+        //testing
+        PlayerPrefs.SetInt(inRoundKey, 0);
+
         //set game loop
         if (!PlayerPrefs.HasKey(gloopKey))
         {
@@ -341,24 +344,31 @@ public class GameManager : MonoBehaviour {
                     GameObject[] pTxts = GameObject.FindGameObjectsWithTag("puzzleText");
                     foreach (GameObject pt in pTxts)
                     {
-                        //fully turn on
-                        pt.GetComponent<BoxCollider>().enabled = true;
-                        pt.transform.GetChild(0).gameObject.SetActive(true);
-                        pt.transform.GetChild(1).gameObject.SetActive(true);
-                        pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
-                        pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
-                        pt.transform.GetComponent<puzzleTextControl>().thisModel.SetActive(true);
+                        if (pt.GetComponent<puzzleTextControl>().moduleC == i)
+                        {
+                            print("turn on " + i);
+                            //fully turn on
+                            pt.GetComponent<BoxCollider>().enabled = true;
+                            pt.transform.GetChild(0).gameObject.SetActive(true);
+                            pt.transform.GetChild(1).gameObject.SetActive(true);
+                            pt.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                            pt.transform.GetComponent<puzzleTextControl>().isTriggered = true;
+                            pt.transform.GetComponent<puzzleTextControl>().thisModel.SetActive(true);
+                        }
                     }
 
                     GameObject[] sTxt = GameObject.FindGameObjectsWithTag("storyText");
                     foreach (GameObject st in sTxt)
                     {
-                        //fully turn on
-                        st.GetComponent<BoxCollider>().enabled = true;
-                        st.transform.GetChild(0).gameObject.SetActive(true);
-                        st.transform.GetChild(1).gameObject.SetActive(true);
-                        st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
-                        st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                        if (st.GetComponent<storyTextControl>().moduleC == i)
+                        {
+                            //fully turn on
+                            st.GetComponent<BoxCollider>().enabled = true;
+                            st.transform.GetChild(0).gameObject.SetActive(true);
+                            st.transform.GetChild(1).gameObject.SetActive(true);
+                            st.transform.GetChild(1).GetComponent<Light>().intensity = 60;
+                            st.transform.GetComponent<storyTextControl>().isTriggered = true;
+                        }
                     }
                 }
             }
@@ -390,6 +400,7 @@ public class GameManager : MonoBehaviour {
             mainBGM.UnPause();
             if (firstTouch && (Input.touchCount >= 2 || Input.GetKeyDown(KeyCode.Return)))
             {
+                
                 firstTouch = false;
                 myLight.inControl = false;
                 //1. show button
@@ -731,6 +742,50 @@ public class GameManager : MonoBehaviour {
             }
 
         }
+
+        else if (m == 6)
+        {
+            if (s == 2)
+            {
+                bounds[0] = -61.8f;
+                bounds[1] = 1310.2f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+            else if (s == 9)
+            {
+                bounds[0] = -218.2f;
+                bounds[1] = 1381.7f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 3f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
+
+
+        }
+        else if (m == 7)
+        {
+            if (s == 2 || s == 1 || s == 3)
+            {
+                bounds[0] = 71.8f;
+                bounds[1] = 1643f;
+                bounds[2] = 27f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+        }
         return bounds;
     }
 
@@ -740,7 +795,7 @@ public class GameManager : MonoBehaviour {
     int[] GetShapeUsed(int m, int s, int idx)
     {
         // add a bit n
-        int[] shapeMSI = new int[3];
+        int[] shapeMSI = new int[3]{0,0,0};
         //bounds[0] CharX
         //bounds[1] CharZ
 
@@ -909,7 +964,7 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject st in sTxts)
         {
             //sabe finished clear triggered
-            if (st.GetComponent<puzzleTextControl>().isTriggered)
+            if (st.GetComponent<storyTextControl>().isTriggered)
             {
                 PlayerPrefs.SetInt("M" + st.GetComponent<storyTextControl>().moduleC + "S" + st.GetComponent<storyTextControl>().sentenceC, 0);
             }

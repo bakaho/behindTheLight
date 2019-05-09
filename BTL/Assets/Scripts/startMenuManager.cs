@@ -30,7 +30,8 @@ public class startMenuManager : MonoBehaviour {
             startBtn.GetComponent<Image>().sprite = spResume;
         }
         progressBar.value = PlayerPrefs.GetFloat("percentage", 0);
-        progressBar.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = PlayerPrefs.GetFloat("percentage", 0) + "%";
+        float showPercentage = PlayerPrefs.GetFloat("percentage", 0) * 100;
+        progressBar.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = Mathf.Round(showPercentage) + "%";
         myBGM.clip = mySound[PlayerPrefs.GetInt("finalMood", 2)];
 	}
 	
