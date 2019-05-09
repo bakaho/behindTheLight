@@ -15,6 +15,7 @@ public class storyTextControl : MonoBehaviour {
     [Header("UI")]
     //UI 
     public Image dateTime;
+    public Image inventory;
 
     [Header("Next Properties")]
     public bool[] nextIsPuz;
@@ -104,8 +105,43 @@ public class storyTextControl : MonoBehaviour {
             //module loop +1
             if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
             {
-                PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
+                int[] m5need = new int[] { 1, 4, 5 };
+                int[] currentm5 = new int[] { 1, 1, 1 };
+                if(moduleC == 5){
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (inventory.transform.GetChild(i).GetComponent<slotControl>().isTriggered)
+                        {
+                            for (int j = 0; j < 3; j++)
+                            {
+                                if (inventory.transform.GetChild(i).GetComponent<slotControl>().thisItemNum == m5need[j])
+                                {
+                                    currentm5[j] = 0;
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    int addUpCheck = 0;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        addUpCheck += currentm5[i];
+                    }
+                    if (addUpCheck == 0)
+                    {
+                        PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
+                    }
+                }else{
+                    PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
+                }
+
             }
+
+
             print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
 
             //close bolder

@@ -48,7 +48,7 @@ public class lockedAreaControl : MonoBehaviour {
             {
                 for (int j = 0; j < itemToBeUnlocked.Length; j++)
                 {
-                    if(inventory.transform.GetChild(j).GetComponent<slotControl>().thisItemNum == itemNumbers[j]){
+                    if(inventory.transform.GetChild(i).GetComponent<slotControl>().thisItemNum == itemNumbers[j]){
                         unlockRmd.transform.GetChild(j).GetComponent<Image>().sprite = itemAlreadyUnlocked[j];
                         itemIsUnlocked[j] = 0;
                     }
