@@ -8,6 +8,7 @@ public class slotControl : MonoBehaviour {
     public GameObject panel;
     Sprite myPic;
     public string myTxt;
+    public string text2;
     public int thisItemNum;
 
 
@@ -25,6 +26,7 @@ public class slotControl : MonoBehaviour {
         this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Image>().sprite = sp;
         myPic = sp;
         myTxt = s;
+        text2 = s;
         thisItemNum = num;
         //GameManager.itemCollectionCheck[num] = true;
         if (!PlayerPrefs.HasKey(GameManager.collectItemKey[num]))
@@ -42,7 +44,7 @@ public class slotControl : MonoBehaviour {
     public void showPanel(){
         if(isTriggered){
             panel.gameObject.SetActive(true);
-            panel.gameObject.transform.GetChild(1).GetComponent<Text>().text = myTxt;
+            panel.gameObject.transform.GetChild(1).GetComponent<Text>().text = text2;
             panel.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = myPic;
         }
     }

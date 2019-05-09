@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour {
     [Header("UI Control")]
     public collectCheckerControl checker;
     public Sprite[] itemCollectSp = new Sprite[12];
-    public string[] thisItemText = new string[12]{"记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>" + GameManager.collectTotalNum + "个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。",
+    string[] thisItemText = new string[12]{"记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>" + GameManager.collectTotalNum + "个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。",
         "紫玉兰花：\n这朵花在我的记忆里留有深刻的印象，校园操场边的一排玉兰是我每次走过都想要尽量忽略的对象。",
         "作业本：\n学生们都很喜欢我的课，学期末的时候，甚至还不少同学在作业本上给我写下留言，希望下个学期还是我来教课。这些温暖的作业本，现在还有几本被我珍藏在家。",
         "批评信：\n学校在大会上批评我班级成绩差，学生太过松散。我向来不屑这些言论，批评信被我胡乱丢在了不知道那里。",
