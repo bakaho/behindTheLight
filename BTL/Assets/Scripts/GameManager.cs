@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
     [Header("Properties Preset")]
     //game level preset
     static public int[] moduleProgress = new int[8] {0, 0, 0, 0, 0, 0, 0, 0};//useless?
-    static public int[] moduleProgressUB = new int[8] {1, 1, 3, 3, 1, 1, 1, 1}; 
+    static public int[] moduleProgressUB = new int[8] {1, 1, 3, 3, 2, 2, 3, 3}; 
     static public int[,] ModuleSentence = new int[10, 10]; //save the current progress
     static public int[,] ModuleSentenceUB = new int[10, 10]; //save the upper bound
     static public int[] NumOfSenInModule = new int[10] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 }; //useless??
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SoundEffectSrc = GetComponent<AudioSource>();
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
         initializeGame();
 	}
 	
