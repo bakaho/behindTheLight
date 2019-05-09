@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 2b93e6de9f336469894a2a5ca0e171be
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ASIENTO1
+    100002: CAJON
+    100004: EXTRA
+    100006: GANCHO_I
+    100008: GANCHO_I1
+    100010: MESA
+    100012: MESA2
+    100014: PATAS_D
+    100016: PATAS_D1
+    100018: PATAS_D2
+    100020: PATAS_T
+    100022: RESPALDO1
+    100024: SILLA
+    100026: //RootNode
+    100028: TAPA4
+    100030: UNION
+    400000: ASIENTO1
+    400002: CAJON
+    400004: EXTRA
+    400006: GANCHO_I
+    400008: GANCHO_I1
+    400010: MESA
+    400012: MESA2
+    400014: PATAS_D
+    400016: PATAS_D1
+    400018: PATAS_D2
+    400020: PATAS_T
+    400022: RESPALDO1
+    400024: SILLA
+    400026: //RootNode
+    400028: TAPA4
+    400030: UNION
+    2100000: StingrayPBS6
+    2100002: StingrayPBS5
+    2300000: ASIENTO1
+    2300002: CAJON
+    2300004: EXTRA
+    2300006: GANCHO_I
+    2300008: GANCHO_I1
+    2300010: PATAS_D
+    2300012: PATAS_D1
+    2300014: PATAS_D2
+    2300016: PATAS_T
+    2300018: RESPALDO1
+    2300020: TAPA4
+    2300022: UNION
+    3300000: ASIENTO1
+    3300002: CAJON
+    3300004: EXTRA
+    3300006: GANCHO_I
+    3300008: GANCHO_I1
+    3300010: PATAS_D
+    3300012: PATAS_D1
+    3300014: PATAS_D2
+    3300016: PATAS_T
+    3300018: RESPALDO1
+    3300020: TAPA4
+    3300022: UNION
+    4300000: PATAS_D
+    4300002: PATAS_T
+    4300004: EXTRA
+    4300006: PATAS_D1
+    4300008: RESPALDO1
+    4300010: ASIENTO1
+    4300012: PATAS_D2
+    4300014: GANCHO_I
+    4300016: UNION
+    4300018: CAJON
+    4300020: GANCHO_I1
+    4300022: TAPA4
+  externalObjects:
+  - first:
+      type: UnityEngine:Cubemap
+      assembly: UnityEngine.CoreModule
+      name: diffuse_cube
+    second: {fileID: 8900000, guid: a66cef5ad043f433fabe59702ed9bcd1, type: 3}
+  - first:
+      type: UnityEngine:Cubemap
+      assembly: UnityEngine.CoreModule
+      name: specular_cube
+    second: {fileID: 8900000, guid: 0ad2881e90b1b461494392c54bf52900, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CMADERA
+    second: {fileID: 2800000, guid: eb75723b661f04772bcdc36f46bf8866, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CMETAL
+    second: {fileID: 2800000, guid: d1404bfc0b78b4335b0fff39959fb12d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MADERA_METAL
+    second: {fileID: 2800000, guid: 2b2edb250873546daa4b7b3266c3b132, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MADERA_ROUGH
+    second: {fileID: 2800000, guid: dab7f0481a58649609e4e3621db1b430, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: METAL_METAL
+    second: {fileID: 2800000, guid: c2621f8eeb98b4ee8885cd995cc2f16b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: METAL_ROUGH
+    second: {fileID: 2800000, guid: e46ccc924997f439c988f92fd995c4c1, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
