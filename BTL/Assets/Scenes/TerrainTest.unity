@@ -143,6 +143,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamObj: {fileID: 0}
   player: {fileID: 0}
+  moduleBorder: []
+  moduleInnerPath: []
+  aiDot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mainBGM: {fileID: 0}
   SoundEffectSrc: {fileID: 0}
   s_getShape: {fileID: 0}
@@ -162,20 +169,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  thisItemText:
-  - "\u8BB0\u5FC6\u901A\u884C\u7B26\uFF1A\n\u8FD9\u662F\u8BB0\u5FC6\u5927\u9646\u552F\u4E00\u7684\u901A\u884C\u8BC1\u3002\n\u8BF7\u5E26\u4E0A\u5B83\u4E0A\u8DEF\uFF0C\u6536\u96C6\u53E6\u5916<b><color=red>3\u4E2A</color></b>\u8BB0\u5FC6\u788E\u7247\uFF0C\u8D70\u5411\u65E0\u9650\u5149\u660E\u7684\u7EC8\u70B9\u3002\u79BB\u5F00\u65F6\uFF0C\u7CFB\u7EDF\u4F1A\u5C06\u5B83\u548C\u8BB0\u5FC6\u788E\u7247\u4E00\u5E76\u56DE\u6536\u3002\u795D\u4F60\u597D\u8FD0\u3002"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
-  - "\u4E8C\uFF1A\n\u6211\u662F\u7B2C\u4E8C\u4E2A\uFF01"
   inventory: {fileID: 0}
+  EndScript: {fileID: 0}
 --- !u!4 &68022933
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +872,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 65, z: -68}
+  m_LocalPosition: {x: -94, y: 65, z: 18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1722,11 +1717,16 @@ MonoBehaviour:
   firstBlockImg: {fileID: 0}
   goalUpdateRmd: {fileID: 0}
   checker: {fileID: 0}
+  inventoryRmd: {fileID: 0}
+  endScene: {fileID: 0}
   earthquakeOn: 0
   EQSound: {fileID: 0}
   darkCurtain: {fileID: 0}
   EQSound1: {fileID: 0}
   EQSound2: {fileID: 0}
+  endAnim: {fileID: 0}
+  good: {fileID: 0}
+  bad: {fileID: 0}
 --- !u!54 &958959577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5920,9 +5920,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
+  Read: {fileID: 0}
   dateTime: {fileID: 0}
+  inventory: {fileID: 0}
+  nextIsPuz: 
   moduleN: 1
   sentenceN: 1
+  nextIndex: 0
   nextObj:
   - {fileID: 1280840847}
   testMode: 0
@@ -5930,16 +5934,24 @@ MonoBehaviour:
   sentenceC: 0
   isTriggered: 0
   isTheLast: 0
+  isTheFirst: 0
+  myMood: 0
   curYear: 0
   curMonth: 0
   curDay: 0
   borderToClose: {fileID: 0}
+  borderToShow: {fileID: 0}
+  voiceOver: {fileID: 0}
   aiDot:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   pathForward: []
+  pathInside:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!65 &2075223975
 BoxCollider:
   m_ObjectHideFlags: 0
