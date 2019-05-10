@@ -3359,7 +3359,10 @@ MonoBehaviour:
   - {fileID: 1312836736}
   - {fileID: 337049921}
   bad: {fileID: 2090856118}
-  good: {fileID: 678170978}
+  good:
+  - {fileID: 678170978}
+  - {fileID: 1185350912}
+  - {fileID: 2090856118}
   moduleInnerPath:
   - {fileID: 1822395125}
   - {fileID: 1822395125}

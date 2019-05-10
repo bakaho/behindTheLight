@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
     public GameObject player;
     public GameObject[] moduleBorder;
     public GameObject bad;
-    public GameObject good;
+    public GameObject[] good;
     //static public bool[] itemCollectionCheck = new bool[12]{false, false, false, false, false, false, false, false, false, false, false, false};
 
     [Header("Properties Preset")]
@@ -211,16 +211,19 @@ public class GameManager : MonoBehaviour {
         }
 
         //set goodbad
-        if(PlayerPrefs.HasKey(inRoundKey) && PlayerPrefs.GetInt(inRoundKey) == 0){
+        //if(PlayerPrefs.HasKey(inRoundKey) && PlayerPrefs.GetInt(inRoundKey) == 0){
+        if(curModule <= 1 || (curModule == 2 && curSentence <= 8)){
             if(PlayerPrefs.GetInt(goodBadKey) == 0){
                 bad.GetComponent<BoxCollider>().enabled = true;
                 bad.transform.GetChild(0).gameObject.SetActive(true);
                 bad.transform.GetChild(1).gameObject.SetActive(true);
 
             }else{
-                good.GetComponent<BoxCollider>().enabled = true;
-                good.transform.GetChild(0).gameObject.SetActive(true);
-                good.transform.GetChild(1).gameObject.SetActive(true);
+                
+                good[PlayerPrefs.GetInt(moduleProgressKey[1], 0)].GetComponent<BoxCollider>().enabled = true;
+                good[PlayerPrefs.GetInt(moduleProgressKey[1], 0)].transform.GetChild(0).gameObject.SetActive(true);
+                good[PlayerPrefs.GetInt(moduleProgressKey[1], 0)].transform.GetChild(1).gameObject.SetActive(true);
+
             }
         }
 
@@ -417,7 +420,7 @@ public class GameManager : MonoBehaviour {
     }
 
 
-	// Update is called once per fr ame
+	// Update is called once per frame
 	void Update () {
 
         if (!isPaused)
@@ -425,7 +428,7 @@ public class GameManager : MonoBehaviour {
             mainBGM.UnPause();
             if (firstTouch && (Input.touchCount >= 2 || Input.GetKeyDown(KeyCode.Return)))
             {
-                
+                print("Check requried: M: " + curModule + "S: " + curSentence);
                 firstTouch = false;
                 myLight.inControl = false;
                 //1. show button
@@ -471,7 +474,7 @@ public class GameManager : MonoBehaviour {
                 //2.check puzzle if it is a puzzle
                 if (onPuz) //puz mod
                 {
-                    print("checking");
+                    print("checking the puzzle");
                     if (checkRegion(curModule, curSentence, curIndex))
                     {
                         print("Puzzle Solved!!!!!");
