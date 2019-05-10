@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class lockedAreaControl : MonoBehaviour {
     public bool isLocked = true;
+    public int myIndex = 0;
 
     public Image inventory;
     public Text unlockRmd;
@@ -82,5 +83,6 @@ public class lockedAreaControl : MonoBehaviour {
     void levelClearMoveOn(){
         this.gameObject.SetActive(false);
         hiddenObj.SetActive(true);
+        PlayerPrefs.SetInt(GameManager.unlockKey[myIndex], 1);
     }
 }

@@ -112,10 +112,11 @@ public class storyTextControl : MonoBehaviour {
         {
             //is the real last
             //module loop +1
-            updateGoal();
+
 
             if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
             {
+                updateGoal();
                 int[] m5need = new int[] { 1, 4, 5 };
                 int[] currentm5 = new int[] { 1, 1, 1 };
                 if(moduleC == 5){
@@ -258,6 +259,7 @@ public class storyTextControl : MonoBehaviour {
     public void updateGoal()
     {
         int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
+        print("update index check: Progress is: " + GameManager.moduleProgress[moduleC] + ", while gb is: " + gb);
         PlayerPrefs.SetInt(GameManager.nextGoalNumKey, PlayerPrefs.GetInt(GameManager.nextGoalNumKey) + GameManager.mAdd[moduleC, GameManager.moduleProgress[moduleC] * 2 + gb]);
         print("Next Goal is set to: " + PlayerPrefs.GetInt(GameManager.nextGoalNumKey));
     }

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 
     //key names:
     static public string guidedKey = "guided";
+    static public string[] unlockKey = new string[3] { "unlock0", "unlock1", "unlock2" };
     static public string unlockedLineKey = "unlockedLineNum";
     static public string percentangeKey = "percentage";
     static public string gloopKey = "myGameLoop";
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] moduleBorder;
     public GameObject bad;
     public GameObject[] good;
+    public GameObject[] locks;
     //static public bool[] itemCollectionCheck = new bool[12]{false, false, false, false, false, false, false, false, false, false, false, false};
 
     [Header("Properties Preset")]
@@ -186,6 +188,14 @@ public class GameManager : MonoBehaviour {
                 }
                 checker.lightOn();
                 print("[loacl storage] loaded item: item" + i);
+            }
+        }
+
+        //unlock locked
+        for (int i = 0; i < 3; i++){
+            if(PlayerPrefs.GetInt(unlockKey[i],0) == 1){
+                locks[i].SetActive(false);
+                locks[i].GetComponent<lockedAreaControl>().hiddenObj.SetActive(true);
             }
         }
 
@@ -730,7 +740,7 @@ public class GameManager : MonoBehaviour {
             if (s == 2)
             {
                 bounds[0] = 52f;
-                bounds[1] = 1025f;
+                bounds[1] = 1035f;
                 bounds[2] = 27f;
                 bounds[3] = 0f;
                 bounds[4] = 1.5f;
@@ -753,6 +763,18 @@ public class GameManager : MonoBehaviour {
 
         else if (m == 4)
         {
+            if (s == 1)
+            {
+                bounds[0] = 121f;
+                bounds[1] = 629.0f;
+                bounds[2] = 28f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+
             if (s == 3)
             {
                 bounds[0] = 308.6f;

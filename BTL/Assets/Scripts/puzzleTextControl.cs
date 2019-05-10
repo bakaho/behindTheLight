@@ -211,10 +211,11 @@ public class puzzleTextControl : MonoBehaviour {
 
         }else if(!testMode){
             //is the real last
-            updateGoal();
+           
             //module loop +1
             if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
             {
+                updateGoal();
                 PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
             }
             print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
