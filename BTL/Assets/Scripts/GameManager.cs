@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour {
     public GameObject MainCamObj;
     public GameObject player;
     public GameObject[] moduleBorder;
+    public GameObject bad;
+    public GameObject good;
     //static public bool[] itemCollectionCheck = new bool[12]{false, false, false, false, false, false, false, false, false, false, false, false};
 
     [Header("Properties Preset")]
@@ -135,7 +137,7 @@ public class GameManager : MonoBehaviour {
     void initializeGame()
     {
         //testing
-        PlayerPrefs.SetInt(inRoundKey, 0);
+        //PlayerPrefs.SetInt(inRoundKey, 0);
 
         //set game loop
         if (!PlayerPrefs.HasKey(gloopKey))
@@ -171,7 +173,7 @@ public class GameManager : MonoBehaviour {
                 {
                     if (!inventory.transform.GetChild(j).GetComponent<slotControl>().isTriggered)
                     {
-                        print("run set text");
+                        
                         inventory.transform.GetChild(j).GetComponent<slotControl>().changeItemImg(itemCollectSp[i], thisItemText[i], i);
                         inventory.transform.GetChild(j).GetComponent<slotControl>().turnOn();
                         break;
@@ -202,6 +204,20 @@ public class GameManager : MonoBehaviour {
         {
             aiDot[j].GetComponent<pathFixed>().pathCreator = moduleInnerPath[curModule].transform.GetChild(j).GetComponent<PathCreator>();
             aiDot[j].GetComponent<pathFixed>().resetDistanceIn();
+        }
+
+        //set goodbad
+        if(PlayerPrefs.HasKey(inRoundKey) && PlayerPrefs.GetInt(inRoundKey) == 0){
+            if(PlayerPrefs.GetInt(goodBadKey) == 0){
+                bad.GetComponent<BoxCollider>().enabled = true;
+                bad.transform.GetChild(0).gameObject.SetActive(true);
+                bad.transform.GetChild(1).gameObject.SetActive(true);
+
+            }else{
+                good.GetComponent<BoxCollider>().enabled = true;
+                good.transform.GetChild(0).gameObject.SetActive(true);
+                good.transform.GetChild(1).gameObject.SetActive(true);
+            }
         }
 
 
@@ -370,6 +386,7 @@ public class GameManager : MonoBehaviour {
                             st.transform.GetComponent<storyTextControl>().isTriggered = true;
                         }
                     }
+                    moduleBorder[i].SetActive(false);
                 }
             }
         }
@@ -690,7 +707,18 @@ public class GameManager : MonoBehaviour {
         }
         else if (m == 5)
         {
-            if (s == 2 || s == 6)
+            if (s == 2)
+            {
+                bounds[0] = 52f;
+                bounds[1] = 1025f;
+                bounds[2] = 27f;
+                bounds[3] = 0f;
+                bounds[4] = 1.5f;
+                bounds[5] = 3f;
+                bounds[6] = 3f;
+                bounds[7] = 3f;
+            }
+            else if (s == 6)
             {
                 bounds[0] = 152f;
                 bounds[1] = 1085f;

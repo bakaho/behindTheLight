@@ -103,6 +103,8 @@ public class storyTextControl : MonoBehaviour {
         {
             //is the real last
             //module loop +1
+            updateGoal();
+
             if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
             {
                 int[] m5need = new int[] { 1, 4, 5 };
@@ -140,6 +142,13 @@ public class storyTextControl : MonoBehaviour {
                 }
 
             }
+
+            if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
+            {
+                PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
+            }
+            print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
+
 
 
             print("[loacl storage] Module Upgraded for M" + moduleC + ", it will be level" + PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) + " in the next round");
@@ -234,5 +243,11 @@ public class storyTextControl : MonoBehaviour {
             PlayerPrefs.SetInt(GameManager.unlockedLineKey,PlayerPrefs.GetInt(GameManager.unlockedLineKey,0)+1);
         }
             
+    }
+
+
+    public void updateGoal()
+    {
+        PlayerPrefs.SetInt(GameManager.nextGoalNumKey, PlayerPrefs.GetInt(GameManager.nextGoalNumKey) + GameManager.mAdd[moduleC, GameManager.moduleProgress[moduleC]]);
     }
 }
