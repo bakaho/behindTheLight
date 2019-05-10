@@ -51,9 +51,9 @@ public class GameManager : MonoBehaviour {
     static public int[,] mAdd = new int[,] {
         //{can be unlocked at lv1, lv2}
         //total num should be 8
-        {0, 0}, {0, 0}, {1, 0}, {0, 1}, 
-        {1, 1}, {0, 0}, {1, 1}, 
-        {1, 1}
+        {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 1, 0}, {0, 0, 1, 1}, 
+        {1, 1, 1, 1}, {0, 0, 0, 0}, {0, 1, 2, 1}, 
+        {1, 1, 1, 1}
         //or set d and f to item drop
     };
     public GameObject[] moduleInnerPath;
@@ -157,10 +157,14 @@ public class GameManager : MonoBehaviour {
         }
 
 
+        if(!PlayerPrefs.HasKey(nextGoalNumKey)){
+            PlayerPrefs.SetInt(nextGoalNumKey, 4);
+        }
+
         //set cur goal
         if (PlayerPrefs.GetInt(inRoundKey, 0) == 0)
         {
-            PlayerPrefs.SetInt(curGoalNumKey, PlayerPrefs.GetInt(nextGoalNumKey, 4));
+            PlayerPrefs.SetInt(curGoalNumKey, PlayerPrefs.GetInt(nextGoalNumKey));
             print("[local storage] current goal is set to" + PlayerPrefs.GetInt(curGoalNumKey));
         }
         collectTotalNum = PlayerPrefs.GetInt(curGoalNumKey) - 1;
@@ -350,8 +354,8 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if (PlayerPrefs.GetInt(inRoundKey, 0) == 0)
-        {
+        //if (PlayerPrefs.GetInt(inRoundKey, 0) == 0)
+        //{
             //set totally finished modules to all up
             for (int i = 0; i < 8; i++)
             {
@@ -387,9 +391,13 @@ public class GameManager : MonoBehaviour {
                         }
                     }
                     moduleBorder[i].SetActive(false);
+                    if(i == 1){
+                        moduleBorder[2].SetActive(true);
+                    }
+
                 }
             }
-        }
+        //}
 
 
 
@@ -582,8 +590,8 @@ public class GameManager : MonoBehaviour {
 
             else if (s == 2)
             {
-                bounds[0] = 50.1f;
-                bounds[1] = 215.5f;
+                bounds[0] = 24.1f;
+                bounds[1] = 211.3f;
                 bounds[2] = 28f;
                 bounds[3] = 0f;
                 bounds[4] = 2f;
@@ -1008,5 +1016,7 @@ public class GameManager : MonoBehaviour {
 
 
         PlayerPrefs.SetInt(inRoundKey, 0); 
+        PlayerPrefs.SetInt(gloopKey, PlayerPrefs.GetInt(gloopKey, 0)+1);
+        PlayerPrefs.SetInt(GameManager.goalUpdateKey, 1);
     }
 }

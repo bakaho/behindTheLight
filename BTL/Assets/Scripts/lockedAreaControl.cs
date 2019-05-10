@@ -37,9 +37,9 @@ public class lockedAreaControl : MonoBehaviour {
 
     public void checkUnlock(){
         //show the slots
-        for (int i = 0; i < itemToBeUnlocked.Length; i++)
+        for (int i = 0; i < unlockRmd.transform.childCount; i++)
         {
-            itemToBeUnlocked[i].SetActive(true);
+            unlockRmd.transform.GetChild(i).gameObject.SetActive(false);
         }
 
         for (int i = 0; i < 12; i++)
@@ -49,7 +49,7 @@ public class lockedAreaControl : MonoBehaviour {
                 for (int j = 0; j < itemToBeUnlocked.Length; j++)
                 {
                     if(inventory.transform.GetChild(i).GetComponent<slotControl>().thisItemNum == itemNumbers[j]){
-                        unlockRmd.transform.GetChild(j).GetComponent<Image>().sprite = itemAlreadyUnlocked[j];
+                        itemToBeUnlocked[j].GetComponent<Image>().sprite = itemAlreadyUnlocked[j];
                         itemIsUnlocked[j] = 0;
                     }
                 }
@@ -57,6 +57,11 @@ public class lockedAreaControl : MonoBehaviour {
             }else{
                 break;
             }
+        }
+
+        for (int i = 0; i < itemToBeUnlocked.Length; i++)
+        {
+            itemToBeUnlocked[i].SetActive(true);
         }
 
         int addUpCheck = 0;

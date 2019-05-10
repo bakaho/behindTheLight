@@ -248,6 +248,8 @@ public class storyTextControl : MonoBehaviour {
 
     public void updateGoal()
     {
-        PlayerPrefs.SetInt(GameManager.nextGoalNumKey, PlayerPrefs.GetInt(GameManager.nextGoalNumKey) + GameManager.mAdd[moduleC, GameManager.moduleProgress[moduleC]]);
+        int gb = PlayerPrefs.GetInt(GameManager.goodBadKey, 0);
+        PlayerPrefs.SetInt(GameManager.nextGoalNumKey, PlayerPrefs.GetInt(GameManager.nextGoalNumKey) + GameManager.mAdd[moduleC, GameManager.moduleProgress[moduleC] * 2 + gb]);
+        print("Next Goal is set to: " + PlayerPrefs.GetInt(GameManager.nextGoalNumKey));
     }
 }
