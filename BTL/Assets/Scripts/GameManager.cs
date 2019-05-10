@@ -1049,6 +1049,8 @@ public class GameManager : MonoBehaviour {
 
 
 
+        PlayerPrefs.SetInt(curModuleKey, 0);
+        PlayerPrefs.SetInt(curSentenceKey, 0);
         PlayerPrefs.SetInt(inRoundKey, 0); 
         PlayerPrefs.SetInt(gloopKey, PlayerPrefs.GetInt(gloopKey, 0)+1);
         PlayerPrefs.SetInt(goalUpdateKey, 1);
