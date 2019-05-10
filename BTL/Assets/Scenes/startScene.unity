@@ -2105,6 +2105,7 @@ MonoBehaviour:
   startBtn: {fileID: 1159382718}
   spStart: {fileID: 21300000, guid: 15c137278dcf14ea4b9d25b8a794bdb1, type: 3}
   spResume: {fileID: 21300000, guid: 066f7073c8f78461cbb705b8ba481c7a, type: 3}
+  spEnd: {fileID: 21300000, guid: 32283433ef3c54010ac0744be8a1d9b0, type: 3}
   helpCurtain: {fileID: 1308215982}
 --- !u!4 &1020564746 stripped
 Transform:

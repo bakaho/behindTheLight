@@ -37,4 +37,8 @@ public class darkCurtainControl : MonoBehaviour {
     public void closeMe(){
         this.gameObject.SetActive(false);
     }
+
+    public void FinalEnd(){
+        PlayerPrefs.SetInt("FinalEnded", 1);
+    }
 }

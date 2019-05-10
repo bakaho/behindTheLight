@@ -18,13 +18,17 @@ public class startMenuManager : MonoBehaviour {
     public Button startBtn;
     public Sprite spStart;
     public Sprite spResume;
+    public Sprite spEnd;
 
     [Header("Help")]
     public GameObject helpCurtain;
 
 	// Use this for initialization
 	void Start () {
-        if(PlayerPrefs.GetInt("isInRound",0) == 0){
+        if(PlayerPrefs.GetInt("FinalEnded", 0) == 1){
+            startBtn.GetComponent<Image>().sprite = spEnd;
+        }
+        else if(PlayerPrefs.GetInt("isInRound",0) == 0){
             startBtn.GetComponent<Image>().sprite = spStart;
         }else{
             startBtn.GetComponent<Image>().sprite = spResume;
@@ -51,5 +55,6 @@ public class startMenuManager : MonoBehaviour {
     public void closeHelp()
     {
         helpCurtain.SetActive(false);
+
     }
 }
