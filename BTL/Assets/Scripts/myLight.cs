@@ -170,6 +170,7 @@ public class myLight : MonoBehaviour {
                     other.GetComponent<puzzleTextControl>().showHint();
 
                     }else{
+                        other.GetComponent<puzzleTextControl>().isTriggered = true;
                         other.gameObject.transform.GetChild(1).gameObject.GetComponent<lightUpText>().turnedOn = true;
                         other.GetComponent<puzzleTextControl>().finishedShowNext();
                     }

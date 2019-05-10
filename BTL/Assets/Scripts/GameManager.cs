@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     static public string[] moduleProgressKey = new string[8] { "module0", "module1", "module2", "module3", "module4", "module5", "module6", "module7"};
     static public string goalUpdateKey = "goalNeedUpdate";
     static public string goalShowedKey = "goalShowed";
-    static public string[] moduleTriggerTimes = new string[8] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6", "module7"};
+    static public string[] moduleTriggerTimes = new string[8] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6", "trigger7"};
 
     //1 = true; 0 = false;
 
@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey(gloopKey))
         {
             PlayerPrefs.SetInt(gloopKey, 0);
+
         }
         else
         {
@@ -156,6 +157,9 @@ public class GameManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey(goalUpdateKey))
         {
             PlayerPrefs.SetInt(goalUpdateKey, 0);
+            print(PlayerPrefs.GetInt(moduleProgressKey[7]) + " the weird 7");
+            //PlayerPrefs.GetInt(moduleProgressKey[7])
+            //PlayerPrefs.SetInt(GameManager.moduleProgressKey[moduleC], GameManager.moduleProgress[moduleC] + 1);
             print("[loacl storage] First goal!!");
         }
 

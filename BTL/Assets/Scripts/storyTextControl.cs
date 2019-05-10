@@ -113,7 +113,7 @@ public class storyTextControl : MonoBehaviour {
             //is the real last
             //module loop +1
 
-
+            print(PlayerPrefs.GetInt(GameManager.moduleProgressKey[7]) + " the weird 7");
             if (PlayerPrefs.GetInt(GameManager.moduleProgressKey[moduleC], 0) < GameManager.moduleProgressUB[moduleC])
             {
                 updateGoal();

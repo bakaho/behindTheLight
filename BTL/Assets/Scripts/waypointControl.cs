@@ -49,6 +49,7 @@ public class waypointControl : MonoBehaviour {
             print("[Online Database] Storing");
             RestClient.Put("https://behindthelight-f424f.firebaseio.com/" + myModule + ".json", wp);
             PlayerPrefs.SetInt("ModuleLocalPresave" + myModule, 0);
+            print(PlayerPrefs.GetInt(GameManager.moduleProgressKey[7]) + " the weird 7");
         });
         print("[Online Database] Finished");
 
