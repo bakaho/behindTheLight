@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //set goodbad
-        //if(PlayerPrefs.HasKey(inRoundKey) && PlayerPrefs.GetInt(inRoundKey) == 0){
+
         if(curModule <= 1 || (curModule == 2 && curSentence <= 8)){
             if(PlayerPrefs.GetInt(goodBadKey) == 0){
                 bad.GetComponent<BoxCollider>().enabled = true;
@@ -220,10 +220,18 @@ public class GameManager : MonoBehaviour {
                 bad.transform.GetChild(1).gameObject.SetActive(true);
 
             }else{
-                
-                good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].GetComponent<BoxCollider>().enabled = true;
-                good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].transform.GetChild(0).gameObject.SetActive(true);
-                good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].transform.GetChild(1).gameObject.SetActive(true);
+                if (PlayerPrefs.GetInt(moduleProgressKey[2], 0) >= 3)
+                {
+                    good[2].GetComponent<BoxCollider>().enabled = true;
+                    good[2].transform.GetChild(0).gameObject.SetActive(true);
+                    good[2].transform.GetChild(1).gameObject.SetActive(true);
+                }
+                else
+                {
+                    good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].GetComponent<BoxCollider>().enabled = true;
+                    good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].transform.GetChild(0).gameObject.SetActive(true);
+                    good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].transform.GetChild(1).gameObject.SetActive(true);
+                }
 
             }
         }

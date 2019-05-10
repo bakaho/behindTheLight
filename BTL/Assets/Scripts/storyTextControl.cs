@@ -40,6 +40,11 @@ public class storyTextControl : MonoBehaviour {
     public GameObject borderToClose;
     public GameObject borderToShow;
 
+    [Header("Other Effects")]
+    //other trigger
+    public bool haveOtherTrigger = false;
+    public GameObject otherTrigger;
+
     [Header("Sound")]
     public AudioClip voiceOver;
 
@@ -69,6 +74,10 @@ public class storyTextControl : MonoBehaviour {
     }
 
     public void showNext(){
+        if(haveOtherTrigger){
+            otherTrigger.SetActive(true);
+        }
+
         saveThis();
         if(!GameManager.isMute){
             Read.Stop();

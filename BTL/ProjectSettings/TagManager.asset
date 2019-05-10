@@ -18,6 +18,7 @@ TagManager:
   - end
   - soundEffect
   - showEnd
+  - realEnd
   layers:
   - Default
   - TransparentFX
