@@ -7,6 +7,7 @@ public class collectCheckerControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         for (int i = 0; i < PlayerPrefs.GetInt(GameManager.curGoalNumKey); i++){
+            print("PlayerPrefs.GetInt(GameManager.curGoalNumKey" + PlayerPrefs.GetInt(GameManager.curGoalNumKey));
             this.transform.GetChild(i).gameObject.SetActive(true);
         }
 	}

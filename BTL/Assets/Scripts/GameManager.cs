@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour {
     static public int[,] mAdd = new int[,] {
         //{can be unlocked at lv1, lv2}
         //total num should be 8
-        {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 1, 0}, {0, 0, 1, 1}, 
-        {1, 1, 1, 1}, {0, 0, 0, 0}, {0, 1, 2, 1}, 
-        {1, 1, 1, 1}
+        {0, 0, 0, 0,0,0}, {0, 0, 0, 0,0,0}, {1, 1, 1, 0,0,0}, {0, 0, 1, 1,0,0}, 
+        {1, 1, 1, 1,0,0}, {0, 0, 0, 0,0,0}, {0, 1, 2, 1,0,0}, 
+        {1, 1, 1, 1,0,0}
         //or set d and f to item drop
     };
     public GameObject[] moduleInnerPath;
@@ -345,11 +345,12 @@ public class GameManager : MonoBehaviour {
                         st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].transform.GetChild(1).GetComponent<Light>().intensity = 0;
                         if (st.GetComponent<storyTextControl>().nextIsPuz[2 * st.GetComponent<storyTextControl>().nextIndex + gb])
                         {
+                            print("run here!" + 2 * st.GetComponent<storyTextControl>().nextIndex + gb);
                             st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<puzzleTextControl>().isTriggered = false;
                         }
                         else
                         {
-                            print(2 * st.GetComponent<storyTextControl>().nextIndex + gb);
+                            //print(2 * st.GetComponent<storyTextControl>().nextIndex + gb);
                             st.GetComponent<storyTextControl>().nextObj[2 * st.GetComponent<storyTextControl>().nextIndex + gb].GetComponent<storyTextControl>().isTriggered = false;
                         }
                     }else if (st.GetComponent<storyTextControl>().isTheLast)
@@ -425,7 +426,7 @@ public class GameManager : MonoBehaviour {
             }
         //}
 
-
+        PlayerPrefs.SetInt(GameManager.curGoalNumKey, 12);
 
         //set in round
         PlayerPrefs.SetInt(inRoundKey, 1);

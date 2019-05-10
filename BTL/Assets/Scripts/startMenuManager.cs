@@ -35,7 +35,11 @@ public class startMenuManager : MonoBehaviour {
         }
         progressBar.value = PlayerPrefs.GetFloat("percentage", 0);
         float showPercentage = PlayerPrefs.GetFloat("percentage", 0) * 100;
-        progressBar.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = Mathf.Round(showPercentage) + "%";
+        if(Mathf.Abs(showPercentage - 100)<1){
+            progressBar.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "100%        ";
+        }else{
+            progressBar.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = Mathf.Round(showPercentage) + "%";
+        }
         myBGM.clip = mySound[PlayerPrefs.GetInt("finalMood", 2)];
 	}
 	

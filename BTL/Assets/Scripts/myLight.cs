@@ -51,6 +51,7 @@ public class myLight : MonoBehaviour {
     public collectCheckerControl checker;
     public Image inventoryRmd;
     public GameObject endScene;
+    public GameObject realEndCurtain;
 
     [Header("Special Effects")]
     //earthquake
@@ -311,6 +312,10 @@ public class myLight : MonoBehaviour {
                 endScene.SetActive(true);
             }
 
+            if (other.gameObject.CompareTag("realEnd"))
+            {
+                realEndCurtain.SetActive(true);
+            }
 
         }
     }

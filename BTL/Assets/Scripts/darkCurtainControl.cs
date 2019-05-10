@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class darkCurtainControl : MonoBehaviour {
+    public GameManager GM;
     static public int nextGoodOrBad;
     public Animator earth;
     public GameObject borderJ;
@@ -40,5 +41,7 @@ public class darkCurtainControl : MonoBehaviour {
 
     public void FinalEnd(){
         PlayerPrefs.SetInt("FinalEnded", 1);
+        PlayerPrefs.SetFloat("percentage", 1);
+        SceneManager.LoadScene(sceneName: "startScene");
     }
 }

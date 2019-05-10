@@ -107,6 +107,7 @@ public class storyTextControl : MonoBehaviour {
             nextObj[2 * nextIndex + gb].transform.GetChild(0).gameObject.SetActive(true);
             nextObj[2 * nextIndex + gb].transform.GetChild(1).gameObject.SetActive(true);
 
+            print("update index check: Progress is: " + GameManager.moduleProgress[moduleC] + ", while gb is: " + gb);
             GM.GetComponent<GameManager>().playNextLineSound();
         }else if (!testMode)
         {
