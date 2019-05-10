@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     static public string[] collectItemKey = new string[12] {"cItm0", "cItm1", "cItm2", "cItm3", "cItm4", "cItm5", "cItm6", "cItm7", "cItm8", "cItm9", "cItm10", "cItm11"};
     static public string[] moduleProgressKey = new string[8] { "module0", "module1", "module2", "module3", "module4", "module5", "module6", "module7"};
     static public string goalUpdateKey = "goalNeedUpdate";
+    static public string goalShowedKey = "goalShowed";
     static public string[] moduleTriggerTimes = new string[8] { "trigger0", "trigger1", "trigger2", "trigger3", "trigger4", "trigger5", "trigger6", "module7"};
 
     //1 = true; 0 = false;
@@ -220,9 +221,9 @@ public class GameManager : MonoBehaviour {
 
             }else{
                 
-                good[PlayerPrefs.GetInt(moduleProgressKey[1], 0)].GetComponent<BoxCollider>().enabled = true;
-                good[PlayerPrefs.GetInt(moduleProgressKey[1], 0)].transform.GetChild(0).gameObject.SetActive(true);
-                good[PlayerPrefs.GetInt(moduleProgressKey[1], 0)].transform.GetChild(1).gameObject.SetActive(true);
+                good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].GetComponent<BoxCollider>().enabled = true;
+                good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].transform.GetChild(0).gameObject.SetActive(true);
+                good[PlayerPrefs.GetInt(moduleProgressKey[2], 0)].transform.GetChild(1).gameObject.SetActive(true);
 
             }
         }
@@ -1020,6 +1021,7 @@ public class GameManager : MonoBehaviour {
 
         PlayerPrefs.SetInt(inRoundKey, 0); 
         PlayerPrefs.SetInt(gloopKey, PlayerPrefs.GetInt(gloopKey, 0)+1);
-        PlayerPrefs.SetInt(GameManager.goalUpdateKey, 1);
+        PlayerPrefs.SetInt(goalUpdateKey, 1);
+        PlayerPrefs.SetInt(goalShowedKey, 0);
     }
 }

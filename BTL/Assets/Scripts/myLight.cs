@@ -243,7 +243,7 @@ public class myLight : MonoBehaviour {
                 darkCurtainFinished = true;
             }
 
-            if (other.gameObject.CompareTag("start") && !startPassed)
+            if (other.gameObject.CompareTag("start") && PlayerPrefs.GetInt(GameManager.goalShowedKey,0) == 0)
             {
                 if (GameManager.gameLoop == 0)
                 {
@@ -259,8 +259,9 @@ public class myLight : MonoBehaviour {
                     }
                 }else if(PlayerPrefs.GetInt(GameManager.goalUpdateKey) == 1){
                     goalUpdateRmd.gameObject.SetActive(true);
+                    theFirstBlock.GetComponent<slotControl>().changeItemImg(firstBlockImg, "记忆通行符：\n这是记忆大陆唯一的通行证。\n请带上它上路，收集另外<b><color=red>" + GameManager.collectTotalNum + "个</color></b>记忆碎片，走向无限光明的终点。离开时，系统会将它和记忆碎片一并回收。祝你好运。", 0);
                 }
-                startPassed = true;
+                PlayerPrefs.SetInt(GameManager.goalShowedKey, 1);
                 PlayerPrefs.SetInt(GameManager.goalUpdateKey, 0);
             }
 
